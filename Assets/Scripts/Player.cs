@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : Unit
 {
+    public Projectile bullet;
 
     // Start is called before the first frame update
     void Start()
@@ -51,8 +52,19 @@ public class Player : Unit
                 Move(pos);
             }
         }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            Debug.Log("Shoot");
+            Shoot();
+        }
     }
 
-    
+    private void Shoot()
+    {
+        var newBullet = Instantiate(bullet, transform.position + (transform.forward * 2), transform.rotation);
+        newBullet.SetSpeed(0f);
+        newBullet.SetAcceleration(10f);
+        newBullet.SetExistTime(10f);
+    }
     
 }

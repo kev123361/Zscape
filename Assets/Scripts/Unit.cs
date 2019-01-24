@@ -8,6 +8,7 @@ public abstract class Unit : MonoBehaviour
     public BoardManager bm;
     public int boardSize;
     public int pos;
+    public float health;
     
 
     // Helper method to check if a move can be made
@@ -46,5 +47,10 @@ public abstract class Unit : MonoBehaviour
         //else if (direction == "Right") { transform.position = tempPos + new Vector3(0, 0, 2.5f); }
         //else if (direction == "Down") { transform.position = tempPos + new Vector3(2.5f, 0, 0); }
         //else if (direction == "Up") { transform.position = tempPos - new Vector3(2.5f, 0, 0); }
+    }
+
+    public void LoseHealth(float damage)
+    {
+        health -= damage;
     }
 }
