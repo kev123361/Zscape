@@ -9,6 +9,8 @@ public abstract class Unit : MonoBehaviour
     public int boardSize;
     public int pos;
     public float health;
+
+    public Projectile bullet;
     
 
     // Helper method to check if a move can be made
@@ -52,5 +54,10 @@ public abstract class Unit : MonoBehaviour
     public void LoseHealth(float damage)
     {
         health -= damage;
+    }
+
+    public void Shoot()
+    {
+
     }
 }

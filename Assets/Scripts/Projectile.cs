@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour
     public float acceleration;
     public float existTime;
 
+    public bool isEnemyProjectile;
+
     private float timer = 0f;
 
     private Rigidbody rb;
@@ -42,10 +44,15 @@ public class Projectile : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (!isEnemyProjectile && other.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);
             other.gameObject.GetComponent<Enemy>().LoseHealth(10);
+        } else if (isEnemyProjectile && other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+
+            //To-Do Health loss
         }
     }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : Unit
 {
-    public Projectile bullet;
 
     // Start is called before the first frame update
     void Start()
@@ -59,7 +58,7 @@ public class Player : Unit
         }
     }
 
-    private void Shoot()
+    new private void Shoot()
     {
         var newBullet = Instantiate(bullet, transform.position + (transform.forward * 2), transform.rotation);
         newBullet.SetSpeed(0f);
