@@ -53,6 +53,17 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
 
             //To-Do Health loss
+        } else if (isEnemyProjectile && other.gameObject.CompareTag("Tile"))
+        {
+            other.gameObject.GetComponent<Tile>().WarnTile();
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (isEnemyProjectile && other.gameObject.CompareTag("Tile"))
+        {
+            other.gameObject.GetComponent<Tile>().UnwarnTile();
         }
     }
 
