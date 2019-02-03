@@ -61,18 +61,18 @@ public class CustomArrayEditor : PropertyDrawer
         //Creation of the 2D Array in the Unity Editor
         for (int i = 0; i < numOfRows; i++)
         {
-            SerializedProperty row = rows.GetArrayElementAtIndex(i).FindPropertyRelative("row");
+            SerializedProperty column = rows.GetArrayElementAtIndex(i).FindPropertyRelative("column");
             newPosition.height = 20;
 
-            if (row.arraySize != numOfRows)
-                row.arraySize = numOfRows;
+            if (column.arraySize != numOfRows)
+                column.arraySize = numOfRows;
 
             newPosition.width = 70;
 
             for (int j = 0; j < numOfRows; j++)
             {
                 //Set up in a way where the columns need to be identical to the rows in the matrix. Should be fixable but I'm tired
-                EditorGUI.PropertyField(newPosition, row.GetArrayElementAtIndex(j), GUIContent.none);
+                EditorGUI.PropertyField(newPosition, column.GetArrayElementAtIndex(j), GUIContent.none);
                 newPosition.x += newPosition.width;
             }
 
