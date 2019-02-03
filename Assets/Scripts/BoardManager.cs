@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class BoardManager : MonoBehaviour
 {
+    public BoardData test;
+    public GameObject tileReference;
     public GameObject[] tiles;
     public int[] tileOccupancy;
+    
 
     // Start is called before the first frame update
     void Start()
