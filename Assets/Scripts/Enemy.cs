@@ -36,5 +36,6 @@ public class Enemy : Unit
         newBullet.SetSpeed(0f);
         newBullet.SetAcceleration(10f);
         newBullet.SetExistTime(10f);
+        newBullet.isIndicatorOn = true;
     }
 }

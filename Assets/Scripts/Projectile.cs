@@ -9,10 +9,11 @@ public class Projectile : MonoBehaviour
     public float existTime;
 
     public bool isEnemyProjectile;
+    public bool isIndicatorOn;
 
     private float timer = 0f;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     public Projectile(float speed, float acceleration)
     {
@@ -53,7 +54,7 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
 
             //To-Do Health loss
-        } else if (isEnemyProjectile && other.gameObject.CompareTag("Tile"))
+        } else if (isEnemyProjectile && isIndicatorOn && other.gameObject.CompareTag("Tile"))
         {
             other.gameObject.GetComponent<Tile>().WarnTile();
         }
