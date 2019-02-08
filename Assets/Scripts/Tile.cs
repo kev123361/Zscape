@@ -30,5 +30,15 @@ public class Tile : MonoBehaviour
     {
         tileRenderer.material = baseMat;
     }
+
+    public void SpawnUnit(GameObject unit, BoardManager bm)
+    {
+        GameObject newUnit = Instantiate(unit, transform.position + new Vector3(0f, unit.GetComponent<BoxCollider>().size.y / 2, 0f), Quaternion.identity);
+        Enemy enemy = newUnit.GetComponent<Enemy>();
+        enemy.bm = bm;
+        enemy.timeToShoot = 5;
+        enemy.bulletAccel = 10;
+        
+    }
 }
 

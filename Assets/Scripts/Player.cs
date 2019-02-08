@@ -10,7 +10,7 @@ public class Player : Unit
     {
         bm = board.GetComponent<BoardManager>();
         boardSize = bm.tiles.Length;
-        gameObject.transform.position = bm.GetTile(pos).transform.position + new Vector3(0, 1f, 0);
+        //gameObject.transform.position = bm.GetTile(pos).transform.position + new Vector3(0, 1f, 0);
     }
 
     private void Update()

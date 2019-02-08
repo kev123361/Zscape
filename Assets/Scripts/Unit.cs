@@ -41,7 +41,7 @@ public abstract class Unit : MonoBehaviour
     // Does not check to see if the move is legal, so check must be made beforehand
     public void Move(int tile)
     {
-        gameObject.transform.position = bm.GetTile(tile).transform.position + new Vector3(0, 1f, 0);
+        //gameObject.transform.position = bm.GetTile(tile).transform.position + new Vector3(0, 1f, 0);
 
 
         //Vector3 tempPos = transform.position;

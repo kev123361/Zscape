@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BoardManager : MonoBehaviour
 {
     public BoardData tileBoard;
-    public GameObject tileReference;
+    public Tile tileReference;
 
     public GameObject[] tiles;
     public int[] tileOccupancy;
@@ -32,6 +33,8 @@ public class BoardManager : MonoBehaviour
             //Sets the position for the next row
             newPos = selfPosition + (new Vector3(2.5f, 0, 0)*(i+1));
         }
+
+        
     }
 
     void Update()
@@ -48,12 +51,16 @@ public class BoardManager : MonoBehaviour
 
     // Tiles ordered from top left to bottom right (0-23)
     // return specified Tile from tiles array
-    public GameObject GetTile(int tile)
+    
+    public Tile GetTile(int row, int column)
     {
-        if (tile < 0 || tile > 23) {
-            Debug.Log("Attempted to retrieve illegal tile: #" + tile);
+        try
+        {
+            return tileBoard.rows[row].column[column];
+        } catch (Exception e)
+        {
+            Debug.Log(e);
             return null;
         }
-        return tiles[tile];
     }
 }

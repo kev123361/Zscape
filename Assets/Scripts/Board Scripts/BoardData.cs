@@ -7,7 +7,7 @@ public class BoardData
     [System.Serializable]
     public struct rowData
     {
-        public GameObject[] column;
+        public Tile[] column;
     }
     public rowData[] rows = new rowData[10];
 }
