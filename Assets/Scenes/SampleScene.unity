@@ -860,6 +860,9 @@ MonoBehaviour:
   health: 50
   bullet: {fileID: 1113165598809729691, guid: f30fff05a67d0264d9b944a8a087c353, type: 3}
   timeToShoot: 3.5
+  bulletSpeed: -4
+  bulletAccel: 8
+  bulletDespawn: 3
 --- !u!136 &374197210
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1691,6 +1694,9 @@ MonoBehaviour:
   health: 50
   bullet: {fileID: 3942656884595391709, guid: 3f2c42d67ed4329439eec982ba608be3, type: 3}
   timeToShoot: 3
+  bulletSpeed: 0
+  bulletAccel: 10
+  bulletDespawn: 5
 --- !u!136 &802369626
 CapsuleCollider:
   m_ObjectHideFlags: 0

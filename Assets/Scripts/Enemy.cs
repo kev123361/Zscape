@@ -7,6 +7,10 @@ public class Enemy : Unit
     private float timer = 0f;
     public float timeToShoot;
 
+    public float bulletSpeed;
+    public float bulletAccel;
+    public float bulletDespawn;
+
     
     // Start is called before the first frame update
     void Start()
@@ -33,9 +37,9 @@ public class Enemy : Unit
     new private void Shoot()
     {
         var newBullet = Instantiate(bullet, transform.position + (transform.forward * 2), transform.rotation);
-        newBullet.SetSpeed(0f);
-        newBullet.SetAcceleration(10f);
-        newBullet.SetExistTime(10f);
+        newBullet.SetSpeed(bulletSpeed);
+        newBullet.SetAcceleration(bulletAccel);
+        newBullet.SetExistTime(bulletDespawn);
         newBullet.isIndicatorOn = true;
     }
 }
