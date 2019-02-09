@@ -12,19 +12,31 @@ public class BoardManager : MonoBehaviour
     public int[] tileOccupancy;
 
     enum tileSet {THREExEIGHT = 0};
-    Vector2Int[] boardRatios = {new Vector2Int(3, 8) };
+    private Vector2Int[] boardRatios = {new Vector2Int(3, 8) };
+    public int[] currentBoardSize;
+
+    public Player playerRef;
+
+    //Event handlers that signify that the board has completed initializing
+    public delegate void BeginRound();
+    public static event BeginRound OnBeginRound;
 
     void Start()
     {
+        //For some reason, arrays need to be initialized at runtime
+        currentBoardSize = new int[2];
         //Usage of enums to determine which tile configuration we will use. This should hopefully make it more scalable
         tileSet tileSetRef = tileSet.THREExEIGHT;
         //Keeping a reference to the board manager at all times then a holder variable that can be manipulated freely
         Vector3 selfPosition = transform.position;
         Vector3 newPos = selfPosition;
+        //Setting the current size of the board
+        currentBoardSize[0] = boardRatios[(int)tileSetRef].x;
+        currentBoardSize[1] = boardRatios[(int)tileSetRef].y;
         //BoardManager will be in the top left and tiles will spawn to the right and below it. For loop gets the x THEN the y
-        for (int i = 0; i < boardRatios[(int)tileSetRef].x; i++)
+        for (int i = 0; i < currentBoardSize[0]; i++)
         {
-            for (int j = 0; j < boardRatios[(int)tileSetRef].y; j++)
+            for (int j = 0; j < currentBoardSize[1]; j++)
             {
                 //Instantiates a tileRef then sets it to the tileBoard
                 tileBoard.rows[i].column[j] = Instantiate(tileReference, newPos, Quaternion.identity);
@@ -34,7 +46,11 @@ public class BoardManager : MonoBehaviour
             newPos = selfPosition + (new Vector3(2.5f, 0, 0)*(i+1));
         }
 
-        
+        if(OnBeginRound != null)
+        {
+            OnBeginRound();
+        }
+       
     }
 
     void Update()
@@ -44,7 +60,7 @@ public class BoardManager : MonoBehaviour
 
     // Check tileOccupancy to see if a Tile is open
     // true if open, false if occupied
-    public bool IsTileOpen(int tile)
+    public bool IsTileOpen(int[] tileCoord)
     {
         return true;
     }
