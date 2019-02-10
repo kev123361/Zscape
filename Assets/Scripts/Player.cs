@@ -4,53 +4,79 @@ using UnityEngine;
 
 public class Player : Unit
 {
+    //tileCoord[0] = row, tileCoord[1] = column
+    public int[] playerCoordinates;
 
     // Start is called before the first frame update
     void Start()
     {
         bm = board.GetComponent<BoardManager>();
         boardSize = bm.tiles.Length;
-        //gameObject.transform.position = bm.GetTile(pos).transform.position + new Vector3(0, 1f, 0);
+        playerCoordinates = new int[2];
+
+        //Event handler allows the game to adjust the position of the player AFTER the board spawns in the board
+        BoardManager.OnBeginRound += SetStartingPosition;
     }
 
     private void Update()
     {
+        CheckMovementInputs();
+    }
+
+    private void CheckMovementInputs()
+    {
+        //Up one row
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Debug.Log("W");
-            if (LegalMove(pos - 8))
+            playerCoordinates[0] -= 1;
+            if (LegalMove(playerCoordinates))
             {
-                pos -= 8;
-                Move(pos);
+                Move(playerCoordinates);
             }
+            else { playerCoordinates[0]++; }   
         }
+        //Left one column
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("A");
-            if (LegalMove(pos - 1))
+            playerCoordinates[1] -= 1;
+            if (LegalMove(playerCoordinates))
             {
-                pos -= 1;
-                Move(pos);
+                Move(playerCoordinates);
             }
+            else { playerCoordinates[1]++; }
         }
+        //Down one row
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            Debug.Log("S");
-            if (LegalMove(pos + 8))
+            playerCoordinates[0] += 1;
+            if (LegalMove(playerCoordinates))
             {
-                pos += 8;
-                Move(pos);
+                Move(playerCoordinates);
             }
+            else { playerCoordinates[0]--; }
         }
+        //Right one column
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            Debug.Log("D");
-            if (LegalMove(pos + 1))
+            playerCoordinates[1] += 1;
+            if (LegalMove(playerCoordinates))
             {
-                pos += 1;
-                Move(pos);
+                Move(playerCoordinates);
             }
+            else { playerCoordinates[1]--; }
         }
+        
+    }
+
+    public void SetStartingPosition()
+    {
+        playerCoordinates[0] = bm.currentBoardSize[0] / 2;
+        playerCoordinates[1] = bm.currentBoardSize[1] / 2;
+        Move(playerCoordinates);
+    }
+
+    private void CheckShootInput()
+    {
         if (Input.GetKeyDown(KeyCode.J))
         {
             Debug.Log("Shoot");
