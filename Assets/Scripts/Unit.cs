@@ -14,41 +14,28 @@ public abstract class Unit : MonoBehaviour
     
 
     // Helper method to check if a move can be made
-    public bool LegalMove(int tile)
+    public bool LegalMove(int[] tileCoord)
     {
-        if (tile < 0 || tile >= boardSize)
+        //This is a mouthful but essentially checks the tile board to see if the give position
+        if (0 <= tileCoord[0] && bm.currentBoardSize[0] > tileCoord[0] &&
+            0 <= tileCoord[1] && bm.currentBoardSize[1] > tileCoord[1])
         {
-            Debug.Log("Illegal Move attempted to tile #" + tile);
+            return bm.IsTileOpen(tileCoord);
+        }
+        else
+        {
+            Debug.Log("Illegal Move attempted to tile #" + tileCoord[0] + ", " + tileCoord[1]);
             return false;
         }
-        if (tile == pos - 1 && pos % (boardSize / 3) == 0)
-        {
-            Debug.Log("Illegal Move attempted off the left side of board");
-            return false;
-        }
-        if (tile == pos + 1 && pos % (boardSize / 3) == 7)
-        {
-            Debug.Log("Illegal Move attempted off the right side of board");
-            return false;
-        }
-
-
-        return bm.IsTileOpen(tile);
 
     }
 
     // Moves the unit to specified tile
     // Does not check to see if the move is legal, so check must be made beforehand
-    public void Move(int tile)
+    public void Move(int[] tileCoords)
     {
-        //gameObject.transform.position = bm.GetTile(tile).transform.position + new Vector3(0, 1f, 0);
-
-
-        //Vector3 tempPos = transform.position;
-        //if (direction == "Left") { transform.position = tempPos - new Vector3(0, 0, 2.5f); }
-        //else if (direction == "Right") { transform.position = tempPos + new Vector3(0, 0, 2.5f); }
-        //else if (direction == "Down") { transform.position = tempPos + new Vector3(2.5f, 0, 0); }
-        //else if (direction == "Up") { transform.position = tempPos - new Vector3(2.5f, 0, 0); }
+        Vector3 newPos = bm.GetTile(tileCoords[0], tileCoords[1]).transform.position + new Vector3(0, 1f, 0);
+        gameObject.transform.position = newPos;
     }
 
     public void LoseHealth(float damage)
