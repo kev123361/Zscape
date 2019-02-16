@@ -45,7 +45,7 @@ public class Beam : MonoBehaviour {
 	public IEnumerator collapseBeam() {
 
 		// spawn the particles
-		GameObject particles = Instantiate(residueParticleSystem, gameObject.transform.position, residueParticleSystem.transform.rotation, gameObject.transform);
+		GameObject particles = Instantiate(residueParticleSystem, gameObject.transform.position, Quaternion.Inverse(residueParticleSystem.transform.rotation), gameObject.transform);
 		ParticleSystem.ShapeModule sm = particles.GetComponent<ParticleSystem>().shape;
 		sm.scale = new Vector3(sm.scale.x, sm.scale.y, 0.5f * goalLength);
 		ParticleSystem.EmissionModule em = particles.GetComponent<ParticleSystem>().emission;

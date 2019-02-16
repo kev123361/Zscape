@@ -33,15 +33,20 @@ public class Tile : MonoBehaviour
 
     public void SpawnUnit(GameObject unit, BoardManager bm)
     {
-        GameObject newUnit = Instantiate(unit, transform.position + new Vector3(0f, unit.GetComponent<BoxCollider>().size.y / 2, 0f), Quaternion.identity);
+        
 
         //Conditional will make this method more modular so we can spawn in other units such as players, field items, etc.
-        if(newUnit.GetComponent<Enemy>())
+        if(unit.GetComponent<Enemy>())
         {
+            GameObject newUnit = Instantiate(unit, transform.position + new Vector3(0f, (unit.GetComponent<BoxCollider>().size.y * unit.transform.localScale.y) / 2, 0f), 
+                transform.rotation * Quaternion.Euler(0,180,0));
+            //newUnit.transform.Rotate(new Vector3(0, 180, 0), Space.Self);
             Enemy enemy = newUnit.GetComponent<Enemy>();
             enemy.bm = bm;
-            enemy.timeToShoot = 5;
-            enemy.bulletAccel = 10;
+            
+        } else
+        {
+            GameObject newUnit = Instantiate(unit, transform.position + new Vector3(0f, (unit.GetComponent<BoxCollider>().size.y * unit.transform.localScale.y) / 2, 0f), Quaternion.identity);
         }
         
         

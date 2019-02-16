@@ -22,7 +22,7 @@ public class Spinny : MonoBehaviour {
 		//Telegraph the attack
 		animator.SetBool("startAttack", true);
 		assignMaterial(telegraphMaterial);
-		myBeam = Instantiate(beamPrefab, gameObject.transform.position, beamPrefab.transform.rotation, gameObject.transform);
+		myBeam = Instantiate(beamPrefab, gameObject.transform.position, transform.rotation, gameObject.transform);
 
 		//Wait until we're in full attack mode
 		while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")) {
@@ -31,7 +31,7 @@ public class Spinny : MonoBehaviour {
 
 		StartCoroutine(myBeam.GetComponent<Beam>().extendBeam());
 
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(1f);
 
 		//Return to default
 		StartCoroutine(myBeam.GetComponent<Beam>().collapseBeam());
