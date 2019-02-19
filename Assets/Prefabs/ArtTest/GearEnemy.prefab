@@ -93,9 +93,10 @@ GameObject:
   - component: {fileID: 7416178672122352883}
   - component: {fileID: 1408191314}
   - component: {fileID: 1408191316}
+  - component: {fileID: 3594046425890549066}
   - component: {fileID: 1408191315}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: GearEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,6 +151,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3594046425890549066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408191313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c49934f3729244592cfd4d298a3f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  board: {fileID: 0}
+  bm: {fileID: 0}
+  boardSize: 0
+  pos: 0
+  health: 90
+  bullet: {fileID: 0}
+  timeToShoot: Infinity
+  bulletSpeed: 0
+  bulletAccel: 0
+  bulletDespawn: 0
 --- !u!114 &1408191315
 MonoBehaviour:
   m_ObjectHideFlags: 0
