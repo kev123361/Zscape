@@ -38,7 +38,7 @@ public abstract class Unit : MonoBehaviour
         gameObject.transform.position = newPos;
     }
 
-    public void LoseHealth(float damage)
+    public void LoseHealth(int damage)
     {
         health -= damage;
     }

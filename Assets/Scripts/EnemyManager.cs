@@ -27,6 +27,6 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn()
     {
-        bm.GetTile(0, 7).SpawnUnit(enemy, bm);
+        bm.GetTile(0, 7).SpawnUnit(enemy, new Vector2Int(0, 7), bm);
     }
 }

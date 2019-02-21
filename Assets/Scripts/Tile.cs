@@ -31,12 +31,12 @@ public class Tile : MonoBehaviour
         tileRenderer.material = baseMat;
     }
 
-    public void SpawnUnit(GameObject unit, BoardManager bm)
+    public void SpawnUnit(GameObject unit, Vector2Int pos, BoardManager bm)
     {
         
 
         //Conditional will make this method more modular so we can spawn in other units such as players, field items, etc.
-        if(unit.GetComponent<Enemy>())
+        if (unit.GetComponent<Enemy>())
         {
             GameObject newUnit = Instantiate(unit, transform.position + new Vector3(0f, (unit.GetComponent<BoxCollider>().size.y * unit.transform.localScale.y) / 2, 0f), 
                 transform.rotation * Quaternion.Euler(0,180,0));
@@ -44,6 +44,12 @@ public class Tile : MonoBehaviour
             Enemy enemy = newUnit.GetComponent<Enemy>();
             enemy.bm = bm;
             
+        } if (unit.GetComponent<Bomb>())
+        {
+            GameObject newUnit = Instantiate(unit, transform.position + new Vector3(0f, 5f, 0f),
+                Quaternion.identity);
+            newUnit.GetComponent<Bomb>().explosionPos = pos;
+            newUnit.GetComponent<Bomb>().bm = bm;
         } else
         {
             GameObject newUnit = Instantiate(unit, transform.position + new Vector3(0f, (unit.GetComponent<BoxCollider>().size.y * unit.transform.localScale.y) / 2, 0f), Quaternion.identity);
