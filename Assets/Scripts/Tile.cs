@@ -6,6 +6,7 @@ public class Tile : MonoBehaviour
 {
     public Material baseMat;
     public Material dangerMat;
+    public Vector2Int pos;
 
     private Renderer tileRenderer;
 
@@ -31,7 +32,7 @@ public class Tile : MonoBehaviour
         tileRenderer.material = baseMat;
     }
 
-    public void SpawnUnit(GameObject unit, Vector2Int pos, BoardManager bm)
+    public void SpawnUnit(GameObject unit, BoardManager bm)
     {
         
 

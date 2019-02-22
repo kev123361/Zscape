@@ -26,6 +26,7 @@ public class Bomb : MonoBehaviour
         {
             GameObject newExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
             newExplosion.GetComponent<Explosion>().explosionPos = explosionPos;
+            newExplosion.GetComponent<Explosion>().bm = bm;
             Destroy(gameObject);
         }
     }
