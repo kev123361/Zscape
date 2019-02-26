@@ -9,6 +9,9 @@ public class PlayState : FlowState
     {
         Debug.Log("Enter PlayState");
         boardManagerRef.StartBattle();
+
+        //Create an event listener for death status
+        //Create an event listener for round win status
         return base.OnEnter();
     }
 
@@ -21,5 +24,16 @@ public class PlayState : FlowState
     {
         Debug.Log("Exit PlayState");
         return base.OnExit();
+    }
+
+    private void PlayerDeath()
+    {
+        //Play any animations whatever
+        StartCoroutine(currentMachine.SwitchState(parentObject.endState));
+    }
+
+    private void RoundComplete()
+    {
+        StartCoroutine(currentMachine.SwitchState(parentObject.upgradeState));
     }
 }

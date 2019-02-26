@@ -12,7 +12,8 @@ public class GameFlowController : MonoBehaviour
     #region State List
     public IdleStartState idleStartState;
     public PlayState playState;
-
+    public UpgradeState upgradeState;
+    public EndState endState;
 
     #endregion
 
@@ -20,7 +21,7 @@ public class GameFlowController : MonoBehaviour
     #region Variable List
     public BoardManager bmRef;
     public EnemyManager emRef;
-
+    public Player player;
     #endregion
 
 

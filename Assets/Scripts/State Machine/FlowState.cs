@@ -29,4 +29,28 @@ public class FlowState : State<GameFlowController>
             return parentObject.startUI;
         }
     }
+
+    public Button upgradeButton
+    {
+        get
+        {
+            return parentObject.upgradeUI;
+        }
+    }
+
+    public Button endButton
+    {
+        get
+        {
+            return parentObject.endUI;
+        }
+    }
+
+    public Player playerRef
+    {
+        get
+        {
+            return parentObject.player;
+        }
+    }
 }

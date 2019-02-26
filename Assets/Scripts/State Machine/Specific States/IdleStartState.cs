@@ -35,7 +35,7 @@ public class IdleStartState : FlowState
         //Logic to begin gameplay loop by calling the board manager
 
         //Deactivate ALL UI
-        parentObject.UICanvas.gameObject.SetActive(false);
+        startButton.gameObject.SetActive(false);
         //Chagnes the state to the 'PlayState' in the state machine
         StartCoroutine(currentMachine.SwitchState(parentObject.playState));
     }
