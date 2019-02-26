@@ -20,7 +20,6 @@ public class EnemyManager : MonoBehaviour
     {
         if (!spawned)
         {
-            Spawn();
             //Spawn();
             spawned = true;
         }
