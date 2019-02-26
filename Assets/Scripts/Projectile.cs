@@ -7,12 +7,14 @@ public class Projectile : MonoBehaviour
     public float speed;
     public float acceleration;
     public float existTime;
+    public int damage;
 
     public bool isEnemyProjectile;
     public bool isIndicatorOn;
     public bool isBeam;
 
     private float timer = 0f;
+    private Tile currentTile;
 
     public Rigidbody rb;
 
@@ -52,12 +54,16 @@ public class Projectile : MonoBehaviour
             other.gameObject.GetComponent<Enemy>().LoseHealth(10);
         } else if (isEnemyProjectile && other.gameObject.CompareTag("Player"))
         {
-            if (!isBeam) { Destroy(gameObject); }
+            if (!isBeam) {
+                Destroy(gameObject);
+                currentTile.UnwarnTile();
+            }
 
-            //To-Do Health loss
+            other.GetComponent<Player>().LoseHealth(damage);
         } else if (isEnemyProjectile && isIndicatorOn && other.gameObject.CompareTag("Tile"))
         {
             other.gameObject.GetComponent<Tile>().WarnTile();
+            currentTile = other.gameObject.GetComponent<Tile>();
         }
     }
 

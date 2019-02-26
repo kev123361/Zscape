@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : Unit
 {
+
+    private bool invincible;
     //tileCoord[0] = row, tileCoord[1] = column
     public int[] playerCoordinates;
 
@@ -92,4 +94,29 @@ public class Player : Unit
         newBullet.SetExistTime(10f);
     }
     
+    new public void LoseHealth(int damage)
+    {
+        if (!invincible) {
+            health -= damage;
+            StartCoroutine(InvincibilityFrames());
+        }
+        
+    }
+
+    private IEnumerator InvincibilityFrames()
+    {
+        invincible = true;
+
+        int flashes = 0;
+        MeshRenderer mesh = GetComponent<MeshRenderer>();
+
+        while (flashes < 6)
+        {
+            mesh.enabled = !mesh.enabled;
+            yield return new WaitForSeconds(.1f);
+            flashes += 1;
+        }
+
+        invincible = false;
+    }
 }
