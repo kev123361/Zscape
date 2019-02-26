@@ -1122,6 +1122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1252652347}
   - component: {fileID: 1252652346}
+  - component: {fileID: 2040423402}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -1500,8 +1501,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2040423400}
-  - component: {fileID: 2040423402}
   - component: {fileID: 2040423401}
+  - component: {fileID: 2040423403}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1563,6 +1564,14 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: Game Over
 --- !u!222 &2040423402
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252652345}
+  m_CullTransparentMesh: 0
+--- !u!222 &2040423403
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

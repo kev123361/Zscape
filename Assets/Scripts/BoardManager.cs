@@ -46,6 +46,8 @@ public class BoardManager : MonoBehaviour
             {
                 //Instantiates a tileRef then sets it to the tileBoard
                 tileBoard.rows[i].column[j] = Instantiate(tileReference, newPos, Quaternion.identity);
+                tileBoard.rows[i].column[j].transform.parent = transform;
+                tileBoard.rows[i].column[j].pos = new Vector2Int(i, j);
                 newPos += new Vector3(0, 0, 2.5f);
             }
             //Sets the position for the next row
@@ -70,8 +72,6 @@ public class BoardManager : MonoBehaviour
         return true;
     }
 
-    // Tiles ordered from top left to bottom right (0-23)
-    // return specified Tile from tiles array
     
     public Tile GetTile(int row, int column)
     {

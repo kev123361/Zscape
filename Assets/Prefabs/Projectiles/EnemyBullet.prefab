@@ -95,7 +95,11 @@ MonoBehaviour:
   speed: 0
   acceleration: 0
   existTime: 0
+  damage: 10
   isEnemyProjectile: 1
+  isIndicatorOn: 0
+  isBeam: 0
+  rb: {fileID: 0}
 --- !u!65 &8707467068502501462
 BoxCollider:
   m_ObjectHideFlags: 0
