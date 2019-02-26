@@ -23,6 +23,12 @@ public class BoardManager : MonoBehaviour
 
     void Start()
     {
+        
+       
+    }
+
+    public void StartBattle()
+    {
         //For some reason, arrays need to be initialized at runtime
         currentBoardSize = new int[2];
         //Usage of enums to determine which tile configuration we will use. This should hopefully make it more scalable
@@ -43,14 +49,13 @@ public class BoardManager : MonoBehaviour
                 newPos += new Vector3(0, 0, 2.5f);
             }
             //Sets the position for the next row
-            newPos = selfPosition + (new Vector3(2.5f, 0, 0)*(i+1));
+            newPos = selfPosition + (new Vector3(2.5f, 0, 0) * (i + 1));
         }
 
-        if(OnBeginRound != null)
+        if (OnBeginRound != null)
         {
             OnBeginRound();
         }
-       
     }
 
     void Update()

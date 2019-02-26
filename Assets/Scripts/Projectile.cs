@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
 
     public bool isEnemyProjectile;
     public bool isIndicatorOn;
+    public bool isBeam;
 
     private float timer = 0f;
 
@@ -51,7 +52,7 @@ public class Projectile : MonoBehaviour
             other.gameObject.GetComponent<Enemy>().LoseHealth(10);
         } else if (isEnemyProjectile && other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            if (!isBeam) { Destroy(gameObject); }
 
             //To-Do Health loss
         } else if (isEnemyProjectile && isIndicatorOn && other.gameObject.CompareTag("Tile"))
