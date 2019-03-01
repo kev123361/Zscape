@@ -51,4 +51,11 @@ public class GameFlowController : MonoBehaviour
         stateMachine.Update();
         currentStateName = stateMachine.currentState.ToString();
     }
+
+    public void GameOver()
+    {
+        isPlaying = false;
+        isUpgrading = false;
+        StartCoroutine(stateMachine.SwitchState(endState));
+    }
 }

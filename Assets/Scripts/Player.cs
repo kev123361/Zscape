@@ -68,6 +68,11 @@ public class Player : Unit
             else { playerCoordinates[1]--; }
         }
         
+        //Shoot
+        else if (Input.GetKeyDown(KeyCode.J))
+        {
+            Shoot();
+        }
     }
 
     public void SetStartingPosition()
