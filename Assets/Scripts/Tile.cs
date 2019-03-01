@@ -45,7 +45,7 @@ public class Tile : MonoBehaviour
             Enemy enemy = newUnit.GetComponent<Enemy>();
             enemy.bm = bm;
             
-        } if (unit.GetComponent<Bomb>())
+        } else if (unit.GetComponent<Bomb>())
         {
             GameObject newUnit = Instantiate(unit, transform.position + new Vector3(0f, 5f, 0f),
                 Quaternion.identity);

@@ -24,7 +24,7 @@ public class Enemy : Unit
     {
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
         timer += Time.deltaTime;
         if (timer >= timeToShoot)
@@ -41,5 +41,12 @@ public class Enemy : Unit
         newBullet.SetAcceleration(bulletAccel);
         newBullet.SetExistTime(bulletDespawn);
         newBullet.isIndicatorOn = true;
+    }
+
+    // Before deleting gameObject, make call to enemy manager to decrement enemy count
+    private void Die()
+    {
+        GameObject.FindGameObjectWithTag("Enemy Manager").GetComponent<EnemyManager>().EnemyDied();
+        Destroy(gameObject);
     }
 }
