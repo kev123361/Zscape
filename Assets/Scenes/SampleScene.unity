@@ -112,6 +112,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &154249779 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4633003631899037908, guid: 591f1d0dc5f1bac428acd0064c1453fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1469743295}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ebfd94ef0487a44e9fda272dcaee68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +795,7 @@ RectTransform:
   m_GameObject: {fileID: 558328646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 8.81}
-  m_LocalScale: {x: 0.050000012, y: 0.049999997, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1556047276}
   m_Father: {fileID: 297983144}
@@ -905,7 +917,7 @@ MonoBehaviour:
   currentStateName: 
   bmRef: {fileID: 1252652346}
   emRef: {fileID: 724579814}
-  player: {fileID: 0}
+  player: {fileID: 154249779}
   startUI: {fileID: 311746135}
   upgradeUI: {fileID: 558328650}
   endUI: {fileID: 1163454565}
@@ -971,6 +983,7 @@ MonoBehaviour:
   shooterEnemy: {fileID: 8806701363865831565, guid: fcf9bc90665beab40a929ac6961c7cdd,
     type: 3}
   bm: {fileID: 1252652346}
+  enemyList: []
 --- !u!1 &846930670
 GameObject:
   m_ObjectHideFlags: 0
