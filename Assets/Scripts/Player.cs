@@ -9,6 +9,9 @@ public class Player : Unit
     //tileCoord[0] = row, tileCoord[1] = column
     public int[] playerCoordinates;
 
+    public delegate void DeathEvent();
+    public static event DeathEvent OnDeath;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -103,9 +106,22 @@ public class Player : Unit
     {
         if (!invincible) {
             health -= damage;
+            if (health <= 0)
+            {
+                Death();
+            }
             StartCoroutine(InvincibilityFrames());
         }
         
+    }
+
+    private void Death()
+    {
+        if (OnDeath != null)
+        {
+            OnDeath();
+        }
+        //Any other logic perhaps such as clearing the board.
     }
 
     private IEnumerator InvincibilityFrames()
@@ -123,5 +139,10 @@ public class Player : Unit
         }
 
         invincible = false;
+    }
+
+    public void UpgradeHealth()
+    {
+        health += 1000;
     }
 }

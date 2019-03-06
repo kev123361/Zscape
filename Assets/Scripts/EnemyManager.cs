@@ -8,30 +8,32 @@ public class EnemyManager : MonoBehaviour
     public GameObject shooterEnemy;
     public BoardManager bm;
 
+    [SerializeField]
+    private List<Enemy> enemyList = new List<Enemy>();
+
     private int numEnemies = 9999;
 
     private bool spawned;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    public delegate void RoundWin();
+    public static event RoundWin OnRoundWin;
 
     // Subscribing Spawn() to the OnBeginRound event
     private void OnEnable()
     {
         BoardManager.OnBeginRound += Spawn;
+        Enemy.OnEnemyDeath += EnemyDied;
     }
 
     private void OnDisable()
     {
         BoardManager.OnBeginRound -= Spawn;
+        Enemy.OnEnemyDeath -= EnemyDied;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetNumEnemies(int num)
     {
-        
+        numEnemies = num;
     }
 
     void Spawn()
@@ -49,8 +51,9 @@ public class EnemyManager : MonoBehaviour
         numEnemies -= 1;
         if (numEnemies <= 0)
         {
-            GameObject.FindGameObjectWithTag("State Machine").GetComponent<GameFlowController>().GameOver();
-
+            //GameObject.FindGameObjectWithTag("State Machine").GetComponent<GameFlowController>().RoundComplete();
+            if (OnRoundWin != null)
+                OnRoundWin();
         }
     }
 }

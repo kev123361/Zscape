@@ -9,6 +9,7 @@ public class EndState : FlowState
     {
         Debug.Log("Enter EndState");
         endButton.gameObject.SetActive(true);
+        ClearScreen();
         return base.OnEnter();
     }
 
@@ -21,5 +22,12 @@ public class EndState : FlowState
     {
         Debug.Log("Exit EndState");
         return base.OnExit();
+    }
+
+    private void ClearScreen()
+    {
+        playerRef.gameObject.SetActive(false);
+        enemyManagerRef.gameObject.SetActive(false);
+        boardManagerRef.gameObject.SetActive(false);
     }
 }

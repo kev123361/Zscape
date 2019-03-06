@@ -8,10 +8,13 @@ public class PlayState : FlowState
     public override IEnumerator OnEnter()
     {
         Debug.Log("Enter PlayState");
+        ImageGameObj();
         boardManagerRef.StartBattle();
 
         //Create an event listener for death status
+        Player.OnDeath += PlayerDeath;
         //Create an event listener for round win status
+        EnemyManager.OnRoundWin += RoundComplete;
         return base.OnEnter();
     }
 
@@ -23,6 +26,8 @@ public class PlayState : FlowState
     public override IEnumerator OnExit()
     {
         Debug.Log("Exit PlayState");
+        Player.OnDeath -= PlayerDeath;
+        EnemyManager.OnRoundWin -= RoundComplete;
         return base.OnExit();
     }
 
@@ -35,5 +40,12 @@ public class PlayState : FlowState
     private void RoundComplete()
     {
         StartCoroutine(currentMachine.SwitchState(parentObject.upgradeState));
+    }
+
+    private void ImageGameObj()
+    {
+        playerRef.gameObject.SetActive(true);
+        enemyManagerRef.gameObject.SetActive(true);
+        boardManagerRef.gameObject.SetActive(true);
     }
 }

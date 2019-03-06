@@ -11,6 +11,8 @@ public class Enemy : Unit
     public float bulletAccel;
     public float bulletDespawn;
 
+    public delegate void EnemyDeath();
+    public static event EnemyDeath OnEnemyDeath;
     
     // Start is called before the first frame update
     void Start()
@@ -46,7 +48,11 @@ public class Enemy : Unit
     // Before deleting gameObject, make call to enemy manager to decrement enemy count
     private void Die()
     {
-        GameObject.FindGameObjectWithTag("Enemy Manager").GetComponent<EnemyManager>().EnemyDied();
+        //GameObject.FindGameObjectWithTag("Enemy Manager").GetComponent<EnemyManager>().EnemyDied();
+        if(OnEnemyDeath != null)
+        {
+            OnEnemyDeath();
+        }
         Destroy(gameObject);
     }
 }

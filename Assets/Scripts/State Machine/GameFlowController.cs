@@ -34,6 +34,7 @@ public class GameFlowController : MonoBehaviour
     #endregion
 
     #region Conditional List
+    //May not need these
     bool isPlaying = false;
     bool isUpgrading = false;
 
@@ -52,6 +53,13 @@ public class GameFlowController : MonoBehaviour
         currentStateName = stateMachine.currentState.ToString();
     }
 
+    public void RoundComplete()
+    {
+        StartCoroutine(stateMachine.SwitchState(upgradeState));
+    }
+
+
+    //This may not be necessary since the player's health is the main/only indicator of a loss condition
     public void GameOver()
     {
         isPlaying = false;
