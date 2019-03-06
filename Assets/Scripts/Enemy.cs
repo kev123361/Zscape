@@ -53,6 +53,7 @@ public class Enemy : Unit
         {
             OnEnemyDeath();
         }
+        bm.GetTile(pos.x, pos.y).UnwarnTile();
         Destroy(gameObject);
     }
 }

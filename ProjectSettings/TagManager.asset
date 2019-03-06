@@ -7,6 +7,8 @@ TagManager:
   - Projectile
   - Enemy
   - Tile
+  - State Machine
+  - Enemy Manager
   layers:
   - Default
   - TransparentFX
@@ -43,4 +45,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 3072892271
     locked: 0

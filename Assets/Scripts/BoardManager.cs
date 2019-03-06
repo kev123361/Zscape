@@ -6,7 +6,8 @@ using System;
 public class BoardManager : MonoBehaviour
 {
     public BoardData tileBoard;
-    public Tile tileReference;
+    public Tile friendlyBaseTile;
+    public Tile enemyBaseTile;
 
     public GameObject[] tiles;
     public int[] tileOccupancy;
@@ -45,7 +46,13 @@ public class BoardManager : MonoBehaviour
             for (int j = 0; j < currentBoardSize[1]; j++)
             {
                 //Instantiates a tileRef then sets it to the tileBoard
-                tileBoard.rows[i].column[j] = Instantiate(tileReference, newPos, Quaternion.identity);
+                if (j < 4)
+                {
+                    tileBoard.rows[i].column[j] = Instantiate(friendlyBaseTile, newPos, Quaternion.identity);
+                } else
+                {
+                    tileBoard.rows[i].column[j] = Instantiate(enemyBaseTile, newPos, Quaternion.identity);
+                }
                 tileBoard.rows[i].column[j].transform.parent = transform;
                 tileBoard.rows[i].column[j].pos = new Vector2Int(i, j);
                 newPos += new Vector3(0, 0, 2.5f);

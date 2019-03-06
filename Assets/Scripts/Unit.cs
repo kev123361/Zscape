@@ -7,14 +7,14 @@ public abstract class Unit : MonoBehaviour
     public GameObject board;
     public BoardManager bm;
     public int boardSize;
-    public int pos;
+    public Vector2Int pos;
     public float health;
 
     public Projectile bullet;
     
 
     // Helper method to check if a move can be made
-    public bool LegalMove(int[] tileCoord)
+    public virtual bool LegalMove(int[] tileCoord)
     {
         //This is a mouthful but essentially checks the tile board to see if the give position
         if (0 <= tileCoord[0] && bm.currentBoardSize[0] > tileCoord[0] &&
@@ -36,6 +36,7 @@ public abstract class Unit : MonoBehaviour
     {
         Vector3 newPos = bm.GetTile(tileCoords[0], tileCoords[1]).transform.position + new Vector3(0, 1f, 0);
         gameObject.transform.position = newPos;
+        pos = new Vector2Int(tileCoords[0], tileCoords[1]);
     }
 
     public void LoseHealth(int damage)
