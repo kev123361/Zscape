@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPos: {x: 0, y: 0}
+  bm: {fileID: 0}
 --- !u!114 &8804375012557928011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   acceleration: 0
-  existTime: 10
+  existTime: 0.5
   damage: 25
   isEnemyProjectile: 1
   isIndicatorOn: 0

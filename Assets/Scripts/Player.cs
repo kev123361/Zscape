@@ -78,10 +78,15 @@ public class Player : Unit
         }
     }
 
+    public override bool LegalMove(int[] tileCoords)
+    {
+        return base.LegalMove(tileCoords) && tileCoords[1] < 4;
+    }
+
     public void SetStartingPosition()
     {
-        playerCoordinates[0] = bm.currentBoardSize[0] / 2;
-        playerCoordinates[1] = bm.currentBoardSize[1] / 2;
+        playerCoordinates[0] = bm.currentBoardSize[0] / 2 ;
+        playerCoordinates[1] = bm.currentBoardSize[1] / 4;
         Move(playerCoordinates);
     }
 

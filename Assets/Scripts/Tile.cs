@@ -43,6 +43,7 @@ public class Tile : MonoBehaviour
                 transform.rotation * Quaternion.Euler(0,180,0));
             //newUnit.transform.Rotate(new Vector3(0, 180, 0), Space.Self);
             Enemy enemy = newUnit.GetComponent<Enemy>();
+            enemy.pos = pos;
             enemy.bm = bm;
             
         } else if (unit.GetComponent<Bomb>())
