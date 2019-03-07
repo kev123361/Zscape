@@ -7,6 +7,7 @@ public class Bomb : MonoBehaviour
     public Vector2Int explosionPos;
     public BoardManager bm;
     public GameObject explosion;
+    public Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -29,5 +30,21 @@ public class Bomb : MonoBehaviour
             newExplosion.GetComponent<Explosion>().bm = bm;
             Destroy(gameObject);
         }
+    }
+
+    public void SetTarget(Vector2Int newExplosionPos)
+    {
+        explosionPos = newExplosionPos;
+    }
+
+    public void SetBoard(BoardManager newBM)
+    {
+        bm = newBM;
+    }
+
+    public void SetRigidBody(Rigidbody newRB)
+    {
+        rb = newRB;
+        rb.velocity = new Vector3(0, 4, -8);
     }
 }
