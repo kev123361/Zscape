@@ -45,6 +45,10 @@ public class Bomb : MonoBehaviour
     public void SetRigidBody(Rigidbody newRB)
     {
         rb = newRB;
-        rb.velocity = new Vector3(0, 4, -8);
+    }
+
+    public void SetVelocity(Vector3 velocity)
+    {
+        rb.velocity = velocity;
     }
 }
