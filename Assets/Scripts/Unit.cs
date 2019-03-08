@@ -11,6 +11,7 @@ public abstract class Unit : MonoBehaviour
     public float health;
 
     public Projectile bullet;
+    public Bomb bomb;
     
 
     // Helper method to check if a move can be made

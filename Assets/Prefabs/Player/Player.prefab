@@ -4912,9 +4912,11 @@ MonoBehaviour:
   board: {fileID: 0}
   bm: {fileID: 0}
   boardSize: 0
-  pos: 8
+  pos: {x: 0, y: 0}
   health: 150
   bullet: {fileID: 8824790950639804820, guid: f2899a00b0146eb469b7710725d51747, type: 3}
+  bomb: {fileID: 4931307117870622958, guid: 36e21461f4052084386439cb8fa93008, type: 3}
+  bombCD: 4
   playerCoordinates: 0000000000000000
 --- !u!135 &4633003631899037904
 SphereCollider:
