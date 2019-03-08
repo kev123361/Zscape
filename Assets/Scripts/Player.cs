@@ -6,6 +6,10 @@ public class Player : Unit
 {
 
     private bool invincible;
+    private float bombTimer;
+    private Vector2Int target;
+    public float bombCD;
+
     //tileCoord[0] = row, tileCoord[1] = column
     public int[] playerCoordinates;
 
@@ -25,6 +29,11 @@ public class Player : Unit
 
     private void Update()
     {
+        bombTimer -= Time.deltaTime;
+        if (bombTimer <= 0f)
+        {
+            bombTimer = 0f;
+        }
         CheckMovementInputs();
     }
 
@@ -76,6 +85,11 @@ public class Player : Unit
         {
             Shoot();
         }
+
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            if (bombTimer == 0f) Bomb();
+        }
     }
 
     public override bool LegalMove(int[] tileCoords)
@@ -107,6 +121,18 @@ public class Player : Unit
         newBullet.SetExistTime(10f);
     }
     
+    private void Bomb()
+    {
+        var newBomb = Instantiate(bomb, transform.position + (transform.up * 2), transform.rotation);
+        target.Set(pos.x, pos.y + 4);
+        newBomb.SetTarget(target);
+        newBomb.SetBoard(bm);
+        newBomb.SetEnemyProjectile(false);
+        newBomb.SetRigidBody(newBomb.GetComponent<Rigidbody>());
+        newBomb.SetVelocity(new Vector3(2 * (target.x - pos.x), 4, 2 * (target.y - pos.y)));
+        bombTimer = bombCD;
+    }
+
     new public void LoseHealth(int damage)
     {
         if (!invincible) {
@@ -116,8 +142,14 @@ public class Player : Unit
                 Death();
             }
             StartCoroutine(InvincibilityFrames());
+            ChangeUIHealth();
         }
         
+    }
+
+    private void ChangeUIHealth()
+    {
+        healthScript.UpdateHealth(health, maxHealth);
     }
 
     private void Death()
@@ -148,6 +180,6 @@ public class Player : Unit
 
     public void UpgradeHealth()
     {
-        health += 1000;
+        maxHealth += 1000;
     }
 }

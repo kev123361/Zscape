@@ -7,7 +7,8 @@ public class Bomb : MonoBehaviour
     public Vector2Int explosionPos;
     public BoardManager bm;
     public GameObject explosion;
-    public Rigidbody rb;
+    public bool isEnemyProjectile;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class Bomb : MonoBehaviour
             GameObject newExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
             newExplosion.GetComponent<Explosion>().explosionPos = explosionPos;
             newExplosion.GetComponent<Explosion>().bm = bm;
+            newExplosion.GetComponent<Projectile>().isEnemyProjectile = isEnemyProjectile;
             Destroy(gameObject);
         }
     }
@@ -50,5 +52,10 @@ public class Bomb : MonoBehaviour
     public void SetVelocity(Vector3 velocity)
     {
         rb.velocity = velocity;
+    }
+
+    public void SetEnemyProjectile(bool enemyProjectile)
+    {
+        isEnemyProjectile = enemyProjectile;
     }
 }

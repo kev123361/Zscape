@@ -526,7 +526,8 @@ MonoBehaviour:
   board: {fileID: 1252652345}
   bm: {fileID: 0}
   boardSize: 0
-  pos: 0
+  pos: {x: 0, y: 0}
+  maxHealth: 50
   health: 50
   bullet: {fileID: 1113165598809729691, guid: f30fff05a67d0264d9b944a8a087c353, type: 3}
   timeToShoot: 3.5
@@ -1369,6 +1370,16 @@ PrefabInstance:
     - target: {fileID: 4633003631899037907, guid: 591f1d0dc5f1bac428acd0064c1453fd,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891426974984796646, guid: 591f1d0dc5f1bac428acd0064c1453fd,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743729892045925601, guid: 591f1d0dc5f1bac428acd0064c1453fd,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
