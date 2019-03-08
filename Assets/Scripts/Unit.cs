@@ -8,11 +8,34 @@ public abstract class Unit : MonoBehaviour
     public BoardManager bm;
     public int boardSize;
     public Vector2Int pos;
+    public float maxHealth;
     public float health;
 
     public Projectile bullet;
     public Bomb bomb;
     
+    protected HealthNumber healthScript;
+
+    void OnEnable()
+    {
+        Canvas healthUI = gameObject.GetComponentInChildren<Canvas>();
+        if (healthUI == null)
+        {
+            Debug.LogError("No canvas found for health UI on " + gameObject);
+        }
+        else
+        {
+        healthScript = healthUI.GetComponent<HealthNumber>();
+            if (healthScript == null)
+            {
+                Debug.LogError("No health script found on " + gameObject);
+            }
+        }
+        // Set unit's health to its maximum health. Disable this if it should start at less (or more?)
+        health = maxHealth;
+        // This needs to be kept regardless so the value initializes.
+        ChangeHealthUI();
+    }
 
     // Helper method to check if a move can be made
     public virtual bool LegalMove(int[] tileCoord)
@@ -43,6 +66,12 @@ public abstract class Unit : MonoBehaviour
     public void LoseHealth(int damage)
     {
         health -= damage;
+        ChangeHealthUI();
+    }
+
+    private void ChangeHealthUI()
+    {
+        healthScript.UpdateHealth(health, maxHealth);
     }
 
     public void Shoot()

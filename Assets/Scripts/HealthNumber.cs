@@ -1,21 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthNumber : MonoBehaviour
 {
-    private Unit unit;
-    private TextMesh text;
-    // Start is called before the first frame update
-    void Start()
+    public Text text;
+    public Slider slider;
+
+    void Awake()
     {
-        unit = GetComponentInParent<Unit>();
-        text = GetComponent<TextMesh>();
+        if (text == null) {
+            Debug.LogError("No health_text found.");
+        }
+        if (slider == null) {
+            Debug.LogError("No health_slider found.");
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        text.text = unit.health.ToString();
+        // empty
     }
+
+    public void UpdateHealth(float health, float maxHealth)
+    {
+        print("Called update");
+        text.text = ((int) health).ToString();
+        slider.value = health / maxHealth;
+    }
+
 }

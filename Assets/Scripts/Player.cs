@@ -142,8 +142,14 @@ public class Player : Unit
                 Death();
             }
             StartCoroutine(InvincibilityFrames());
+            ChangeUIHealth();
         }
         
+    }
+
+    private void ChangeUIHealth()
+    {
+        healthScript.UpdateHealth(health, maxHealth);
     }
 
     private void Death()
@@ -174,6 +180,6 @@ public class Player : Unit
 
     public void UpgradeHealth()
     {
-        health += 1000;
+        maxHealth += 1000;
     }
 }
