@@ -168,8 +168,10 @@ MonoBehaviour:
   bm: {fileID: 0}
   boardSize: 0
   pos: {x: 0, y: 0}
+  maxHealth: 90
   health: 90
   bullet: {fileID: 0}
+  bomb: {fileID: 0}
   timeToShoot: Infinity
   bulletSpeed: 0
   bulletAccel: 0
