@@ -11,7 +11,7 @@ public class BombEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        bm = board.GetComponent<BoardManager>();
+        
 
         //boardSize = bm.tiles.Length;
     }

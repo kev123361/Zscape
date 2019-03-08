@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject gearEnemy;
     public GameObject shooterEnemy;
     public BoardManager bm;
+    private EnemySpreads enemySpreads;
 
     [SerializeField]
     private List<Enemy> enemyList = new List<Enemy>();
@@ -18,6 +19,10 @@ public class EnemyManager : MonoBehaviour
     public delegate void RoundWin();
     public static event RoundWin OnRoundWin;
 
+    private void Start()
+    {
+        enemySpreads = GetComponent<EnemySpreads>();
+    }
     // Subscribing Spawn() to the OnBeginRound event
     private void OnEnable()
     {
@@ -38,10 +43,16 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn()
     {
-        numEnemies = 3;
-        bm.GetTile(0, 7).SpawnUnit(gearEnemy, bm);
-        bm.GetTile(1, 6).SpawnUnit(shooterEnemy, bm);
-        bm.GetTile(2, 7).SpawnUnit(gearEnemy, bm);
+        
+        Spread newSpread = enemySpreads.GetRandomSpread();
+        List<Vector2Int> newEnemyPos = newSpread.GetEnemyPositions();
+        List<GameObject> newEnemies = newSpread.GetEnemyRefs();
+        numEnemies = newEnemies.Count;
+
+        for (int i = 0; i < newEnemies.Count; i++)
+        {
+            bm.GetTile(newEnemyPos[i].x, newEnemyPos[i].y).SpawnUnit(newEnemies[i], bm);
+        }
 
     }
 
