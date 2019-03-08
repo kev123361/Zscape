@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e83fa1d103939049a3248bd529117bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearEnemy: {fileID: 6584014451506038818, guid: ebd702c242bf25948ba45e9e8f87fc68,
+  gearEnemy: {fileID: 8806701363865831565, guid: fcf9bc90665beab40a929ac6961c7cdd,
     type: 3}
   shooterEnemy: {fileID: 6584014451506038818, guid: ebd702c242bf25948ba45e9e8f87fc68,
     type: 3}
@@ -893,6 +893,7 @@ MonoBehaviour:
   pos: {x: 0, y: 0}
   health: 50
   bullet: {fileID: 1113165598809729691, guid: f30fff05a67d0264d9b944a8a087c353, type: 3}
+  bomb: {fileID: 0}
   timeToShoot: 3.5
   bulletSpeed: -4
   bulletAccel: 8

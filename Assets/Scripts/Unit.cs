@@ -12,6 +12,7 @@ public abstract class Unit : MonoBehaviour
     public float health;
 
     public Projectile bullet;
+    public Bomb bomb;
     
     protected HealthNumber healthScript;
 
