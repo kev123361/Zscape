@@ -6,7 +6,6 @@ public class BombEnemy : Enemy
 {
     private float timer = 0f;
     private Vector2Int target;
-    public Bomb bomb;
     new public static event EnemyDeath OnEnemyDeath;
 
     // Start is called before the first frame update
@@ -38,6 +37,7 @@ public class BombEnemy : Enemy
         target.Set(pos.x, pos.y - 4);
         newBomb.SetTarget(target);
         newBomb.SetBoard(bm);
+        newBomb.SetEnemyProjectile(true);
         newBomb.SetRigidBody(newBomb.GetComponent<Rigidbody>());
         newBomb.SetVelocity(new Vector3(2*(target.x-pos.x), 4, 2*(target.y-pos.y)));
     }
