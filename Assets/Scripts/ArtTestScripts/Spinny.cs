@@ -9,6 +9,9 @@ public class Spinny : MonoBehaviour {
 	public Material defaultMaterial;
 	public Material telegraphMaterial;
 
+    public float timeToInitialFire;
+    public float reloadTime;
+
 	public GameObject beamPrefab;
 	private GameObject myBeam;
 
@@ -17,7 +20,7 @@ public class Spinny : MonoBehaviour {
 	}
 
 	private IEnumerator Attack() {
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(timeToInitialFire);
 
 		//Telegraph the attack
 		animator.SetBool("startAttack", true);
@@ -43,7 +46,7 @@ public class Spinny : MonoBehaviour {
 		Destroy(myBeam);
 
 		//loop!
-		yield return new WaitForSeconds(12f);
+		yield return new WaitForSeconds(reloadTime);
 		StartCoroutine(Attack());
 	}
 

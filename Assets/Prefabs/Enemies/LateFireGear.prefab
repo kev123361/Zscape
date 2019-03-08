@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 3594046425890549066}
   - component: {fileID: 1408191315}
   m_Layer: 0
-  m_Name: GearEnemy
+  m_Name: LateFireGear
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   board: {fileID: 0}
   bm: {fileID: 0}
   boardSize: 0
-  pos: 0
+  pos: {x: 0, y: 0}
   health: 90
   bullet: {fileID: 0}
   timeToShoot: Infinity
@@ -192,6 +192,8 @@ MonoBehaviour:
   - {fileID: 1537049288}
   defaultMaterial: {fileID: 2100000, guid: a492c156b8013a442b9d343ef50a8659, type: 2}
   telegraphMaterial: {fileID: 2100000, guid: a8d9cdbf3bb3f4b4aafd6c2eeb380c96, type: 2}
+  timeToInitialFire: 4
+  reloadTime: 1
   beamPrefab: {fileID: 6041221124509347123, guid: afad32fc54682cc43bb964ea751c62a1,
     type: 3}
 --- !u!1 &1537049288
