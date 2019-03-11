@@ -12,7 +12,7 @@ public class Enemy : Unit
     public float bulletDespawn;
 
     public delegate void EnemyDeath();
-    public static event EnemyDeath OnEnemyDeath;
+    public static EnemyDeath OnEnemyDeath;
     
     // Start is called before the first frame update
     void Start()
@@ -36,7 +36,7 @@ public class Enemy : Unit
         }
     }
 
-    new private void Shoot()
+    new public virtual void Shoot()
     {
         var newBullet = Instantiate(bullet, transform.position + (transform.forward * 2), transform.rotation);
         newBullet.SetSpeed(bulletSpeed);

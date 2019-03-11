@@ -6,7 +6,7 @@ public class BombEnemy : Enemy
 {
     private float timer = 0f;
     private Vector2Int target;
-    new public static event EnemyDeath OnEnemyDeath;
+    
 
     // Start is called before the first frame update
     void Start()

@@ -48,6 +48,7 @@ public class EnemyManager : MonoBehaviour
         List<Vector2Int> newEnemyPos = newSpread.GetEnemyPositions();
         List<GameObject> newEnemies = newSpread.GetEnemyRefs();
         numEnemies = newEnemies.Count;
+        Debug.Log(numEnemies);
 
         for (int i = 0; i < newEnemies.Count; i++)
         {
@@ -60,6 +61,7 @@ public class EnemyManager : MonoBehaviour
     public void EnemyDied()
     {
         numEnemies -= 1;
+        Debug.Log(numEnemies);
         if (numEnemies <= 0)
         {
             //GameObject.FindGameObjectWithTag("State Machine").GetComponent<GameFlowController>().RoundComplete();
