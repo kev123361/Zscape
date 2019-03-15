@@ -22,6 +22,8 @@ public class Player : Unit
         bm = board.GetComponent<BoardManager>();
         boardSize = bm.tiles.Length;
         playerCoordinates = new int[2];
+        maxHealth = 150;
+        health = 150;
 
         //Event handler allows the game to adjust the position of the player AFTER the board spawns in the board
         BoardManager.OnBeginRound += SetStartingPosition;

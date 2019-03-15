@@ -74,7 +74,7 @@ public abstract class Unit : MonoBehaviour
         healthScript.UpdateHealth(health, maxHealth, damage);
     }
 
-    public void Shoot()
+    public virtual void Shoot()
     {
 
     }

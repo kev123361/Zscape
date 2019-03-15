@@ -736,6 +736,7 @@ MonoBehaviour:
   maxHealth: 0
   health: 50
   bullet: {fileID: 0}
+  bomb: {fileID: 4931307117870622958, guid: 36e21461f4052084386439cb8fa93008, type: 3}
   timeToShoot: 4
   bulletSpeed: 0
   bulletAccel: 0
