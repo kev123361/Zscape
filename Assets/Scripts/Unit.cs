@@ -33,7 +33,7 @@ public abstract class Unit : MonoBehaviour
         // Set unit's health to its maximum health. Disable this if it should start at less (or more?)
         health = maxHealth;
         // This needs to be kept regardless so the value initializes.
-        ChangeHealthUI();
+        ChangeHealthUI(0);
     }
 
     // Helper method to check if a move can be made
@@ -65,12 +65,12 @@ public abstract class Unit : MonoBehaviour
     public void LoseHealth(int damage)
     {
         health -= damage;
-        ChangeHealthUI();
+        ChangeHealthUI(damage);
     }
 
-    private void ChangeHealthUI()
+    private void ChangeHealthUI(int damage)
     {
-        healthScript.UpdateHealth(health, maxHealth);
+        healthScript.UpdateHealth(health, maxHealth, damage);
     }
 
     public void Shoot()

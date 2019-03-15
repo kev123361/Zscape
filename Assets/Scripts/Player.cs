@@ -116,14 +116,14 @@ public class Player : Unit
                 Death();
             }
             StartCoroutine(InvincibilityFrames());
-            ChangeUIHealth();
+            ChangeUIHealth(damage);
         }
         
     }
 
-    private void ChangeUIHealth()
+    private void ChangeUIHealth(int damage)
     {
-        healthScript.UpdateHealth(health, maxHealth);
+        healthScript.UpdateHealth(health, maxHealth, damage);
     }
 
     private void Death()
