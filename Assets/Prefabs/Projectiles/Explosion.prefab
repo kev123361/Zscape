@@ -77,7 +77,7 @@ MonoBehaviour:
   acceleration: 0
   existTime: 0.5
   damage: 25
-  isEnemyProjectile: 1
+  isEnemyProjectile: 0
   isIndicatorOn: 0
   isBeam: 1
   rb: {fileID: 0}
