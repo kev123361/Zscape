@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
     public float existTime;
     public int damage;
 
+    private int playerDamage;
+
     public bool isEnemyProjectile;
     public bool isIndicatorOn;
     public bool isBeam;
@@ -51,7 +53,7 @@ public class Projectile : MonoBehaviour
         if (!isEnemyProjectile && other.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);
-            other.gameObject.GetComponent<Enemy>().LoseHealth(10);
+            other.gameObject.GetComponent<Enemy>().LoseHealth(playerDamage);
         } else if (isEnemyProjectile && other.gameObject.CompareTag("Player"))
         {
             if (!isBeam) {
@@ -89,5 +91,10 @@ public class Projectile : MonoBehaviour
     public void SetExistTime(float time)
     {
         this.existTime = time;
+    }
+
+    public void SetPlayerDamage(int dmg)
+    {
+        this.playerDamage = dmg;
     }
 }

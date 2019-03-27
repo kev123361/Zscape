@@ -9,6 +9,7 @@ public class Player : Unit
     private float bombTimer;
     private Vector2Int target;
     public float bombCD;
+    private int bulletDamage = 10;
 
     //tileCoord[0] = row, tileCoord[1] = column
     public int[] playerCoordinates;
@@ -121,6 +122,7 @@ public class Player : Unit
         newBullet.SetSpeed(0f);
         newBullet.SetAcceleration(10f);
         newBullet.SetExistTime(10f);
+        newBullet.SetPlayerDamage(bulletDamage);
     }
     
     private void Bomb()
@@ -180,8 +182,23 @@ public class Player : Unit
         invincible = false;
     }
 
-    public void UpgradeHealth()
+    public void UpgradeHealth(int inputH)
     {
-        maxHealth += 1000;
+        maxHealth += inputH;
+    }
+
+    public void UpgradeBulletDamage(int inputBonus)
+    {
+        bulletDamage += inputBonus;
+    }
+
+    public void UpgradeBombDamage(int inputBonus)
+    {
+        //no ref yet
+    }
+
+    public void UpgradeBombCD(float inputBonus)
+    {
+        bombCD -= inputBonus;
     }
 }
