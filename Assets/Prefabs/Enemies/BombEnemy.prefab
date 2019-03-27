@@ -733,7 +733,7 @@ MonoBehaviour:
   bm: {fileID: 0}
   boardSize: 0
   pos: {x: 0, y: 0}
-  maxHealth: 0
+  maxHealth: 50
   health: 50
   bullet: {fileID: 0}
   bomb: {fileID: 4931307117870622958, guid: 36e21461f4052084386439cb8fa93008, type: 3}
@@ -741,7 +741,6 @@ MonoBehaviour:
   bulletSpeed: 0
   bulletAccel: 0
   bulletDespawn: 0
-  bomb: {fileID: 4931307117870622958, guid: 36e21461f4052084386439cb8fa93008, type: 3}
 --- !u!1 &8495602959825847329
 GameObject:
   m_ObjectHideFlags: 0
