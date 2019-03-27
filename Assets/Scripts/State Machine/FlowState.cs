@@ -30,11 +30,27 @@ public class FlowState : State<GameFlowController>
         }
     }
 
-    public Button upgradeButton
+    public Button upgradeButton1
     {
         get
         {
-            return parentObject.upgradeUI;
+            return parentObject.upgradeUI1;
+        }
+    }
+
+    public Button upgradeButton2
+    {
+        get
+        {
+            return parentObject.upgradeUI2;
+        }
+    }
+
+    public Button upgradeButton3
+    {
+        get
+        {
+            return parentObject.upgradeUI3;
         }
     }
 

@@ -14,7 +14,6 @@ public class GameFlowController : MonoBehaviour
     public PlayState playState;
     public UpgradeState upgradeState;
     public EndState endState;
-
     #endregion
 
     //Contains everything that is subject to change
@@ -24,13 +23,13 @@ public class GameFlowController : MonoBehaviour
     public Player player;
     #endregion
 
-
     #region World Triggers
     public Button startUI;
-    public Button upgradeUI;
+    public Button upgradeUI1;
+    public Button upgradeUI2;
+    public Button upgradeUI3;
     public Button endUI;
     public Canvas UICanvas;
-
     #endregion
 
     #region Conditional List
