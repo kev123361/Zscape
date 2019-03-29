@@ -385,6 +385,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2891426974984796646, guid: 591f1d0dc5f1bac428acd0064c1453fd,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8743729892045925601, guid: 591f1d0dc5f1bac428acd0064c1453fd,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -815,7 +820,9 @@ MonoBehaviour:
   emRef: {fileID: 2030796019}
   player: {fileID: 442267923}
   startUI: {fileID: 2008221665}
-  upgradeUI: {fileID: 1366062823}
+  upgradeUI1: {fileID: 0}
+  upgradeUI2: {fileID: 0}
+  upgradeUI3: {fileID: 0}
   endUI: {fileID: 1142325601}
   UICanvas: {fileID: 113241178}
 --- !u!4 &852341194
@@ -1912,31 +1919,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spreads:
   - enemyPos:
-    - {x: 0, y: 4}
-    - {x: 0, y: 5}
-    - {x: 0, y: 6}
-    - {x: 0, y: 7}
     - {x: 1, y: 4}
     - {x: 1, y: 5}
     - {x: 1, y: 6}
     - {x: 1, y: 7}
-    - {x: 2, y: 4}
-    - {x: 2, y: 5}
-    - {x: 2, y: 6}
-    - {x: 2, y: 7}
     enemyRef:
-    - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
-    - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
-    - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
-    - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
-    - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
-    - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
-    - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
-    - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
-    - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
-    - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
-    - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
-    - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
+    - {fileID: 3524393577756336068, guid: 2ae10553af6fa4140b2b4c483d6c54f1, type: 3}
+    - {fileID: 838511759219104544, guid: b58e5e62384a78949819480c45353bd4, type: 3}
+    - {fileID: 6584014451506038818, guid: ebd702c242bf25948ba45e9e8f87fc68, type: 3}
+    - {fileID: 838511759219104544, guid: b58e5e62384a78949819480c45353bd4, type: 3}
 --- !u!4 &2030796021
 Transform:
   m_ObjectHideFlags: 0

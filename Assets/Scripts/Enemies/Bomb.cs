@@ -19,7 +19,7 @@ public class Bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        bm.GetTile(explosionPos.x, explosionPos.y).WarnTile();
     }
 
     private void OnTriggerEnter(Collider other)
