@@ -42,16 +42,21 @@ public class Enemy : Unit
         newBullet.SetSpeed(bulletSpeed);
         newBullet.SetAcceleration(bulletAccel);
         newBullet.SetExistTime(bulletDespawn);
+        newBullet.transform.parent = transform;
         newBullet.isIndicatorOn = true;
     }
 
     // Before deleting gameObject, make call to enemy manager to decrement enemy count
-    private void Die()
+    public virtual void Die()
     {
         //GameObject.FindGameObjectWithTag("Enemy Manager").GetComponent<EnemyManager>().EnemyDied();
         if(OnEnemyDeath != null)
         {
             OnEnemyDeath();
+        }
+        foreach (Projectile projectile in GetComponentsInChildren<Projectile>())
+        {
+            projectile.UnwarnCollidingTiles();
         }
         bm.GetTile(pos.x, pos.y).UnwarnTile();
         Destroy(gameObject);

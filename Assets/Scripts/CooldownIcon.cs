@@ -16,10 +16,14 @@ public class CooldownIcon : MonoBehaviour
         cdImage = GetComponent<Image>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        BoardManager.OnBeginRound += ResetCooldown;
+    }
+
+    private void OnDisable()
+    {
+        BoardManager.OnBeginRound -= ResetCooldown;
     }
 
     public void StartCooldown(float cooldown)
@@ -39,6 +43,11 @@ public class CooldownIcon : MonoBehaviour
             yield return null;
             timer += Time.deltaTime;
         }
+        cdImage.fillAmount = 0f;
+    }
+
+    public void ResetCooldown()
+    {
         cdImage.fillAmount = 0f;
     }
 }

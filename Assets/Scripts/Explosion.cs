@@ -17,7 +17,7 @@ public class Explosion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        explosionCollider.size = Vector3.Lerp(explosionCollider.size, new Vector3(4f, 4f, 4f),Time.deltaTime);
+        explosionCollider.size = Vector3.LerpUnclamped(explosionCollider.size, new Vector3(4.5f, 4f, 4.5f),Time.deltaTime * 2f);
     }
 
     private IEnumerator WarnInSquare()

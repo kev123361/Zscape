@@ -30,9 +30,6 @@ public class Player : Unit
         playerCoordinates = new int[2];
         maxHealth = 150;
         health = 150;
-
-        
-        
     }
 
     public override void OnEnable()
@@ -193,6 +190,7 @@ public class Player : Unit
 
     public void EnableShooting()
     {
+        // Make it so player can shoot stuff at the start of each round
         canBomb = true;
         canShoot = true;
     }
