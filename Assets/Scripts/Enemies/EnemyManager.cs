@@ -12,6 +12,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private List<Enemy> enemyList = new List<Enemy>();
 
+    [SerializeField]
     private int numEnemies = 9999;
 
     private bool spawned;

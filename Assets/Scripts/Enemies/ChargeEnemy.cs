@@ -56,15 +56,9 @@ public class ChargeEnemy : Enemy
     }
 
     // Before deleting gameObject, make call to enemy manager to decrement enemy count
-    private void Die()
+    public override void Die()
     {
-        //GameObject.FindGameObjectWithTag("Enemy Manager").GetComponent<EnemyManager>().EnemyDied();
-        if (OnEnemyDeath != null)
-        {
-            OnEnemyDeath();
-        }
-        bm.GetTile(pos.x, pos.y).UnwarnTile();
-        Destroy(gameObject);
+        base.Die();
     }
 
     public void OnTriggerEnter(Collider other)

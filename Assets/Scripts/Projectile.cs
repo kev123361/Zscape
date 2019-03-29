@@ -18,6 +18,8 @@ public class Projectile : MonoBehaviour
     private float timer = 0f;
     private Tile currentTile;
 
+    private List<Tile> collidingTiles;
+
     public Rigidbody rb;
 
     public Projectile(float speed, float acceleration)
@@ -31,6 +33,7 @@ public class Projectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(0, 0, speed);
+        collidingTiles = new List<Tile>();
     }
 
     // Update is called once per frame
@@ -67,8 +70,10 @@ public class Projectile : MonoBehaviour
             other.GetComponent<Player>().LoseHealth(damage);
         } else if (isEnemyProjectile && isIndicatorOn && other.gameObject.CompareTag("Tile"))
         {
-            other.gameObject.GetComponent<Tile>().WarnTile();
-            currentTile = other.gameObject.GetComponent<Tile>();
+            Tile otherTile = other.GetComponent<Tile>();
+            otherTile.WarnTile();
+            currentTile = otherTile;
+            collidingTiles.Add(otherTile);
         }
     }
 
@@ -77,6 +82,7 @@ public class Projectile : MonoBehaviour
         if (isEnemyProjectile && other.gameObject.CompareTag("Tile"))
         {
             other.gameObject.GetComponent<Tile>().UnwarnTile();
+            collidingTiles.Remove(other.GetComponent<Tile>());
         }
     }
 
@@ -99,5 +105,13 @@ public class Projectile : MonoBehaviour
     public void SetPlayerDamage(int dmg)
     {
         this.damage = dmg;
+    }
+
+    public void UnwarnCollidingTiles()
+    {
+        foreach (Tile tile in collidingTiles)
+        {
+            tile.UnwarnTile();
+        }
     }
 }
