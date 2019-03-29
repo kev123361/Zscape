@@ -16,7 +16,7 @@ public abstract class Unit : MonoBehaviour
     
     protected HealthNumber healthScript;
 
-    void OnEnable()
+    public virtual void OnEnable()
     {
         Canvas healthUI = gameObject.GetComponentInChildren<Canvas>();
         if (healthUI == null)

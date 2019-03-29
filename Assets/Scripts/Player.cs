@@ -6,10 +6,15 @@ public class Player : Unit
 {
 
     private bool invincible;
-    private float bombTimer;
     private Vector2Int target;
     public float bombCD;
+    public float shootCD;
     private int bulletDamage = 10;
+
+    private bool canBomb = true;
+    private bool canShoot = true;
+    public CooldownIcon shootCooldownIcon;
+    public CooldownIcon bombCooldownIcon;
 
     //tileCoord[0] = row, tileCoord[1] = column
     public int[] playerCoordinates;
@@ -26,17 +31,28 @@ public class Player : Unit
         maxHealth = 150;
         health = 150;
 
+        
+        
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
         //Event handler allows the game to adjust the position of the player AFTER the board spawns in the board
         BoardManager.OnBeginRound += SetStartingPosition;
+        BoardManager.OnBeginRound += EnableShooting;
+
+    }
+
+    public void OnDisable()
+    {
+        BoardManager.OnBeginRound -= SetStartingPosition;
+        BoardManager.OnBeginRound -= EnableShooting;
     }
 
     private void Update()
     {
-        bombTimer -= Time.deltaTime;
-        if (bombTimer <= 0f)
-        {
-            bombTimer = 0f;
-        }
+        
         CheckMovementInputs();
     }
 
@@ -86,12 +102,22 @@ public class Player : Unit
         //Shoot
         else if (Input.GetKeyDown(KeyCode.J))
         {
-            Shoot();
+            if (canShoot)
+            {
+                Shoot();
+                StartCoroutine(ShootCooldown());
+                shootCooldownIcon.StartCooldown(shootCD);
+            }
         }
 
         else if (Input.GetKeyDown(KeyCode.L))
         {
-            if (bombTimer == 0f) Bomb();
+            if (canBomb)
+            {
+                Bomb();
+                StartCoroutine(BombCooldown());
+                bombCooldownIcon.StartCooldown(bombCD);
+            }
         }
     }
 
@@ -134,7 +160,7 @@ public class Player : Unit
         newBomb.SetEnemyProjectile(false);
         newBomb.SetRigidBody(newBomb.GetComponent<Rigidbody>());
         newBomb.SetVelocity(new Vector3(2 * (target.x - pos.x), 4, 2 * (target.y - pos.y)));
-        bombTimer = bombCD;
+        
     }
 
     new public void LoseHealth(int damage)
@@ -165,6 +191,12 @@ public class Player : Unit
         //Any other logic perhaps such as clearing the board.
     }
 
+    public void EnableShooting()
+    {
+        canBomb = true;
+        canShoot = true;
+    }
+
     private IEnumerator InvincibilityFrames()
     {
         invincible = true;
@@ -180,6 +212,20 @@ public class Player : Unit
         }
 
         invincible = false;
+    }
+
+    private IEnumerator ShootCooldown()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(shootCD);
+        canShoot = true;
+    }
+
+    private IEnumerator BombCooldown()
+    {
+        canBomb = false;
+        yield return new WaitForSeconds(bombCD);
+        canBomb = true;
     }
 
     public void UpgradeHealth(int inputH)

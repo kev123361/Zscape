@@ -52,8 +52,11 @@ public class Projectile : MonoBehaviour
     {
         if (!isEnemyProjectile && other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
-            other.gameObject.GetComponent<Enemy>().LoseHealth(playerDamage);
+            if (!isBeam)
+            {
+                Destroy(gameObject);
+            }
+            other.gameObject.GetComponent<Enemy>().LoseHealth(damage);
         } else if (isEnemyProjectile && other.gameObject.CompareTag("Player"))
         {
             if (!isBeam) {
@@ -95,6 +98,6 @@ public class Projectile : MonoBehaviour
 
     public void SetPlayerDamage(int dmg)
     {
-        this.playerDamage = dmg;
+        this.damage = dmg;
     }
 }

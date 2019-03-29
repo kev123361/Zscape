@@ -108,7 +108,11 @@ MonoBehaviour:
   speed: 0
   acceleration: 0
   existTime: 0
+  damage: 0
   isEnemyProjectile: 0
+  isIndicatorOn: 0
+  isBeam: 0
+  rb: {fileID: 0}
 --- !u!54 &8281331339176233080
 Rigidbody:
   m_ObjectHideFlags: 0
