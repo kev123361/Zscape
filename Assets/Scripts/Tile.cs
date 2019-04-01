@@ -9,11 +9,13 @@ public class Tile : MonoBehaviour
     public Vector2Int pos;
 
     private Renderer tileRenderer;
+    private Space space;
 
     // Start is called before the first frame update
     void Start()
     {
         tileRenderer = GetComponent<Renderer>();
+        space = GetComponentInChildren<Space>();
     }
 
     // Update is called once per frame
@@ -24,12 +26,12 @@ public class Tile : MonoBehaviour
 
     public void WarnTile()
     {
-        tileRenderer.material = dangerMat;
+        space.isAttack = true;
     }
 
     public void UnwarnTile()
     {
-        tileRenderer.material = baseMat;
+        space.isAttack = false;
     }
 
     public void SpawnUnit(GameObject unit, BoardManager bm)

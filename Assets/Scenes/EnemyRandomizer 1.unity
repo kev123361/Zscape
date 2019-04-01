@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -718,7 +718,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &170076734
 Light:
   m_ObjectHideFlags: 0
@@ -3932,9 +3932,9 @@ MonoBehaviour:
       - {fileID: 0}
     - column: []
     - column: []
-  friendlyBaseTile: {fileID: 8363667098867415920, guid: 4b78b6973abe8f3439aae114db599bba,
+  friendlyBaseTile: {fileID: 8008351302158285587, guid: b7d69a9b1b1933d43b2cb6c22648ba71,
     type: 3}
-  enemyBaseTile: {fileID: 8363667098867415920, guid: 1a9e0540644fbf2439de14d517516cf9,
+  enemyBaseTile: {fileID: 8008351302158285587, guid: 9bff6e65336c875479e8304716a98d74,
     type: 3}
   tiles:
   - {fileID: 0}
