@@ -17,6 +17,7 @@ public class Enemy : Unit
     // Start is called before the first frame update
     void Start()
     {
+        timeToShoot = Random.Range(0.8f, 1.5f);
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
     }
@@ -33,6 +34,7 @@ public class Enemy : Unit
         {
             Shoot();
             timer = 0f;
+            timeToShoot = Random.Range(0.8f, 1.5f);
         }
     }
 
