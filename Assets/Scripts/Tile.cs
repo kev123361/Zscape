@@ -32,7 +32,7 @@ public class Tile : MonoBehaviour
         tileRenderer.material = baseMat;
     }
 
-    public void SpawnUnit(GameObject unit, BoardManager bm)
+    public GameObject SpawnUnit(GameObject unit, BoardManager bm)
     {
         
 
@@ -45,16 +45,19 @@ public class Tile : MonoBehaviour
             Enemy enemy = newUnit.GetComponent<Enemy>();
             enemy.pos = pos;
             enemy.bm = bm;
-            
+            return newUnit;
+
         } else if (unit.GetComponent<Bomb>())
         {
             GameObject newUnit = Instantiate(unit, transform.position + new Vector3(0f, 5f, 0f),
                 Quaternion.identity);
             newUnit.GetComponent<Bomb>().explosionPos = pos;
             newUnit.GetComponent<Bomb>().bm = bm;
+            return newUnit;
         } else
         {
-            GameObject newUnit = Instantiate(unit, transform.position + new Vector3(0f, (unit.GetComponent<BoxCollider>().size.y * unit.transform.localScale.y) / 2, 0f), Quaternion.identity);
+           GameObject newUnit = Instantiate(unit, transform.position + new Vector3(0f, (unit.GetComponent<BoxCollider>().size.y * unit.transform.localScale.y) / 2, 0f), Quaternion.identity);
+            return newUnit;
         }
         
         

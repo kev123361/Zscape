@@ -22,14 +22,18 @@ public class Player : Unit
     public delegate void DeathEvent();
     public static event DeathEvent OnDeath;
 
+    protected static int maxHealth = 150;
+    protected static int hesalth = maxHealth;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
         bm = board.GetComponent<BoardManager>();
         boardSize = bm.tiles.Length;
         playerCoordinates = new int[2];
-        maxHealth = 150;
-        health = 150;
+        
     }
 
     public override void OnEnable()
@@ -228,7 +232,14 @@ public class Player : Unit
 
     public void UpgradeHealth(int inputH)
     {
-        maxHealth += inputH;
+        if ((health += inputH) > maxHealth)
+        {
+            health = maxHealth;
+        }
+        else
+        {
+            health += inputH;
+        }
     }
 
     public void UpgradeBulletDamage(int inputBonus)

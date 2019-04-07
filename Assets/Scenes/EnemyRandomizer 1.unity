@@ -2679,6 +2679,8 @@ MonoBehaviour:
   emRef: {fileID: 724579814}
   player: {fileID: 154249779}
   startUI: {fileID: 311746135}
+  optionsUI: {fileID: 40374854}
+  creditsUI: {fileID: 551894842}
   upgradeUI1: {fileID: 558328650}
   upgradeUI2: {fileID: 1994767269}
   upgradeUI3: {fileID: 76859189}

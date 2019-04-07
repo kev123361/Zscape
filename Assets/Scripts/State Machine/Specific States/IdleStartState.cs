@@ -13,6 +13,7 @@ public class IdleStartState : FlowState
 
         startButton.onClick.AddListener(StartGameplayLoop);
         //Show/activate UI
+        ShowButtons();
 
         return base.OnEnter();
     }
@@ -35,8 +36,22 @@ public class IdleStartState : FlowState
         //Logic to begin gameplay loop by calling the board manager
 
         //Deactivate ALL UI
-        startButton.gameObject.SetActive(false);
+        HideButtons();
         //Chagnes the state to the 'PlayState' in the state machine
         StartCoroutine(currentMachine.SwitchState(parentObject.playState));
+    }
+
+    private void ShowButtons()
+    {
+        startButton.gameObject.SetActive(true);
+        creditsButton.gameObject.SetActive(true);
+        optionsButton.gameObject.SetActive(true);
+    }
+    
+    private void HideButtons()
+    {
+        startButton.gameObject.SetActive(false);
+        creditsButton.gameObject.SetActive(false);
+        optionsButton.gameObject.SetActive(false);
     }
 }
