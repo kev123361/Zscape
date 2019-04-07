@@ -11,8 +11,11 @@ public class BombEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
+
         audio = GetComponent<UnitAudio>();
 
+
+        timeToShoot = Random.Range(3.0f, 5.0f);
         //boardSize = bm.tiles.Length;
     }
 
@@ -28,6 +31,7 @@ public class BombEnemy : Enemy
         {
             Shoot();
             timer = 0f;
+            timeToShoot = Random.Range(3.0f, 5.0f);
         }
     }
 

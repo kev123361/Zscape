@@ -11,6 +11,7 @@ public class MovingEnemy : Enemy
     void Start()
     {
         adjTile[1] = pos.y;
+        timeToShoot = Random.Range(0.5f, 1.0f);
         audio = GetComponent<UnitAudio>();
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
@@ -37,6 +38,7 @@ public class MovingEnemy : Enemy
             }
             
             timer = 0f;
+            timeToShoot = Random.Range(0.5f, 1.0f);
         }
     }
 
