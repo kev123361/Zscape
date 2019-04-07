@@ -106,7 +106,7 @@ public class UpgradeState : FlowState
 
     private void playerHealthUpgrade()
     {
-        int upgradeInt = Random.Range(25, 100);
+        int upgradeInt = Random.Range(15, 75);
         playerRef.UpgradeHealth(upgradeInt);
     }
 

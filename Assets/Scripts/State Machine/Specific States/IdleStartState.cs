@@ -14,7 +14,7 @@ public class IdleStartState : FlowState
         startButton.onClick.AddListener(StartGameplayLoop);
         //Show/activate UI
         ShowButtons();
-
+        boardManagerRef.setPersistentHealth(playerRef.getMaxHealth());
         return base.OnEnter();
     }
 

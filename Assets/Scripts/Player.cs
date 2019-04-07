@@ -23,7 +23,7 @@ public class Player : Unit
     public static event DeathEvent OnDeath;
 
     protected static int maxHealth = 150;
-    protected static int hesalth = maxHealth;
+    protected static int health = maxHealth;
 
     
 
@@ -33,6 +33,11 @@ public class Player : Unit
         bm = board.GetComponent<BoardManager>();
         boardSize = bm.tiles.Length;
         playerCoordinates = new int[2];
+        bm.setPersistentHealth(health);
+    }
+
+    void Awake()
+    {
         
     }
 
@@ -42,7 +47,6 @@ public class Player : Unit
         //Event handler allows the game to adjust the position of the player AFTER the board spawns in the board
         BoardManager.OnBeginRound += SetStartingPosition;
         BoardManager.OnBeginRound += EnableShooting;
-
     }
 
     public void OnDisable()
@@ -175,7 +179,18 @@ public class Player : Unit
             StartCoroutine(InvincibilityFrames());
             ChangeUIHealth(damage);
         }
-        
+        bm.setPersistentHealth(health);
+    }
+
+    public void setHealth(int healthRef)
+    {
+        health = healthRef;
+        ChangeUIHealth(0);
+    }
+
+    public int getMaxHealth()
+    {
+        return maxHealth;
     }
 
     private void ChangeUIHealth(int damage)
@@ -240,6 +255,7 @@ public class Player : Unit
         {
             health += inputH;
         }
+        bm.setPersistentHealth(health);
     }
 
     public void UpgradeBulletDamage(int inputBonus)

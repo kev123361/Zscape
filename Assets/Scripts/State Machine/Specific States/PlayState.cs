@@ -10,7 +10,7 @@ public class PlayState : FlowState
         Debug.Log("Enter PlayState");
         ImageGameObj();
         boardManagerRef.StartBattle();
-
+        playerRef.setHealth(boardManagerRef.getPersistentHealth());
         //Create an event listener for death status
         Player.OnDeath += PlayerDeath;
         //Create an event listener for round win status

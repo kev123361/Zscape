@@ -18,6 +18,7 @@ public class BoardManager : MonoBehaviour
     public int[] currentBoardSize;
 
     public Player playerRef;
+    private int health;
 
     //Event handlers that signify that the board has completed initializing
     public delegate void BeginRound();
@@ -96,5 +97,15 @@ public class BoardManager : MonoBehaviour
             Debug.Log(e);
             return null;
         }
+    }
+
+    public int getPersistentHealth()
+    {
+        return health;
+    }
+
+    public void setPersistentHealth(int hpRef)
+    {
+        health = hpRef;
     }
 }

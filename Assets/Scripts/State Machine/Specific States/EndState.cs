@@ -24,6 +24,8 @@ public class EndState : FlowState
     public override IEnumerator OnExit()
     {
         Debug.Log("Exit EndState");
+        endButton.gameObject.SetActive(false);
+        endButton.onClick.RemoveAllListeners();
         return base.OnExit();
     }
 
