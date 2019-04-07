@@ -22,6 +22,7 @@ public class ChargeEnemy : Enemy
         sourcePos = rb.position;
         charging = false;
         timeToCharge = Random.Range(4.0f, 6.0f);
+        audio = GetComponent<UnitAudio>();
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
     }

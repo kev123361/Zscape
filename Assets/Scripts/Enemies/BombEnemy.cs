@@ -12,6 +12,9 @@ public class BombEnemy : Enemy
     void Start()
     {
 
+        audio = GetComponent<UnitAudio>();
+
+
         timeToShoot = Random.Range(3.0f, 5.0f);
         //boardSize = bm.tiles.Length;
     }
@@ -51,6 +54,7 @@ public class BombEnemy : Enemy
         {
             OnEnemyDeath();
         }
+        audio.PlayDeathSFX();
         Destroy(gameObject);
     }
 }
