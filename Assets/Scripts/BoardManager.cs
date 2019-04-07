@@ -12,6 +12,7 @@ public class BoardManager : MonoBehaviour
     public GameObject[] tiles;
     public int[] tileOccupancy;
     public static bool gameStarted;
+    public int level = 0;
 
     enum tileSet {THREExEIGHT = 0};
     private Vector2Int[] boardRatios = {new Vector2Int(3, 8) };
@@ -28,6 +29,17 @@ public class BoardManager : MonoBehaviour
     {
         
        
+    }
+
+    private void OnEnable()
+    {
+        OnBeginRound += IncrementLevel;
+    }
+
+    private void OnDisable()
+    {
+        OnBeginRound -= IncrementLevel;
+
     }
 
     public void StartBattle()
@@ -99,6 +111,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+
     public int getPersistentHealth()
     {
         return health;
@@ -107,5 +120,15 @@ public class BoardManager : MonoBehaviour
     public void setPersistentHealth(int hpRef)
     {
         health = hpRef;
+    }
+    
+    public int GetLevel()
+    {
+        return level;
+    }
+
+    private void IncrementLevel()
+    {
+        level += 1;
     }
 }

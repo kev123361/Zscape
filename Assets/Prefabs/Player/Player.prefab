@@ -14963,6 +14963,9 @@ MonoBehaviour:
   bomb: {fileID: 4931307117870622958, guid: fc49692829fd7314da3bdefa50ffb3c9, type: 3}
   bombCD: 4
   shootCD: 1
+  bulletDamage: 10
+  bulletSpeed: 3
+  bulletAccel: 7
   shootCooldownIcon: {fileID: 5490210198891016193}
   bombCooldownIcon: {fileID: 1182500482695741282}
   audio: {fileID: 0}
@@ -15005,6 +15008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324990afd41d050419e7894472e0dee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathFXObject: {fileID: 0}
   shootSFX: {fileID: 8300000, guid: 788ba6ea125de204cbab76343f8bbcce, type: 3}
   deathSFX: {fileID: 8300000, guid: b7e6ac97a0a82b24689b186395cff32d, type: 3}
   bombSFX: {fileID: 0}

@@ -9,12 +9,16 @@ public class Player : Unit
     private Vector2Int target;
     public float bombCD;
     public float shootCD;
-    private int bulletDamage = 10;
+    public int bulletDamage = 10;
+    public float bulletSpeed;
+    public float bulletAccel;
 
     private bool canBomb = true;
     private bool canShoot = true;
     public CooldownIcon shootCooldownIcon;
     public CooldownIcon bombCooldownIcon;
+
+    
 
     public UnitAudio audio;
 
@@ -153,8 +157,8 @@ public class Player : Unit
     new private void Shoot()
     {
         var newBullet = Instantiate(bullet, transform.position + (transform.forward * 2), transform.rotation);
-        newBullet.SetSpeed(0f);
-        newBullet.SetAcceleration(10f);
+        newBullet.SetSpeed(bulletSpeed);
+        newBullet.SetAcceleration(bulletAccel);
         newBullet.SetExistTime(10f);
         newBullet.SetPlayerDamage(bulletDamage);
     }
