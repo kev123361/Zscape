@@ -17,14 +17,19 @@ public class Explosion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        explosionCollider.size = Vector3.LerpUnclamped(explosionCollider.size, new Vector3(4.5f, 4f, 4.5f),Time.deltaTime * 2f);
+        explosionCollider.size = Vector3.LerpUnclamped(explosionCollider.size, new Vector3(4.75f, 4f, 4.75f),Time.deltaTime * 2f);
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
     private IEnumerator WarnInSquare()
     {
         bm.GetTile(explosionPos.x, explosionPos.y).WarnTile();
 
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.075f);
 
         bm.GetTile(explosionPos.x, explosionPos.y).UnwarnTile();
 
@@ -40,7 +45,7 @@ public class Explosion : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.075f);
 
         for (int i = explosionPos.x - 1; i <= explosionPos.x + 1; i++)
         {
@@ -49,9 +54,12 @@ public class Explosion : MonoBehaviour
                 Tile currTile = bm.GetTile(i, j);
                 if (currTile)
                 {
+                    Debug.Log(currTile);
                     currTile.UnwarnTile();
                 }
             }
         }
+
+        
     }
 }
