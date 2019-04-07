@@ -21,6 +21,7 @@ public class ChargeEnemy : Enemy
         rb = GetComponent<Rigidbody>();
         sourcePos = rb.position;
         charging = false;
+        audio = GetComponent<UnitAudio>();
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
     }

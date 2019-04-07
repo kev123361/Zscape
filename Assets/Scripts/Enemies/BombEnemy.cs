@@ -11,7 +11,7 @@ public class BombEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        
+        audio = GetComponent<UnitAudio>();
 
         //boardSize = bm.tiles.Length;
     }
@@ -50,6 +50,7 @@ public class BombEnemy : Enemy
         {
             OnEnemyDeath();
         }
+        audio.PlayDeathSFX();
         Destroy(gameObject);
     }
 }

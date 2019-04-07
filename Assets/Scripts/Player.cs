@@ -16,6 +16,8 @@ public class Player : Unit
     public CooldownIcon shootCooldownIcon;
     public CooldownIcon bombCooldownIcon;
 
+    public UnitAudio audio;
+
     //tileCoord[0] = row, tileCoord[1] = column
     public int[] playerCoordinates;
 
@@ -30,6 +32,7 @@ public class Player : Unit
         playerCoordinates = new int[2];
         maxHealth = 150;
         health = 150;
+        audio = GetComponent<UnitAudio>();
     }
 
     public override void OnEnable()
@@ -102,6 +105,7 @@ public class Player : Unit
             if (canShoot)
             {
                 Shoot();
+                audio.PlayShootSFX();
                 StartCoroutine(ShootCooldown());
                 shootCooldownIcon.StartCooldown(shootCD);
             }

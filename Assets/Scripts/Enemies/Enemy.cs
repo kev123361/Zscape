@@ -7,6 +7,8 @@ public class Enemy : Unit
     private float timer = 0f;
     public float timeToShoot;
 
+    public UnitAudio audio;
+
     public float bulletSpeed;
     public float bulletAccel;
     public float bulletDespawn;
@@ -19,6 +21,7 @@ public class Enemy : Unit
     {
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
+        audio = GetComponent<UnitAudio>();
     }
 
     // Update is called once per frame
@@ -58,6 +61,7 @@ public class Enemy : Unit
         {
             projectile.UnwarnCollidingTiles();
         }
+        audio.PlayDeathSFX();
         bm.GetTile(pos.x, pos.y).UnwarnTile();
         Destroy(gameObject);
     }

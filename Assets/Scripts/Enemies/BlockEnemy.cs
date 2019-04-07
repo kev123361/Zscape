@@ -4,6 +4,7 @@
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponent<UnitAudio>();
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
     }
@@ -33,6 +34,7 @@
         {
             OnEnemyDeath();
         }
+        audio.PlayDeathSFX();
         bm.GetTile(pos.x, pos.y).UnwarnTile();
         Destroy(gameObject);
     }

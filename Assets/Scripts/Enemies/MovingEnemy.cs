@@ -11,6 +11,7 @@ public class MovingEnemy : Enemy
     void Start()
     {
         adjTile[1] = pos.y;
+        audio = GetComponent<UnitAudio>();
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
     }
@@ -56,6 +57,7 @@ public class MovingEnemy : Enemy
         {
             OnEnemyDeath();
         }
+        audio.PlayDeathSFX();
         bm.GetTile(pos.x, pos.y).UnwarnTile();
         Destroy(gameObject);
     }

@@ -9,6 +9,8 @@ public class Spinny : MonoBehaviour {
 	public Material defaultMaterial;
 	public Material telegraphMaterial;
 
+    private UnitAudio audio;
+
     public float timeToInitialFire;
     public float reloadTime;
 
@@ -17,6 +19,7 @@ public class Spinny : MonoBehaviour {
 
 	void Start() {
 		StartCoroutine(Attack());
+        audio = GetComponent<UnitAudio>();
 	}
 
 	private IEnumerator Attack() {
@@ -33,8 +36,9 @@ public class Spinny : MonoBehaviour {
 		}
 
 		StartCoroutine(myBeam.GetComponent<Beam>().extendBeam());
+        audio.PlayShootSFX();
 
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(.5f);
 
 		//Return to default
 		StartCoroutine(myBeam.GetComponent<Beam>().collapseBeam());
