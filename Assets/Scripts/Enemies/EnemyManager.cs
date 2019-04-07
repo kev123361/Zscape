@@ -9,8 +9,8 @@ public class EnemyManager : MonoBehaviour
     public BoardManager bm;
     private EnemySpreads enemySpreads;
 
-    [SerializeField]
-    private List<Enemy> enemyList = new List<Enemy>();
+    //Not keeping a specific record. More of knowing how many enemies exist and getting references to them
+    public List<GameObject> enemyList = new List<GameObject>();
 
     [SerializeField]
     private int numEnemies = 9999;
@@ -44,7 +44,6 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn()
     {
-        
         Spread newSpread = enemySpreads.GetRandomSpread();
         List<Vector2Int> newEnemyPos = newSpread.GetEnemyPositions();
         List<GameObject> newEnemies = newSpread.GetEnemyRefs();
@@ -53,7 +52,7 @@ public class EnemyManager : MonoBehaviour
 
         for (int i = 0; i < newEnemies.Count; i++)
         {
-            bm.GetTile(newEnemyPos[i].x, newEnemyPos[i].y).SpawnUnit(newEnemies[i], bm);
+            enemyList.Add(bm.GetTile(newEnemyPos[i].x, newEnemyPos[i].y).SpawnUnit(newEnemies[i], bm));
         }
 
     }
@@ -69,5 +68,16 @@ public class EnemyManager : MonoBehaviour
             if (OnRoundWin != null)
                 OnRoundWin();
         }
+    }
+
+    public void ClearAllEnemies()
+    {
+        for(int i = 0; i < enemyList.Count; i++)
+        {
+            enemyList[i].gameObject.SetActive(false);
+            Debug.Log(enemyList[i]);
+        }
+        enemyList.Clear();
+        
     }
 }

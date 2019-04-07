@@ -25,6 +25,8 @@ public class GameFlowController : MonoBehaviour
 
     #region World Triggers
     public Button startUI;
+    public Button optionsUI;
+    public Button creditsUI;
     public Button upgradeUI1;
     public Button upgradeUI2;
     public Button upgradeUI3;

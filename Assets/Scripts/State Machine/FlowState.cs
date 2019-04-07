@@ -69,4 +69,20 @@ public class FlowState : State<GameFlowController>
             return parentObject.player;
         }
     }
+
+    public Button optionsButton
+    {
+        get
+        {
+            return parentObject.optionsUI;
+        }
+    }
+
+    public Button creditsButton
+    {
+        get
+        {
+            return parentObject.creditsUI;
+        }
+    }
 }
