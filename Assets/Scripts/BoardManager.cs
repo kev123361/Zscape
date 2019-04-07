@@ -12,6 +12,7 @@ public class BoardManager : MonoBehaviour
     public GameObject[] tiles;
     public int[] tileOccupancy;
     public static bool gameStarted;
+    public int level = 0;
 
     enum tileSet {THREExEIGHT = 0};
     private Vector2Int[] boardRatios = {new Vector2Int(3, 8) };
@@ -27,6 +28,17 @@ public class BoardManager : MonoBehaviour
     {
         
        
+    }
+
+    private void OnEnable()
+    {
+        OnBeginRound += IncrementLevel;
+    }
+
+    private void OnDisable()
+    {
+        OnBeginRound -= IncrementLevel;
+
     }
 
     public void StartBattle()
@@ -96,5 +108,15 @@ public class BoardManager : MonoBehaviour
             Debug.Log(e);
             return null;
         }
+    }
+
+    public int GetLevel()
+    {
+        return level;
+    }
+
+    private void IncrementLevel()
+    {
+        level += 1;
     }
 }

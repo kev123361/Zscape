@@ -8,6 +8,7 @@ public class Enemy : Unit
     public float timeToShoot;
 
     public UnitAudio audio;
+    public float difficultyMultiplier = .1f;
 
     public float bulletSpeed;
     public float bulletAccel;
@@ -23,8 +24,13 @@ public class Enemy : Unit
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
         audio = GetComponent<UnitAudio>();
+        health += health * difficultyMultiplier * (bm.GetLevel() - 1);
+        maxHealth = health;
+        //Dumb way to get the health UI to update
+        LoseHealth(0);
     }
 
+    
     // Update is called once per frame
     void Update()
     {

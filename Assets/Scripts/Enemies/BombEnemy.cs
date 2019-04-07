@@ -17,6 +17,10 @@ public class BombEnemy : Enemy
 
         timeToShoot = Random.Range(3.0f, 5.0f);
         //boardSize = bm.tiles.Length;
+        health += health * difficultyMultiplier * (bm.GetLevel() - 1);
+        maxHealth = health;
+        //Dumb way to get the health UI to update
+        LoseHealth(0);
     }
 
     // Update is called once per frame

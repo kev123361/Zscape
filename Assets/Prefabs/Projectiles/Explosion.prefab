@@ -9544,7 +9544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   acceleration: 0
-  existTime: 0.25
+  existTime: 0.3
   damage: 25
   isEnemyProjectile: 1
   isIndicatorOn: 0
