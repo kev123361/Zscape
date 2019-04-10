@@ -10,7 +10,7 @@ public class BoardManager : MonoBehaviour
     public Tile enemyBaseTile;
 
     public GameObject[] tiles;
-    public int[] tileOccupancy;
+    public int[,] tileOccupancy;
     
     public static bool gameStarted;
     public int level = 0;
