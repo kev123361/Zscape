@@ -28,7 +28,7 @@ public class BoardManager : MonoBehaviour
 
     void Start()
     {
-        
+        tileOccupancy = new int[tileBoard.rows.Length, tileBoard.rows.Length];
        
     }
 
@@ -112,6 +112,28 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    public void takeGridAvailibility(int xPos, int yPos)
+    {
+        tileOccupancy[xPos, yPos] = 1;
+    }
+
+    public bool checkUpGridAvailibility(int xPos, int yPos, int newX, int newY)
+    {
+        if (newX > 3 || newX < 0 || newY >= tileBoard.rows.Length)
+        {
+            return false;
+        }
+        if (tileOccupancy[newX, newY] == 0)
+        {
+            //allow move
+            tileOccupancy[xPos, yPos] = 0;
+            tileOccupancy[newX, newY] = 1;
+            return true;
+        }
+        //Move denied
+        Debug.Log("move denied");
+        return false;
+    }
 
     public int getPersistentHealth()
     {
