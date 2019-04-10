@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4618,7 +4618,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  tileOccupancy: 
   level: 0
   currentBoardSize: 
   playerRef: {fileID: 0}
@@ -4821,16 +4820,6 @@ PrefabInstance:
       propertyPath: board
       value: 
       objectReference: {fileID: 1252652345}
-    - target: {fileID: 4633003631899037908, guid: 591f1d0dc5f1bac428acd0064c1453fd,
-        type: 3}
-      propertyPath: maxHealth
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 4633003631899037908, guid: 591f1d0dc5f1bac428acd0064c1453fd,
-        type: 3}
-      propertyPath: health
-      value: 150
-      objectReference: {fileID: 0}
     - target: {fileID: 4633003631899037907, guid: 591f1d0dc5f1bac428acd0064c1453fd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4899,6 +4888,35 @@ PrefabInstance:
     - target: {fileID: 8743729892045925601, guid: 591f1d0dc5f1bac428acd0064c1453fd,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1951284183, guid: 591f1d0dc5f1bac428acd0064c1453fd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1951284183, guid: 591f1d0dc5f1bac428acd0064c1453fd, type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 777242202, guid: 591f1d0dc5f1bac428acd0064c1453fd, type: 3}
+      propertyPath: m_Color.g
+      value: 0.11764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 777242202, guid: 591f1d0dc5f1bac428acd0064c1453fd, type: 3}
+      propertyPath: m_Color.b
+      value: 0.11764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 777242202, guid: 591f1d0dc5f1bac428acd0064c1453fd, type: 3}
+      propertyPath: m_Color.r
+      value: 0.84705883
+      objectReference: {fileID: 0}
+    - target: {fileID: 777242202, guid: 591f1d0dc5f1bac428acd0064c1453fd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367907128649550976, guid: 591f1d0dc5f1bac428acd0064c1453fd,
+        type: 3}
+      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
