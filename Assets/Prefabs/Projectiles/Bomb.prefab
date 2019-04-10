@@ -4830,3 +4830,4 @@ MonoBehaviour:
   explosion: {fileID: 8804375012557928004, guid: 6a42f4e2bd27e204f913f3c350395b05,
     type: 3}
   isEnemyProjectile: 0
+  damage: 0

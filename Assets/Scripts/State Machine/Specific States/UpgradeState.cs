@@ -86,8 +86,8 @@ public class UpgradeState : FlowState
     #region Plausible Upgrades/Managers
     private void Shuffle()
     {
-        //Deprecated way for a 'true' random
-        Random.seed = System.DateTime.Now.Millisecond;
+        
+        Random.InitState(System.DateTime.Now.Millisecond);
         int[] numberList = new int[numOfUpgrades];
 
         for(int j = 0; j < numOfUpgrades; j++)
@@ -106,28 +106,44 @@ public class UpgradeState : FlowState
 
     private void playerHealthUpgrade()
     {
-        int upgradeInt = Random.Range(15, 75);
+        //Restore 25 Health
+        int upgradeInt = 25;
         playerRef.UpgradeHealth(upgradeInt);
     }
 
     private void bulletDamageUpgrade()
     {
-        int upgradeInt = Random.Range(5, 10);
+        //Bullet Damage +5
+        int upgradeInt = 5;
         playerRef.UpgradeBulletDamage(upgradeInt);
     }
 
     private void bombDamageUpgrade()
     {
-        int upgradeInt = Random.Range(5, 15);
-        //NO BOMB DAMAGE REF YET
-        Debug.Log("bmbdmg inc");
+        //Bomb Damage +10
+        int upgradeInt = 10;
+        playerRef.UpgradeBombDamage(upgradeInt);
     }
 
     private void bombCDUpgrade()
     {
-        float upgradeFloat = Random.Range(.2f, .6f);
-        playerRef.UpgradeBombCD(upgradeFloat);
+        //Bomb Fire Rate +15%
+        float fireRateIncrease = .15f;
+        playerRef.UpgradeBombCD(fireRateIncrease);
     }
+
+    private void bulletCDUpgrade()
+    {
+        //Bullet Fire Rate +25%
+        float fireRateIncrease = .25f;
+        playerRef.UpgradeBulletCD(fireRateIncrease);
+    }
+
+    #region Rare Upgrades
+
+    //To-Do
+
+    #endregion
 
     private void StartButtonManager()
     {//Finding a way to make it so you simply

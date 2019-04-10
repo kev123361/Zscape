@@ -64,11 +64,14 @@ public class Projectile : MonoBehaviour
         {
             if (!isBeam) {
                 Destroy(gameObject);
-                currentTile.UnwarnTile();
+                if (currentTile)
+                {
+                    currentTile.UnwarnTile();
+                }
             }
 
             other.GetComponent<Player>().LoseHealth(damage);
-        } else if (isEnemyProjectile && isIndicatorOn && other.gameObject.CompareTag("Tile"))
+        } else if (GetComponent<Explosion>() && isEnemyProjectile && isIndicatorOn && other.gameObject.CompareTag("Tile"))
         {
             Tile otherTile = other.GetComponent<Tile>();
             otherTile.WarnTile();

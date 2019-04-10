@@ -38,7 +38,8 @@
         {
             OnEnemyDeath();
         }
-        audio.PlayDeathSFX();
+        //audio.PlayDeathSFX();
+        Instantiate(deathModel, transform.position, transform.rotation);
         bm.GetTile(pos.x, pos.y).UnwarnTile();
         Destroy(gameObject);
     }

@@ -46,5 +46,6 @@ public class EndState : FlowState
         enemyManagerRef.ClearAllEnemies();
         enemyManagerRef.gameObject.SetActive(false);
         boardManagerRef.gameObject.SetActive(false);
+        boardManagerRef.ResetLevel();
     }
 }
