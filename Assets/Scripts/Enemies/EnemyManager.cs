@@ -53,6 +53,7 @@ public class EnemyManager : MonoBehaviour
         for (int i = 0; i < newEnemies.Count; i++)
         {
             enemyList.Add(bm.GetTile(newEnemyPos[i].x, newEnemyPos[i].y).SpawnUnit(newEnemies[i], bm));
+            bm.takeGridAvailibility(newEnemyPos[i].x, newEnemyPos[i].y);
         }
 
     }

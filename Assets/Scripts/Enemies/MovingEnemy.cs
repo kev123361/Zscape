@@ -5,12 +5,13 @@ using UnityEngine;
 public class MovingEnemy : Enemy
 {
     private float timer = 0f;
-    private int[] adjTile = new int[2];
+    private int[] myTile = new int[2];
 
     // Start is called before the first frame update
     void Start()
     {
-        adjTile[1] = pos.y;
+        myTile[0] = pos.x;
+        myTile[1] = pos.y;
         timeToShoot = Random.Range(0.5f, 1.0f);
         audio = GetComponent<UnitAudio>();
         //bm = board.GetComponent<BoardManager>();
@@ -25,7 +26,7 @@ public class MovingEnemy : Enemy
         {
             Die();
         }
-        setMovement();
+        
         timer += Time.deltaTime;
         if (timer >= timeToShoot)
         {
@@ -34,7 +35,8 @@ public class MovingEnemy : Enemy
                 Shoot();
             } else
             {
-                Move(adjTile);
+                setMovement();
+                Move(myTile);
             }
             
             timer = 0f;
@@ -67,13 +69,36 @@ public class MovingEnemy : Enemy
     // Move in the x axis only
     private void setMovement()
     {
-        if (Random.Range(-10, 10) >= 0)
+        switch (Random.Range(1, 5))
         {
-            adjTile[0] = pos.x + 1;
-        } else
-        {
-            adjTile[0] = pos.x - 1;
+            case 1: //move down
+                if (bm.checkUpGridAvailibility(myTile[0], myTile[1], pos.x + 1, myTile[1]))
+                {
+                    myTile[0] = pos.x + 1;
+                }                
+                break;
+            case 2: //move up
+                if (bm.checkUpGridAvailibility(myTile[0], myTile[1], pos.x - 1, myTile[1]))
+                {
+                    myTile[0] = pos.x - 1;
+                }
+                break;
+            case 3: //move side
+                if (bm.checkUpGridAvailibility(myTile[0], myTile[1], myTile[0], pos.y + 1))
+                {
+                    myTile[1] = pos.y + 1;
+                }
+                break;
+            case 4: //move up
+                if (bm.checkUpGridAvailibility(myTile[0], myTile[1], myTile[0], pos.y - 1))
+                {
+                    myTile[1] = pos.y - 1;
+                }
+                break;
         }
-        if (adjTile[0] > 2 || adjTile[0] < 0) adjTile[0] = 1;
+                
+        if (myTile[0] > 2 || myTile[0] < 0) myTile[0] = 1;
+        if (myTile[1] > 8) myTile[1] = 7;
+        if (myTile[1] < 5) myTile[1] = 6;
     }
 }
