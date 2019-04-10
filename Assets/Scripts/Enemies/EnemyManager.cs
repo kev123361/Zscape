@@ -10,7 +10,7 @@ public class EnemyManager : MonoBehaviour
     private EnemySpreads enemySpreads;
 
     //Not keeping a specific record. More of knowing how many enemies exist and getting references to them
-    public List<GameObject> enemyList = new List<GameObject>();
+    public List<GameObject> enemyList;
 
     [SerializeField]
     private int numEnemies = 9999;
@@ -49,6 +49,7 @@ public class EnemyManager : MonoBehaviour
         List<GameObject> newEnemies = newSpread.GetEnemyRefs();
         numEnemies = newEnemies.Count;
         Debug.Log(numEnemies);
+        enemyList = new List<GameObject>();
 
         for (int i = 0; i < newEnemies.Count; i++)
         {

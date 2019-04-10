@@ -345,9 +345,12 @@ MonoBehaviour:
   bomb: {fileID: 0}
   timeToShoot: 0
   audio: {fileID: 0}
+  difficultyMultiplier: 0.1
   bulletSpeed: 0
   bulletAccel: 0
   bulletDespawn: 0
+  deathModel: {fileID: 6920649486652768081, guid: 5c7010c0a2a496641b9596af006f3f68,
+    type: 3}
 --- !u!82 &6439289049840220347
 AudioSource:
   m_ObjectHideFlags: 0
@@ -497,6 +500,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &132081623411517505
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130757119631742081}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 151480ab51c6f9c4a8bcb33d91ee3d52, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4447361067049226782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +1067,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShieldsUp
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e785eafc2058dff41880a7fdfa422cb4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: e785eafc2058dff41880a7fdfa422cb4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1107,6 +1133,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e785eafc2058dff41880a7fdfa422cb4, type: 3}
+--- !u!1 &4130757119631742081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100006, guid: e785eafc2058dff41880a7fdfa422cb4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4130757119631774247}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4130757119632165025 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: e785eafc2058dff41880a7fdfa422cb4,

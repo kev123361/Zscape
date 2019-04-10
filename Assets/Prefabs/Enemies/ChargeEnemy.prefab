@@ -72,11 +72,14 @@ MonoBehaviour:
   health: 50
   bullet: {fileID: 0}
   bomb: {fileID: 0}
-  timeToShoot: 0
+  timeToShoot: 10000
   audio: {fileID: 0}
+  difficultyMultiplier: 0.1
   bulletSpeed: 0
   bulletAccel: 0
   bulletDespawn: 0
+  deathModel: {fileID: 3599144294607845533, guid: 4b95ffc98fedebe4ca5a5277e7155a12,
+    type: 3}
   timeToCharge: 5
   damage: 20
   speed: 20
@@ -930,6 +933,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e9ab2d7c7185a1a429cec4ca5b0ee2e7, type: 2}
     - target: {fileID: 2300002, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

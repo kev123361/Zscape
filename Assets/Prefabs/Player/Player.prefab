@@ -14961,13 +14961,16 @@ MonoBehaviour:
   health: 150
   bullet: {fileID: 8824790950639804820, guid: f2899a00b0146eb469b7710725d51747, type: 3}
   bomb: {fileID: 4931307117870622958, guid: fc49692829fd7314da3bdefa50ffb3c9, type: 3}
+  invincible: 0
   bombCD: 4
   shootCD: 1
   bulletDamage: 10
+  bombDamage: 25
   bulletSpeed: 3
   bulletAccel: 7
   shootCooldownIcon: {fileID: 5490210198891016193}
   bombCooldownIcon: {fileID: 1182500482695741282}
+  model: {fileID: 3939424664251785370}
   audio: {fileID: 0}
   playerCoordinates: 0000000000000000
 --- !u!135 &4633003631899037904

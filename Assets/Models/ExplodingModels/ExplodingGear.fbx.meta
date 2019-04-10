@@ -1,0 +1,206 @@
+fileFormatVersion: 2
+guid: 3f210ae7615f8c942bda17051cd8bf21
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bone
+    100004: Bone_end
+    100006: Circle
+    100008: Circle_shard
+    100010: Circle_shard.001
+    100012: Circle_shard.002
+    100014: Circle_shard.003
+    100016: Circle_shard.004
+    100018: Circle_shard.005
+    100020: Circle_shard.006
+    100022: Circle_shard.007
+    100024: Cube
+    100026: Cube_shard
+    100028: Cube_shard.001
+    100030: Cube_shard.002
+    100032: Cube_shard.003
+    100034: Cube_shard.004
+    100036: Cube_shard.005
+    100038: Cube_shard.006
+    100040: Cube_shard.007
+    100042: Cube_shard.008
+    100044: Cube_shard.009
+    100046: //RootNode
+    400000: Armature
+    400002: Bone
+    400004: Bone_end
+    400006: Circle
+    400008: Circle_shard
+    400010: Circle_shard.001
+    400012: Circle_shard.002
+    400014: Circle_shard.003
+    400016: Circle_shard.004
+    400018: Circle_shard.005
+    400020: Circle_shard.006
+    400022: Circle_shard.007
+    400024: Cube
+    400026: Cube_shard
+    400028: Cube_shard.001
+    400030: Cube_shard.002
+    400032: Cube_shard.003
+    400034: Cube_shard.004
+    400036: Cube_shard.005
+    400038: Cube_shard.006
+    400040: Cube_shard.007
+    400042: Cube_shard.008
+    400044: Cube_shard.009
+    400046: //RootNode
+    2100000: Rim
+    2100002: Base
+    2100004: Rim.001
+    2100006: Base.001
+    2300000: Circle_shard
+    2300002: Circle_shard.001
+    2300004: Circle_shard.002
+    2300006: Circle_shard.003
+    2300008: Circle_shard.004
+    2300010: Circle_shard.005
+    2300012: Circle_shard.006
+    2300014: Circle_shard.007
+    2300016: Cube_shard
+    2300018: Cube_shard.001
+    2300020: Cube_shard.002
+    2300022: Cube_shard.003
+    2300024: Cube_shard.004
+    2300026: Cube_shard.005
+    2300028: Cube_shard.006
+    2300030: Cube_shard.007
+    2300032: Cube_shard.008
+    2300034: Cube_shard.009
+    3300000: Circle_shard
+    3300002: Circle_shard.001
+    3300004: Circle_shard.002
+    3300006: Circle_shard.003
+    3300008: Circle_shard.004
+    3300010: Circle_shard.005
+    3300012: Circle_shard.006
+    3300014: Circle_shard.007
+    3300016: Cube_shard
+    3300018: Cube_shard.001
+    3300020: Cube_shard.002
+    3300022: Cube_shard.003
+    3300024: Cube_shard.004
+    3300026: Cube_shard.005
+    3300028: Cube_shard.006
+    3300030: Cube_shard.007
+    3300032: Cube_shard.008
+    3300034: Cube_shard.009
+    4300000: Cube_shard.009
+    4300002: Cube_shard.008
+    4300004: Cube_shard.007
+    4300006: Cube_shard.006
+    4300008: Cube_shard.005
+    4300010: Cube_shard.004
+    4300012: Cube_shard.003
+    4300014: Cube_shard.002
+    4300016: Cube_shard.001
+    4300018: Cube_shard
+    4300020: Circle_shard.007
+    4300022: Circle_shard.006
+    4300024: Circle_shard.005
+    4300026: Circle_shard.004
+    4300028: Circle_shard.003
+    4300030: Circle_shard.002
+    4300032: Circle_shard.001
+    4300034: Circle_shard
+    4300036: Circle
+    4300038: Cube
+    7400000: Armature|AttackActual
+    7400002: Armature|AttackCoolDown
+    7400004: Armature|AttackPrep
+    7400006: Armature|IdleSpin
+    9500000: //RootNode
+    13700000: Circle
+    13700002: Cube
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

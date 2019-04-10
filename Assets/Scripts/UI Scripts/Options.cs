@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 
 public class Options : MonoBehaviour
 {
+    private Animator anim;
     Resolution[] resolutions;
     public Dropdown resolutionDropdown;
     public Toggle fullscreenToggle;
@@ -32,6 +33,8 @@ public class Options : MonoBehaviour
         resolutionDropdown.value = currentResoIndex;
 
         fullscreenToggle.isOn = Screen.fullScreen;
+
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -53,5 +56,20 @@ public class Options : MonoBehaviour
     public void ChangeResolution(int index)
     {
         Screen.SetResolution(Screen.resolutions[index].width, Screen.resolutions[index].height, Screen.fullScreen);
+    }
+
+    public void SlideButtonsIn()
+    {
+        anim.SetTrigger("slidein");
+    }
+
+    public void SlideButtonsOut()
+    {
+        anim.SetTrigger("slideout");
+    }
+
+    public void Disable()
+    {
+        gameObject.SetActive(false);
     }
 }

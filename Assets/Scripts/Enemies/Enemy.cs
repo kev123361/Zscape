@@ -14,13 +14,18 @@ public class Enemy : Unit
     public float bulletAccel;
     public float bulletDespawn;
 
+    public GameObject deathModel;
+
     public delegate void EnemyDeath();
     public static EnemyDeath OnEnemyDeath;
     
     // Start is called before the first frame update
     void Start()
     {
-        timeToShoot = Random.Range(0.8f, 1.5f);
+        if (!GetComponent<Spinny>())
+        {
+            timeToShoot = Random.Range(0.8f, 1.5f);
+        }
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
         audio = GetComponent<UnitAudio>();
@@ -69,7 +74,8 @@ public class Enemy : Unit
         {
             projectile.UnwarnCollidingTiles();
         }
-        audio.PlayDeathSFX();
+        //audio.PlayDeathSFX();
+        Instantiate(deathModel, transform.position, transform.rotation);
         bm.GetTile(pos.x, pos.y).UnwarnTile();
         Destroy(gameObject);
     }

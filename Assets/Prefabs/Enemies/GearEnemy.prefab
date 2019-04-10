@@ -174,11 +174,14 @@ MonoBehaviour:
   health: 90
   bullet: {fileID: 0}
   bomb: {fileID: 0}
-  timeToShoot: Infinity
+  timeToShoot: 10000
   audio: {fileID: 0}
+  difficultyMultiplier: 0.1
   bulletSpeed: 0
   bulletAccel: 0
   bulletDespawn: 0
+  deathModel: {fileID: 6808004914904095713, guid: 39391c3f238c84f4c940025fa855c2d3,
+    type: 3}
 --- !u!114 &1408191315
 MonoBehaviour:
   m_ObjectHideFlags: 0

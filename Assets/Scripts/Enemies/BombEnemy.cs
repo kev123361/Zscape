@@ -6,7 +6,9 @@ public class BombEnemy : Enemy
 {
     private float timer = 0f;
     private Vector2Int target;
-    
+
+    public int bombDamage;
+    public GameObject deathModel;
 
     // Start is called before the first frame update
     void Start()
@@ -41,13 +43,7 @@ public class BombEnemy : Enemy
 
     new private void Shoot()
     {
-        var newBomb = Instantiate(bomb, transform.position + (transform.up * 2), transform.rotation);
-        target.Set(pos.x, pos.y - 4);
-        newBomb.SetTarget(target);
-        newBomb.SetBoard(bm);
-        newBomb.SetEnemyProjectile(true);
-        newBomb.SetRigidBody(newBomb.GetComponent<Rigidbody>());
-        newBomb.SetVelocity(new Vector3(2*(target.x-pos.x), 4, 2*(target.y-pos.y)));
+        StartCoroutine(BombBarrage());
     }
 
     // Before deleting gameObject, make call to enemy manager to decrement enemy count
@@ -58,7 +54,29 @@ public class BombEnemy : Enemy
         {
             OnEnemyDeath();
         }
-        audio.PlayDeathSFX();
+        //audio.PlayDeathSFX();
+        Instantiate(deathModel, transform.position, transform.rotation);
         Destroy(gameObject);
+        
+    }
+
+    private IEnumerator BombBarrage()
+    {
+        int bombsFired = 0;
+        while (bombsFired < 3)
+        {
+            var newBomb = Instantiate(bomb, transform.position + (transform.up), transform.rotation);
+            target.Set(Random.Range(0, 3), Random.Range(0, 4));
+            newBomb.SetTarget(target);
+            newBomb.SetBoard(bm);
+            newBomb.SetEnemyProjectile(true);
+            newBomb.SetRigidBody(newBomb.GetComponent<Rigidbody>());
+            newBomb.damage = bombDamage;
+            newBomb.SetVelocity(new Vector3(2 * (target.x - pos.x), 4, 2 * (target.y - pos.y)));
+
+            bombsFired += 1;
+
+            yield return new WaitForSeconds(.75f);
+        }
     }
 }

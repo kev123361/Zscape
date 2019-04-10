@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Player : Unit
 {
-
+    [SerializeField]
     private bool invincible;
     private Vector2Int target;
     public float bombCD;
+    private float initialBombCD;
+    private float bombRateModifier = 0f;
     public float shootCD;
+    private float initialShootCD;
+    private float shootRateModifier = 0f;
     public int bulletDamage = 10;
+    public int bombDamage = 25;
     public float bulletSpeed;
     public float bulletAccel;
 
@@ -18,6 +23,7 @@ public class Player : Unit
     public CooldownIcon shootCooldownIcon;
     public CooldownIcon bombCooldownIcon;
 
+    public GameObject model;
     
 
     public UnitAudio audio;
@@ -45,6 +51,8 @@ public class Player : Unit
         health = 150;
         audio = GetComponent<UnitAudio>();
 
+        initialShootCD = shootCD;
+        initialBombCD = bombCD;
     }
 
     public override void OnEnable()
@@ -170,6 +178,7 @@ public class Player : Unit
         newBomb.SetTarget(target);
         newBomb.SetBoard(bm);
         newBomb.SetEnemyProjectile(false);
+        newBomb.damage = bombDamage;
         newBomb.SetRigidBody(newBomb.GetComponent<Rigidbody>());
         newBomb.SetVelocity(new Vector3(2 * (target.x - pos.x), 4, 2 * (target.y - pos.y)));
         
@@ -219,6 +228,7 @@ public class Player : Unit
         // Make it so player can shoot stuff at the start of each round
         canBomb = true;
         canShoot = true;
+        invincible = false;
     }
 
     private IEnumerator InvincibilityFrames()
@@ -230,7 +240,7 @@ public class Player : Unit
 
         while (flashes < 6)
         {
-            mesh.enabled = !mesh.enabled;
+            model.SetActive(!model.activeSelf);
             yield return new WaitForSeconds(.1f);
             flashes += 1;
         }
@@ -270,13 +280,21 @@ public class Player : Unit
         bulletDamage += inputBonus;
     }
 
-    public void UpgradeBombDamage(int inputBonus)
+    public void UpgradeBulletCD(float percentBonus)
     {
-        //no ref yet
+        shootRateModifier += percentBonus;
+        shootCD = initialShootCD / (1 + (1 * shootRateModifier));
     }
 
-    public void UpgradeBombCD(float inputBonus)
+    public void UpgradeBombDamage(int inputBonus)
     {
-        bombCD -= inputBonus;
+        bombDamage += inputBonus;
+    }
+
+    public void UpgradeBombCD(float percentBonus)
+    {
+        bombRateModifier += percentBonus;
+        bombCD = initialBombCD * (initialBombCD / (initialBombCD + (initialBombCD * bombRateModifier)));
+        bombCD = initialBombCD / (1 + (1 * bombRateModifier));
     }
 }
