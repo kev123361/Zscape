@@ -137,7 +137,8 @@ MonoBehaviour:
   bulletSpeed: 0
   bulletAccel: 10
   bulletDespawn: 5
-  deathModel: {fileID: 0}
+  deathModel: {fileID: 4673103299454865415, guid: a79027a49028b8e4780fdcf0d04f49a3,
+    type: 3}
 --- !u!82 &8544927107091381779
 AudioSource:
   m_ObjectHideFlags: 0

@@ -17,9 +17,20 @@ public class Player : Unit
     public int bombDamage = 25;
     public float bulletSpeed;
     public float bulletAccel;
-
     public int armor = 0;
     public float critChance = 0f;
+
+    //rare parameters
+    public bool isTurret = false;
+    public float turretModifer = 0f;
+    public int turretStacks = 0;
+
+    public int lifesteal = 0;
+
+    public int glassCannonStacks = 0;
+    
+
+    
 
     private bool canBomb = true;
     private bool canShoot = true;
@@ -37,8 +48,8 @@ public class Player : Unit
     public delegate void DeathEvent();
     public static event DeathEvent OnDeath;
 
-    protected static int maxHealth = 150;
-    protected static int health = maxHealth;
+    new protected int maxHealth = 150;
+    new protected int health;
 
     
 
@@ -48,10 +59,9 @@ public class Player : Unit
         bm = board.GetComponent<BoardManager>();
         boardSize = bm.tiles.Length;
         playerCoordinates = new int[2];
-
+        health = maxHealth;
         bm.setPersistentHealth(health);
-        maxHealth = 150;
-        health = 150;
+        
         audio = GetComponent<UnitAudio>();
 
         initialShootCD = shootCD;
@@ -64,12 +74,16 @@ public class Player : Unit
         //Event handler allows the game to adjust the position of the player AFTER the board spawns in the board
         BoardManager.OnBeginRound += SetStartingPosition;
         BoardManager.OnBeginRound += EnableShooting;
+        BoardManager.OnBeginRound += ResetStats;
+        Enemy.OnEnemyDeath += lifestealGain;
     }
 
     public void OnDisable()
     {
         BoardManager.OnBeginRound -= SetStartingPosition;
         BoardManager.OnBeginRound -= EnableShooting;
+        BoardManager.OnBeginRound -= ResetStats;
+        Enemy.OnEnemyDeath -= lifestealGain;
     }
 
     private void Update()
@@ -126,6 +140,15 @@ public class Player : Unit
         {
             if (canShoot)
             {
+                if (isTurret)
+                {
+                    if (turretStacks < 5)
+                    {
+                        turretStacks += 1;
+                    }
+                    shootRateModifier += turretStacks * turretModifer;
+                    shootCD = initialShootCD / (1 + (1 * shootRateModifier));
+                }
                 Shoot();
                 audio.PlayShootSFX();
                 StartCoroutine(ShootCooldown());
@@ -133,7 +156,7 @@ public class Player : Unit
             }
         }
 
-        else if (Input.GetKeyDown(KeyCode.L))
+        else if (Input.GetKeyDown(KeyCode.K))
         {
             if (canBomb)
             {
@@ -142,6 +165,14 @@ public class Player : Unit
                 bombCooldownIcon.StartCooldown(bombCD);
             }
         }
+    }
+
+    public override void Move(int[] tileCoords)
+    {
+        base.Move(tileCoords);
+        shootRateModifier -= turretStacks * turretModifer;
+        turretStacks = 0;
+        shootCD = initialShootCD / (1 + (1 * shootRateModifier));
     }
 
     public override bool LegalMove(int[] tileCoords)
@@ -171,7 +202,7 @@ public class Player : Unit
         newBullet.SetSpeed(bulletSpeed);
         newBullet.SetAcceleration(bulletAccel);
         newBullet.SetExistTime(10f);
-        newBullet.SetPlayerDamage(bulletDamage);
+        newBullet.SetPlayerDamage(bulletDamage * (glassCannonStacks + 1));
         if (Random.Range( 0f, 1f) < critChance)
         {
             newBullet.isCrit = true;
@@ -185,7 +216,7 @@ public class Player : Unit
         newBomb.SetTarget(target);
         newBomb.SetBoard(bm);
         newBomb.SetEnemyProjectile(false);
-        newBomb.damage = bombDamage;
+        newBomb.damage = bombDamage * (glassCannonStacks + 1);
         audio.PlayThrowSFX();
         newBomb.SetRigidBody(newBomb.GetComponent<Rigidbody>());
         newBomb.SetVelocity(new Vector3(2 * (target.x - pos.x), 4, 2 * (target.y - pos.y)));
@@ -194,7 +225,7 @@ public class Player : Unit
 
     new public void LoseHealth(int damage)
     {
-        int damageTaken = damage - armor;
+        int damageTaken = (damage - armor) * (glassCannonStacks + 1);
         if (!invincible) {
             health -= damageTaken;
             if (health <= 0)
@@ -230,6 +261,23 @@ public class Player : Unit
             OnDeath();
         }
         //Any other logic perhaps such as clearing the board.
+    }
+
+    public void ResetStats()
+    {
+        shootCD = initialShootCD;
+        bombCD = initialBombCD;
+        bombRateModifier = 0f;
+        shootRateModifier = 0f;
+        bulletDamage = 10;
+        bombDamage = 25;
+        armor = 0;
+        critChance = 0f;
+        isTurret = false;
+        turretModifer = 0f;
+        turretStacks = 0;
+        lifesteal = 0;
+        glassCannonStacks = 0;
     }
 
     public void EnableShooting()
@@ -274,14 +322,15 @@ public class Player : Unit
 
     public void UpgradeHealth(int inputH)
     {
-        if ((health += inputH) > maxHealth)
+        if ((health + inputH) > maxHealth)
         {
             health = maxHealth;
-        }
-        else
+        } else
         {
             health += inputH;
         }
+        
+        ChangeUIHealth(0);
         bm.setPersistentHealth(health);
     }
 
@@ -316,5 +365,28 @@ public class Player : Unit
     public void upgradeCrit(float critGain)
     {
         critChance += critGain;
+    }
+
+    public void upgradeTurret(float fireRate)
+    {
+        isTurret = true;
+        turretModifer += fireRate;
+    }
+
+    public void upgradeLifesteal(int lifestealAmount)
+    {
+        lifesteal += lifestealAmount;
+    }
+
+    //Helper method called when an enemy dies
+    private void lifestealGain()
+    {
+        
+        UpgradeHealth(lifesteal);
+    }
+
+    public void upgradeGlassCannon()
+    {
+        glassCannonStacks += 1;
     }
 }
