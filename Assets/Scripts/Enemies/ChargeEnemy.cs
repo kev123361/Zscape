@@ -10,10 +10,14 @@ public class ChargeEnemy : Enemy
     private bool charging;
     private Tile currentTile;
 
+    private int[] myTile = new int[2];
+
     new public static event EnemyDeath OnEnemyDeath;
     public float timeToCharge;
     public int damage;
     public int speed;
+
+    private bool enRoute = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +28,8 @@ public class ChargeEnemy : Enemy
         timeToCharge = Random.Range(4.0f, 6.0f);
         audio = GetComponent<UnitAudio>();
         //bm = board.GetComponent<BoardManager>();
+        myTile[0] = pos.x;
+        myTile[1] = pos.y;
         //boardSize = bm.tiles.Length;
         health += health * difficultyMultiplier * (bm.GetLevel() - 1);
         maxHealth = health;
@@ -39,20 +45,32 @@ public class ChargeEnemy : Enemy
             Die();
         }
         timer += Time.deltaTime;
-        if (timer >= timeToCharge)
+        if (timer >= timeToCharge && !charging && !enRoute)
         {
-           Charge();
+           if (Random.Range(-10, 10) >= -2)
+           {
+               Charge();
+           }
+           else
+           {
+                //DISABLE IS ISSUES ARISE
+               setMovement();
+               Move(myTile);
+           }
            timer = 0f;
            timeToCharge = Random.Range(4.0f, 6.0f);
         }
-        if (rb.position.z < -20)
+        else if (rb.position.z < -20)
         {
+            rb.position = new Vector3(rb.position.x, rb.position.y, 20);
+            enRoute = true;
             charging = false;
-            rb.position = new Vector3(rb.position.x, rb.position.y, 20);         
-        } if (Vector3.Distance(sourcePos, rb.position) < .5 && !charging)
+        }
+        else if (Vector3.Distance(sourcePos, rb.position) < .5 && !charging)
         {
             rb.velocity = Vector3.zero;
             rb.position = sourcePos;
+            enRoute = false;
         }
     }
 
@@ -86,5 +104,40 @@ public class ChargeEnemy : Enemy
         {
             other.gameObject.GetComponent<Tile>().UnwarnTile();
         }
+    }
+
+    private void setMovement()
+    {
+        switch (Random.Range(1, 5))
+        {
+            case 1: //move down
+                if (bm.checkUpGridAvailibility(myTile[0], myTile[1], pos.x + 1, myTile[1]))
+                {
+                    myTile[0] = pos.x + 1;
+                }
+                break;
+            case 2: //move up
+                if (bm.checkUpGridAvailibility(myTile[0], myTile[1], pos.x - 1, myTile[1]))
+                {
+                    myTile[0] = pos.x - 1;
+                }
+                break;
+            case 3: //move side
+                if (bm.checkUpGridAvailibility(myTile[0], myTile[1], myTile[0], pos.y + 1))
+                {
+                    myTile[1] = pos.y + 1;
+                }
+                break;
+            case 4: //move up
+                if (bm.checkUpGridAvailibility(myTile[0], myTile[1], myTile[0], pos.y - 1))
+                {
+                    myTile[1] = pos.y - 1;
+                }
+                break;
+        }
+
+        if (myTile[0] > 2 || myTile[0] < 0) myTile[0] = 1;
+        if (myTile[1] > 8) myTile[1] = 7;
+        if (myTile[1] < 5) myTile[1] = 6;
     }
 }
