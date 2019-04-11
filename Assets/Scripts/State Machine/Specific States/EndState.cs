@@ -33,6 +33,8 @@ public class EndState : FlowState
     {
         endButton.gameObject.SetActive(true);
         endButton.onClick.AddListener(() => RestartGameLoop());
+        //ENTER FUNCTIONALITY TO DISPLAY LOGISTICS
+        //boardManagerRef.GetLevel();
     }
 
     private void RestartGameLoop()

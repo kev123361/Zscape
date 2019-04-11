@@ -9546,6 +9546,8 @@ MonoBehaviour:
   acceleration: 0
   existTime: 0.3
   damage: 25
+  enemyDamage: 25
+  isCrit: 0
   isEnemyProjectile: 1
   isIndicatorOn: 0
   isBeam: 1

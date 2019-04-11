@@ -8,7 +8,7 @@ public class Enemy : Unit
     public float timeToShoot;
 
     public UnitAudio audio;
-    public float difficultyMultiplier = .1f;
+    public float difficultyMultiplier = .2f;
 
     public float bulletSpeed;
     public float bulletAccel;
@@ -29,10 +29,20 @@ public class Enemy : Unit
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
         audio = GetComponent<UnitAudio>();
-        health += health * difficultyMultiplier * (bm.GetLevel() - 1);
-        maxHealth = health;
+        SetLevelStats();
         //Dumb way to get the health UI to update
         LoseHealth(0);
+    }
+
+    protected virtual void SetLevelStats()
+    {
+        if (bm.level > 2)
+        {
+            health += health * (difficultyMultiplier * (bm.GetLevel()));
+        }
+        
+        maxHealth = health;
+        
     }
 
     
@@ -55,11 +65,13 @@ public class Enemy : Unit
     new public virtual void Shoot()
     {
         var newBullet = Instantiate(bullet, transform.position + (transform.forward * 2), transform.rotation);
+        newBullet.SetEnemyDamage(difficultyMultiplier, bm.GetLevel());
         newBullet.SetSpeed(bulletSpeed);
         newBullet.SetAcceleration(bulletAccel);
         newBullet.SetExistTime(bulletDespawn);
         newBullet.transform.parent = transform;
         newBullet.isIndicatorOn = true;
+        Debug.Log("Checking for GEAR");
     }
 
     // Before deleting gameObject, make call to enemy manager to decrement enemy count

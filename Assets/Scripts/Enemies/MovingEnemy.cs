@@ -16,6 +16,8 @@ public class MovingEnemy : Enemy
         audio = GetComponent<UnitAudio>();
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
+        difficultyMultiplier = .2f;
+        SetLevelStats();
     }
 
     // Update is called once per frame
@@ -51,6 +53,8 @@ public class MovingEnemy : Enemy
         newBullet.SetAcceleration(bulletAccel);
         newBullet.SetExistTime(bulletDespawn);
         newBullet.isIndicatorOn = true;
+
+        newBullet.SetEnemyDamage(difficultyMultiplier, bm.GetLevel());
     }
 
     // Before deleting gameObject, make call to enemy manager to decrement enemy count
