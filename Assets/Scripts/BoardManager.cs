@@ -11,6 +11,7 @@ public class BoardManager : MonoBehaviour
 
     public GameObject[] tiles;
     public int[,] tileOccupancy;
+    
     public static bool gameStarted;
     public int level = 0;
 
@@ -147,6 +148,11 @@ public class BoardManager : MonoBehaviour
     public int GetLevel()
     {
         return level;
+    }
+
+    public void ResetLevel()
+    {
+        level = 0;
     }
 
     private void IncrementLevel()

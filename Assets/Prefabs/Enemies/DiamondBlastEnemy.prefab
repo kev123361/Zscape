@@ -905,9 +905,12 @@ MonoBehaviour:
   bomb: {fileID: 0}
   timeToShoot: 1.3
   audio: {fileID: 0}
+  difficultyMultiplier: 0.1
   bulletSpeed: 0
   bulletAccel: 10
   bulletDespawn: 5
+  deathModel: {fileID: 249264305785996647, guid: a2a573dd6a0022e4fa0400ffef971cd7,
+    type: 3}
 --- !u!65 &2141115396453175540
 BoxCollider:
   m_ObjectHideFlags: 0

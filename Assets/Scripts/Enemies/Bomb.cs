@@ -8,6 +8,7 @@ public class Bomb : MonoBehaviour
     public BoardManager bm;
     public GameObject explosion;
     public bool isEnemyProjectile;
+    public int damage;
     private Rigidbody rb;
 
     // Start is called before the first frame update
@@ -30,6 +31,7 @@ public class Bomb : MonoBehaviour
             newExplosion.GetComponent<Explosion>().explosionPos = explosionPos;
             newExplosion.GetComponent<Explosion>().bm = bm;
             newExplosion.GetComponent<Projectile>().isEnemyProjectile = isEnemyProjectile;
+            newExplosion.GetComponent<Projectile>().damage = damage;
             Destroy(gameObject);
         }
     }
