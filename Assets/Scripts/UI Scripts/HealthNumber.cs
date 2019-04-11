@@ -83,9 +83,9 @@ public class HealthNumber : MonoBehaviour
             fadingHealthTimer -= Time.deltaTime;
             // Move fading health upward
             fadingWhiteHealthRect.anchoredPosition = new Vector2(0.5f, 100 * Mathf.Pow((1f - (fadingHealthTimer / baseFadeTime)), 2f));
-            //fadingDamageText.rectTransform.position = new Vector3(0.5f, 100 * Mathf.Pow((1f - (fadingHealthTimer / baseFadeTime)), 2f), 0f); 
             // Fade the health over time
             fadingHealthFill.color = new Color(fadingHealthFill.color.r, fadingHealthFill.color.g, fadingHealthFill.color.b, (fadingHealthTimer / baseFadeTime));
+            fadingDamageText.color = new Color(fadingDamageText.color.r, fadingDamageText.color.g, fadingDamageText.color.b, (fadingHealthTimer / baseFadeTime));
             // if fade timer runs out
             if (fadingHealthTimer <= 0)
             {
