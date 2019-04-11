@@ -32,6 +32,8 @@ public class GameFlowController : MonoBehaviour
     public Button upgradeUI3;
     public Button endUI;
     public Canvas UICanvas;
+    public RectTransform UpgradePanel;
+    public Text titleCard;
     #endregion
 
     #region Conditional List

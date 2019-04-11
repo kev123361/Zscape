@@ -85,4 +85,20 @@ public class FlowState : State<GameFlowController>
             return parentObject.creditsUI;
         }
     }
+
+    public RectTransform upgradePanel
+    {
+        get
+        {
+            return parentObject.UpgradePanel;
+        }
+    }
+
+    public Text titleCard
+    {
+        get
+        {
+            return parentObject.titleCard;
+        }
+    }
 }

@@ -67,8 +67,7 @@ public class EnemyManager : MonoBehaviour
         if (numEnemies <= 0)
         {
             //GameObject.FindGameObjectWithTag("State Machine").GetComponent<GameFlowController>().RoundComplete();
-            if (OnRoundWin != null)
-                OnRoundWin();
+            StartCoroutine(DelayRoundWin());
         }
     }
 
@@ -81,5 +80,12 @@ public class EnemyManager : MonoBehaviour
         }
         enemyList.Clear();
         
+    }
+
+    private IEnumerator DelayRoundWin()
+    {
+        yield return new WaitForSeconds(2f);
+        if (OnRoundWin != null)
+            OnRoundWin();
     }
 }

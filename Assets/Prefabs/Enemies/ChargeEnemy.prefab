@@ -70,14 +70,14 @@ MonoBehaviour:
   pos: {x: 0, y: 0}
   maxHealth: 50
   health: 50
-  bullet: {fileID: 0}
+  bullet: {fileID: 3942656884595391709, guid: 3f2c42d67ed4329439eec982ba608be3, type: 3}
   bomb: {fileID: 0}
   timeToShoot: 10000
   audio: {fileID: 0}
   difficultyMultiplier: 0.1
-  bulletSpeed: 0
+  bulletSpeed: -30
   bulletAccel: 0
-  bulletDespawn: 0
+  bulletDespawn: 5
   deathModel: {fileID: 3599144294607845533, guid: 4b95ffc98fedebe4ca5a5277e7155a12,
     type: 3}
   timeToCharge: 5
@@ -1193,34 +1193,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 332575992369963247}
     m_Modifications:
-    - target: {fileID: 100000, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
-      propertyPath: m_Name
-      value: Charger
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1272,6 +1244,34 @@ PrefabInstance:
     - target: {fileID: 400000, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
+      propertyPath: m_Name
+      value: Charger
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: f8c69ac0718c9b04986f7b481502173a, type: 3}
       propertyPath: m_Materials.Array.data[0]

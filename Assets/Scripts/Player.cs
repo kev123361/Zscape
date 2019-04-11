@@ -18,6 +18,9 @@ public class Player : Unit
     public float bulletSpeed;
     public float bulletAccel;
 
+    public int armor = 0;
+    public float critChance = 0f;
+
     private bool canBomb = true;
     private bool canShoot = true;
     public CooldownIcon shootCooldownIcon;
@@ -169,6 +172,10 @@ public class Player : Unit
         newBullet.SetAcceleration(bulletAccel);
         newBullet.SetExistTime(10f);
         newBullet.SetPlayerDamage(bulletDamage);
+        if (Random.Range( 0f, 1f) < critChance)
+        {
+            newBullet.isCrit = true;
+        }
     }
     
     private void Bomb()
@@ -179,6 +186,7 @@ public class Player : Unit
         newBomb.SetBoard(bm);
         newBomb.SetEnemyProjectile(false);
         newBomb.damage = bombDamage;
+        audio.PlayThrowSFX();
         newBomb.SetRigidBody(newBomb.GetComponent<Rigidbody>());
         newBomb.SetVelocity(new Vector3(2 * (target.x - pos.x), 4, 2 * (target.y - pos.y)));
         
@@ -186,14 +194,15 @@ public class Player : Unit
 
     new public void LoseHealth(int damage)
     {
+        int damageTaken = damage - armor;
         if (!invincible) {
-            health -= damage;
+            health -= damageTaken;
             if (health <= 0)
             {
                 Death();
             }
             StartCoroutine(InvincibilityFrames());
-            ChangeUIHealth(damage);
+            ChangeUIHealth(damageTaken);
         }
         bm.setPersistentHealth(health);
     }
@@ -229,6 +238,7 @@ public class Player : Unit
         canBomb = true;
         canShoot = true;
         invincible = false;
+        model.SetActive(true);
     }
 
     private IEnumerator InvincibilityFrames()
@@ -236,7 +246,7 @@ public class Player : Unit
         invincible = true;
 
         int flashes = 0;
-        MeshRenderer mesh = GetComponent<MeshRenderer>();
+        
 
         while (flashes < 6)
         {
@@ -296,5 +306,15 @@ public class Player : Unit
         bombRateModifier += percentBonus;
         bombCD = initialBombCD * (initialBombCD / (initialBombCD + (initialBombCD * bombRateModifier)));
         bombCD = initialBombCD / (1 + (1 * bombRateModifier));
+    }
+
+    public void upgradeArmor(int armorGain)
+    {
+        armor += armorGain;
+    }
+
+    public void upgradeCrit(float critGain)
+    {
+        critChance += critGain;
     }
 }

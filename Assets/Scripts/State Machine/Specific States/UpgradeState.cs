@@ -20,8 +20,22 @@ public class UpgradeState : FlowState
         Health,
         BulletDmg,
         BombDmg,
-        BombCD
+        BombCD,
+        BulletCD,
+        Armor,
+        Crit
     };
+    private string[] descriptions =
+    {
+        "Restore 25 Health",
+        "+5 Bullet Damage",
+        "+10 Bomb Damage",
+        "+15% Bomb Fire Rate",
+        "+25% Bullet Fire Rate",
+        "+5 Armor",
+        "+15% Critical Chance"
+    };
+
     private int numOfUpgrades = 4;
     private int[] randUpgrades = new int[3];
 
@@ -44,8 +58,9 @@ public class UpgradeState : FlowState
     {
         Debug.Log("Exit UpgradeState");
         EndButtonManager();
-        
-        return base.OnExit();
+
+        yield return new WaitForSeconds(2f);
+        yield return base.OnExit();
     }
 
     private void UpgradeStats(int upgradeNum)
@@ -67,6 +82,15 @@ public class UpgradeState : FlowState
             case 3:
                 bombCDUpgrade();
                 Debug.Log("cd");
+                break;
+            case 4:
+                bulletCDUpgrade();
+                break;
+            case 5:
+                armorUpgrade();
+                break;
+            case 6:
+                critUpgrade();
                 break;
             default:
                 break;
@@ -139,6 +163,18 @@ public class UpgradeState : FlowState
         playerRef.UpgradeBulletCD(fireRateIncrease);
     }
 
+    private void armorUpgrade()
+    {
+        //+5 Armor
+        playerRef.upgradeArmor(5);
+    }
+
+    private void critUpgrade()
+    {
+        //+15% Crit Chance
+        playerRef.upgradeCrit(.15f);
+    }
+
     #region Rare Upgrades
 
     //To-Do
@@ -147,12 +183,11 @@ public class UpgradeState : FlowState
 
     private void StartButtonManager()
     {//Finding a way to make it so you simply
-        upgradeButton1.gameObject.SetActive(true);
-        upgradeButton2.gameObject.SetActive(true);
-        upgradeButton3.gameObject.SetActive(true);
-        upgradeButton1.GetComponentInChildren<Text>().text = "Upgrade " + ((UPGRADES)(randUpgrades[0])); //+ " by: " + xyz;
-        upgradeButton2.GetComponentInChildren<Text>().text = "Upgrade " + ((UPGRADES)(randUpgrades[1]));
-        upgradeButton3.GetComponentInChildren<Text>().text = "Upgrade " + ((UPGRADES)(randUpgrades[2]));
+        upgradePanel.gameObject.SetActive(true);
+        
+        upgradeButton1.GetComponentInChildren<Text>().text = descriptions[randUpgrades[0]]; //+ " by: " + xyz;
+        upgradeButton2.GetComponentInChildren<Text>().text = descriptions[randUpgrades[1]];
+        upgradeButton3.GetComponentInChildren<Text>().text = descriptions[randUpgrades[2]];
 
         upgradeButton1.onClick.AddListener(() => UpgradeStats(randUpgrades[0]));
         upgradeButton2.onClick.AddListener(() => UpgradeStats(randUpgrades[1]));
@@ -161,9 +196,10 @@ public class UpgradeState : FlowState
 
     private void EndButtonManager()
     {
-        upgradeButton1.gameObject.SetActive(false);
-        upgradeButton2.gameObject.SetActive(false);
-        upgradeButton3.gameObject.SetActive(false);
+        upgradePanel.gameObject.GetComponent<Animator>().SetTrigger("slideout");
+        //upgradeButton1.gameObject.SetActive(false);
+        //upgradeButton2.gameObject.SetActive(false);
+        //upgradeButton3.gameObject.SetActive(false);
 
         upgradeButton1.onClick.RemoveAllListeners();
         upgradeButton2.onClick.RemoveAllListeners();
