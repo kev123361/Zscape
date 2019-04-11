@@ -43,6 +43,7 @@ public class IdleStartState : FlowState
 
     private void ShowButtons()
     {
+        titleCard.gameObject.SetActive(true);
         startButton.gameObject.SetActive(true);
         creditsButton.gameObject.SetActive(true);
         optionsButton.gameObject.SetActive(true);
@@ -50,6 +51,7 @@ public class IdleStartState : FlowState
     
     private void HideButtons()
     {
+        titleCard.gameObject.SetActive(false);
         startButton.gameObject.SetActive(false);
         creditsButton.gameObject.SetActive(false);
         optionsButton.gameObject.SetActive(false);

@@ -10,7 +10,7 @@ public class UnitAudio : MonoBehaviour
     public GameObject DeathFXObject;
     public AudioClip shootSFX;
     public AudioClip deathSFX;
-    public AudioClip bombSFX;
+    public AudioClip bombThrowSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,5 +32,10 @@ public class UnitAudio : MonoBehaviour
     {
         Instantiate(DeathFXObject);
         audioSource.PlayOneShot(deathSFX);
+    }
+
+    public void PlayThrowSFX()
+    {
+        audioSource.PlayOneShot(bombThrowSFX);
     }
 }

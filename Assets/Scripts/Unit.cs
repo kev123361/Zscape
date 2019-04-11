@@ -69,9 +69,20 @@ public abstract class Unit : MonoBehaviour
         ChangeHealthUI(damage);
     }
 
+    public void LoseHealth(int damage, bool isCrit)
+    {
+        health -= damage;
+        ChangeHealthUI(damage);
+    }
+
     private void ChangeHealthUI(int damage)
     {
         healthScript.UpdateHealth(health, maxHealth, damage);
+    }
+
+    private void ChangeHealthUI(int damage, bool isCrit)
+    {
+        healthScript.UpdateHealth(health, maxHealth, damage, isCrit);
     }
 
     public virtual void Shoot()

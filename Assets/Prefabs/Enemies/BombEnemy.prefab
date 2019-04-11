@@ -808,7 +808,7 @@ MonoBehaviour:
     type: 3}
   shootSFX: {fileID: 0}
   deathSFX: {fileID: 8300000, guid: b7e6ac97a0a82b24689b186395cff32d, type: 3}
-  bombSFX: {fileID: 0}
+  bombThrowSFX: {fileID: 8300000, guid: 329523fcd82d0ce4c8557c3d6e344032, type: 3}
 --- !u!1 &7095981952034006035
 GameObject:
   m_ObjectHideFlags: 0
@@ -5873,14 +5873,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3202300009163849405}
     m_Modifications:
-    - target: {fileID: 100000, guid: fee9edc7c465ce74eadd4f8315c8c513, type: 3}
-      propertyPath: m_Name
-      value: Bomber
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: fee9edc7c465ce74eadd4f8315c8c513, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fee9edc7c465ce74eadd4f8315c8c513, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5923,6 +5915,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fee9edc7c465ce74eadd4f8315c8c513, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: fee9edc7c465ce74eadd4f8315c8c513, type: 3}
+      propertyPath: m_Name
+      value: Bomber
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: fee9edc7c465ce74eadd4f8315c8c513, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: fee9edc7c465ce74eadd4f8315c8c513, type: 3}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChargeEnemy : Enemy
 {
-    private float timer = 0f;
+    public float timer = 0f;
     private Rigidbody rb;
     private Vector3 sourcePos;
     private bool charging;
@@ -37,6 +37,15 @@ public class ChargeEnemy : Enemy
         LoseHealth(0);
     }
 
+    new public virtual void Shoot()
+    {
+        var newBullet = Instantiate(bullet, transform.position, transform.rotation);
+        newBullet.SetSpeed(bulletSpeed);
+        newBullet.SetAcceleration(bulletAccel);
+        newBullet.SetExistTime(bulletDespawn);
+        newBullet.isIndicatorOn = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -49,20 +58,23 @@ public class ChargeEnemy : Enemy
         {
            if (Random.Range(-10, 10) >= -2)
            {
-               Charge();
+                StartCoroutine(Charge());
            }
            else
            {
                 //DISABLE IS ISSUES ARISE
                setMovement();
                Move(myTile);
+                sourcePos = rb.position;
+
            }
            timer = 0f;
-           timeToCharge = Random.Range(4.0f, 6.0f);
+           timeToCharge = Random.Range(5.0f, 7.0f);
         }
         else if (rb.position.z < -20)
         {
             rb.position = new Vector3(rb.position.x, rb.position.y, 20);
+            timer = 0f;
             enRoute = true;
             charging = false;
         }
@@ -74,8 +86,12 @@ public class ChargeEnemy : Enemy
         }
     }
 
-    private void Charge()
+   
+
+    private IEnumerator Charge()
     {
+        Shoot();
+        yield return new WaitForSeconds(1f);
         charging = true;
         rb.velocity = new Vector3(0, 0, -1 * speed);
     }

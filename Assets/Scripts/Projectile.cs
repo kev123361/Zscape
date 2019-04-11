@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     public float existTime;
     public int damage;
 
+    public bool isCrit = false;
     private int playerDamage;
 
     public bool isEnemyProjectile;
@@ -59,7 +60,7 @@ public class Projectile : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            other.gameObject.GetComponent<Enemy>().LoseHealth(damage);
+            other.gameObject.GetComponent<Enemy>().LoseHealth(damage, isCrit);
         } else if (isEnemyProjectile && other.gameObject.CompareTag("Player"))
         {
             if (!isBeam) {
@@ -71,7 +72,7 @@ public class Projectile : MonoBehaviour
             }
 
             other.GetComponent<Player>().LoseHealth(damage);
-        } else if (GetComponent<Explosion>() && isEnemyProjectile && isIndicatorOn && other.gameObject.CompareTag("Tile"))
+        } else if (!GetComponent<Explosion>() && isEnemyProjectile && isIndicatorOn && other.gameObject.CompareTag("Tile"))
         {
             Tile otherTile = other.GetComponent<Tile>();
             otherTile.WarnTile();
@@ -107,7 +108,13 @@ public class Projectile : MonoBehaviour
 
     public void SetPlayerDamage(int dmg)
     {
-        this.damage = dmg;
+        if (!isCrit)
+        {
+            this.damage = dmg;
+        } else
+        {
+            this.damage = 2 * dmg;
+        }
     }
 
     public void UnwarnCollidingTiles()

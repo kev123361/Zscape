@@ -65,6 +65,7 @@ public class BombEnemy : Enemy
         int bombsFired = 0;
         while (bombsFired < 3)
         {
+            audio.PlayThrowSFX();
             var newBomb = Instantiate(bomb, transform.position + (transform.up), transform.rotation);
             target.Set(Random.Range(0, 3), Random.Range(0, 4));
             newBomb.SetTarget(target);

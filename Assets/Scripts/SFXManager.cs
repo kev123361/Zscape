@@ -6,6 +6,7 @@ using UnityEngine;
 public class SFXManager : MonoBehaviour
 {
     public AudioClip ButtonFX;
+    public AudioClip UpgradeFX;
 
     private AudioSource audio;
     // Start is called before the first frame update
@@ -23,5 +24,10 @@ public class SFXManager : MonoBehaviour
     public void PlayButtonFX()
     {
         audio.PlayOneShot(ButtonFX);
+    }
+
+    public void PlayUpgradeFX()
+    {
+        audio.PlayOneShot(UpgradeFX);
     }
 }
