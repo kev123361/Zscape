@@ -170,8 +170,17 @@ public class BoardManager : MonoBehaviour
     public String GetEndTime()
     {
         int time = (int)gameTime;
+        int seconds = (time % 60);
+        string secondsString = "";
+        if (seconds < 10)
+        {
+            secondsString = "0" + seconds.ToString();
+        } else
+        {
+            secondsString = seconds.ToString();
+        }
 
-        return (time / 60).ToString() + ":" + (time % 60).ToString();
+        return (time / 60).ToString() + ":" + secondsString;
     }
 
     public void UnwarnAllTiles()

@@ -74,7 +74,9 @@ public class Player : Unit
         //Event handler allows the game to adjust the position of the player AFTER the board spawns in the board
         BoardManager.OnBeginRound += SetStartingPosition;
         BoardManager.OnBeginRound += EnableShooting;
-        BoardManager.OnBeginRound += ResetStats;
+        BoardManager.OnBeginRound += ResetFireRate;
+
+        //BoardManager.OnBeginRound += ResetStats;
         Enemy.OnEnemyDeath += lifestealGain;
     }
 
@@ -82,7 +84,8 @@ public class Player : Unit
     {
         BoardManager.OnBeginRound -= SetStartingPosition;
         BoardManager.OnBeginRound -= EnableShooting;
-        BoardManager.OnBeginRound -= ResetStats;
+        BoardManager.OnBeginRound -= ResetFireRate;
+        //BoardManager.OnBeginRound -= ResetStats;
         Enemy.OnEnemyDeath -= lifestealGain;
     }
 
@@ -90,6 +93,12 @@ public class Player : Unit
     {
         
         CheckMovementInputs();
+    }
+
+    public void ResetFireRate()
+    {
+        turretStacks = 0;
+        shootCD = initialShootCD / (1 + (1 * shootRateModifier));
     }
 
     private void CheckMovementInputs()

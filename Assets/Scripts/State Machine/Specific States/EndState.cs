@@ -13,6 +13,7 @@ public class EndState : FlowState
         ClearScreen();
 
         //Telemetrics
+        ResetPlayerStats();
 
         return base.OnEnter();
     }
@@ -58,5 +59,10 @@ public class EndState : FlowState
         enemyManagerRef.ClearAllEnemies();
         enemyManagerRef.gameObject.SetActive(false);
         boardManagerRef.gameObject.SetActive(false);
+    }
+
+    private void ResetPlayerStats()
+    {
+        playerRef.ResetStats();
     }
 }

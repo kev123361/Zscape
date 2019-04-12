@@ -24,6 +24,7 @@ public class Spinny : MonoBehaviour {
         audio = GetComponent<UnitAudio>();
         myProjectile = beamPrefab.GetComponent<Projectile>();
         myEnemy = GetComponent<Enemy>();
+        myProjectile.SetEnemyDamage(myEnemy.difficultyMultiplier, myEnemy.bm.level);
     }
 
 	private IEnumerator Attack() {
@@ -33,7 +34,7 @@ public class Spinny : MonoBehaviour {
 		animator.SetBool("startAttack", true);
 		assignMaterial(telegraphMaterial);
         
-        myProjectile.SetEnemyDamage(myEnemy.difficultyMultiplier, myEnemy.bm.level);
+        
 		myBeam = Instantiate(beamPrefab, gameObject.transform.position, transform.rotation, gameObject.transform);
 
 		//Wait until we're in full attack mode
