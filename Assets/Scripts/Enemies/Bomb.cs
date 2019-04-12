@@ -21,6 +21,7 @@ public class Bomb : MonoBehaviour
     void Update()
     {
         bm.GetTile(explosionPos.x, explosionPos.y).WarnBombTile();
+        if (rb.position.y < -10) Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

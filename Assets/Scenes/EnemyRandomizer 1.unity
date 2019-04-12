@@ -4704,7 +4704,6 @@ MonoBehaviour:
     - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
     - {fileID: 6584014451506038818, guid: ebd702c242bf25948ba45e9e8f87fc68, type: 3}
     - {fileID: 8806701363865831565, guid: fcf9bc90665beab40a929ac6961c7cdd, type: 3}
-    - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
   - enemyPos:
     - {x: 0, y: 7}
     - {x: 1, y: 7}
