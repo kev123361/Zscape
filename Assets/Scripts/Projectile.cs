@@ -18,10 +18,16 @@ public class Projectile : MonoBehaviour
     public bool isIndicatorOn;
     public bool isBeam;
 
-    private float timer = 0f;
-    private Tile currentTile;
+    public bool isDiamond;
+    private Vector3 pos;
+    private Vector3 axis;
+    private float freq;
+    private float magnitude;
 
-    private List<Tile> collidingTiles;
+    protected float timer = 0f;
+    protected Tile currentTile;
+
+    protected List<Tile> collidingTiles;
 
     public Rigidbody rb;
 
@@ -37,11 +43,20 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(0, 0, speed);
         collidingTiles = new List<Tile>();
+
+        pos = transform.position;
+        axis = transform.right;
+        freq = Random.Range(2, 6);
+        magnitude = Random.Range(1, 4.5f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(isDiamond)
+        {
+            DisruptDisplacement();
+        }
         timer += Time.deltaTime;
         if (timer > existTime)
         {
@@ -51,7 +66,11 @@ public class Projectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(transform.forward * acceleration);
+        if(!isDiamond)
+        {
+            rb.AddForce(transform.forward * acceleration);
+        }
+        
     }
 
     public void OnTriggerEnter(Collider other)
@@ -130,5 +149,14 @@ public class Projectile : MonoBehaviour
     public void SetEnemyDamage(float multiplier, int level)
     {
         enemyDamage += Mathf.RoundToInt(enemyDamage * (multiplier * level));
+    }
+
+    //REFACTOR INTO IT'S SEPERATE CLASS. ONLY FOR THE DIAMOND ENEMY
+    private void DisruptDisplacement()
+    {
+        
+        pos += transform.forward * Time.deltaTime * 4f;
+        transform.position = pos + axis * Mathf.Sin(Time.time * freq) * 2.5f;
+
     }
 }

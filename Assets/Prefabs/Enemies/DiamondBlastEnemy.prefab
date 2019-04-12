@@ -1019,14 +1019,14 @@ MonoBehaviour:
   pos: {x: 0, y: 0}
   maxHealth: 50
   health: 50
-  bullet: {fileID: 1113165598809729691, guid: f30fff05a67d0264d9b944a8a087c353, type: 3}
+  bullet: {fileID: 1113165598809729691, guid: 71790b17dc5a6fd4d82ea73a05749ce1, type: 3}
   bomb: {fileID: 0}
-  timeToShoot: 1.3
+  timeToShoot: 3.5
   audio: {fileID: 0}
   difficultyMultiplier: 0.1
   bulletSpeed: 0
-  bulletAccel: 10
-  bulletDespawn: 5
+  bulletAccel: 3
+  bulletDespawn: 10
   deathModel: {fileID: 249264305785996647, guid: a2a573dd6a0022e4fa0400ffef971cd7,
     type: 3}
 --- !u!65 &2141115396453175540
@@ -1154,7 +1154,7 @@ MonoBehaviour:
     type: 3}
   shootSFX: {fileID: 0}
   deathSFX: {fileID: 8300000, guid: b7e6ac97a0a82b24689b186395cff32d, type: 3}
-  bombSFX: {fileID: 0}
+  bombThrowSFX: {fileID: 0}
 --- !u!1001 &7245942785404616294
 PrefabInstance:
   m_ObjectHideFlags: 0
