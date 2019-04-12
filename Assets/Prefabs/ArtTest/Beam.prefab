@@ -145,9 +145,10 @@ MonoBehaviour:
   acceleration: 0
   existTime: 100
   damage: 10
-  enemyDamage: 20
+  enemyDamage: 15
   isCrit: 0
   isEnemyProjectile: 1
   isIndicatorOn: 1
   isBeam: 1
+  isDiamond: 0
   rb: {fileID: 0}

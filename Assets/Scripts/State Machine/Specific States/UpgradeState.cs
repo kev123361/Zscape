@@ -175,8 +175,8 @@ public class UpgradeState : FlowState
 
     private void playerHealthUpgrade()
     {
-        //Restore 25 Health
-        int upgradeInt = 25;
+        //Restore 50 Health
+        int upgradeInt = 50;
         playerRef.UpgradeHealth(upgradeInt);
     }
 
@@ -236,8 +236,8 @@ public class UpgradeState : FlowState
 
     private void lifesteal()
     {
-        //+3 Health on Enemy Kill
-        playerRef.upgradeLifesteal(3);
+        //+5 Health on Enemy Kill
+        playerRef.upgradeLifesteal(5);
     }
 
     #endregion
