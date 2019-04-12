@@ -44,7 +44,15 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn()
     {
-        Spread newSpread = enemySpreads.GetRandomSpread();
+        Spread newSpread;
+        if (bm.GetLevel() < 4)
+        {
+            newSpread = enemySpreads.GetRandomSpread();
+        } else
+        {
+            newSpread = enemySpreads.GetRandomHardSpread();
+
+        }
         List<Vector2Int> newEnemyPos = newSpread.GetEnemyPositions();
         List<GameObject> newEnemies = newSpread.GetEnemyRefs();
         numEnemies = newEnemies.Count;

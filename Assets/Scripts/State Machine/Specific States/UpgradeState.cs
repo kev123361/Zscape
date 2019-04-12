@@ -36,12 +36,30 @@ public class UpgradeState : FlowState
         "+15% Critical Chance"
     };
 
-    private int numOfUpgrades = 4;
+    //Turret
+    //Glass Cannon
+    //Lifesteal
+
+    private string[] rareDescriptions =
+    {
+        "Fire faster when stationary",
+        "Deal and Receive 2x Damage",
+        "Restore 3 Health on Enemy Kills"
+    };
+
+    private int numOfUpgrades = 7;
     private int[] randUpgrades = new int[3];
+
+    private int numOfRareUpgrades = 3;
+
+    private float rareUpgradeChance = .2f;
+    private bool isRare = false;
 
     public override IEnumerator OnEnter()
     {
         Debug.Log("Enter UpgradeState");
+        isRare = false;
+        
         Shuffle();
         StartButtonManager();
         ClearScreen();
@@ -102,6 +120,27 @@ public class UpgradeState : FlowState
         StartCoroutine(currentMachine.SwitchState(parentObject.playState));
     }
 
+    private void RareUpgrade(int upgradeNum)
+    {
+        switch(upgradeNum)
+        {
+            case 0:
+                turretUpgrade();
+                break;
+            case 1:
+                glassCannon();
+                break;
+            case 2:
+                lifesteal();
+                break;
+            default:
+                break;
+           
+        }
+        //Send the state machine back to the Play State since this means the player survived
+        StartCoroutine(currentMachine.SwitchState(parentObject.playState));
+    }
+
     private void ClearScreen()
     {
         playerRef.gameObject.SetActive(false);
@@ -127,6 +166,12 @@ public class UpgradeState : FlowState
             randUpgrades[i] = numberList[rand];
             numberList[rand] = numberList[numberList.Length - i - 1];
             Debug.Log(i + "trial. Value: " + randUpgrades[i]);
+        }
+
+        // If a rare upgrade procs, replace the first upgrade with a random rare upgrade
+        if (Random.Range(0f, 1f) < rareUpgradeChance) {
+            isRare = true;
+            randUpgrades[0] = Random.Range(0, numOfRareUpgrades);
         }
     }
 
@@ -179,19 +224,47 @@ public class UpgradeState : FlowState
 
     #region Rare Upgrades
 
-    //To-Do
+    private void turretUpgrade()
+    {
+        //While standing still, gain increased attack speed
+        playerRef.upgradeTurret(.15f);
+    }
+
+    private void glassCannon()
+    {
+        //Deal and Receive 2x Damage
+        playerRef.upgradeGlassCannon();
+    }
+
+    private void lifesteal()
+    {
+        //+3 Health on Enemy Kill
+        playerRef.upgradeLifesteal(3);
+    }
 
     #endregion
 
     private void StartButtonManager()
     {//Finding a way to make it so you simply
         upgradePanel.gameObject.SetActive(true);
-        
-        upgradeButton1.GetComponentInChildren<Text>().text = descriptions[randUpgrades[0]]; //+ " by: " + xyz;
+
+        if (!isRare)
+        {
+            upgradeButton1.GetComponentInChildren<Text>().text = descriptions[randUpgrades[0]]; //+ " by: " + xyz;
+            upgradeButton1.onClick.AddListener(() => UpgradeStats(randUpgrades[0]));
+
+            upgradeButton1.gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+        } else
+        {
+            upgradeButton1.GetComponentInChildren<Text>().text = rareDescriptions[randUpgrades[0]];
+            upgradeButton1.onClick.AddListener(() => RareUpgrade(randUpgrades[0]));
+
+            upgradeButton1.gameObject.GetComponent<Image>().color = new Color(164 / 255f, 248 / 255f, 81 / 255f, 1);
+        }
         upgradeButton2.GetComponentInChildren<Text>().text = descriptions[randUpgrades[1]];
         upgradeButton3.GetComponentInChildren<Text>().text = descriptions[randUpgrades[2]];
 
-        upgradeButton1.onClick.AddListener(() => UpgradeStats(randUpgrades[0]));
+        
         upgradeButton2.onClick.AddListener(() => UpgradeStats(randUpgrades[1]));
         upgradeButton3.onClick.AddListener(() => UpgradeStats(randUpgrades[2]));
     }

@@ -56,7 +56,7 @@ public abstract class Unit : MonoBehaviour
 
     // Moves the unit to specified tile
     // Does not check to see if the move is legal, so check must be made beforehand
-    public void Move(int[] tileCoords)
+    public virtual void Move(int[] tileCoords)
     {
         Vector3 newPos = bm.GetTile(tileCoords[0], tileCoords[1]).transform.position + new Vector3(0, 1f, 0);
         gameObject.transform.position = newPos;
