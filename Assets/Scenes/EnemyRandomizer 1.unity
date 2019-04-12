@@ -4673,56 +4673,46 @@ MonoBehaviour:
     - {x: 0, y: 7}
     - {x: 0, y: 6}
     - {x: 1, y: 6}
-    - {x: 2, y: 7}
     enemyRef:
     - {fileID: 1408191313, guid: 34ee88ffc2da2304f9503d758351b2a8, type: 3}
     - {fileID: 3524393577756336068, guid: 2ae10553af6fa4140b2b4c483d6c54f1, type: 3}
-    - {fileID: 838511759219104544, guid: b58e5e62384a78949819480c45353bd4, type: 3}
     - {fileID: 838511759219104544, guid: b58e5e62384a78949819480c45353bd4, type: 3}
   - enemyPos:
     - {x: 0, y: 7}
     - {x: 1, y: 6}
     - {x: 1, y: 5}
     - {x: 2, y: 7}
-    - {x: 2, y: 5}
     enemyRef:
     - {fileID: 6584014451506038818, guid: ebd702c242bf25948ba45e9e8f87fc68, type: 3}
     - {fileID: 8806701363865831565, guid: fcf9bc90665beab40a929ac6961c7cdd, type: 3}
     - {fileID: 3524393577756336068, guid: 2ae10553af6fa4140b2b4c483d6c54f1, type: 3}
     - {fileID: 8806701363865831565, guid: a77560b2d2d78ba47b2ac954c64be8e2, type: 3}
-    - {fileID: 838511759219104544, guid: b58e5e62384a78949819480c45353bd4, type: 3}
   - enemyPos:
     - {x: 0, y: 4}
     - {x: 0, y: 7}
     - {x: 1, y: 6}
-    - {x: 2, y: 7}
     enemyRef:
     - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
     - {fileID: 838511759219104544, guid: b58e5e62384a78949819480c45353bd4, type: 3}
     - {fileID: 1408191313, guid: 4ff0b8358a71d0f4aba093303ec92fbe, type: 3}
-    - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
   - enemyPos:
     - {x: 0, y: 6}
     - {x: 0, y: 7}
     - {x: 2, y: 4}
     - {x: 1, y: 5}
-    - {x: 1, y: 7}
     enemyRef:
     - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
     - {fileID: 6584014451506038818, guid: ebd702c242bf25948ba45e9e8f87fc68, type: 3}
     - {fileID: 8806701363865831565, guid: fcf9bc90665beab40a929ac6961c7cdd, type: 3}
     - {fileID: 1422892236872092865, guid: b44a6f658e4128746b267fefecb35c2d, type: 3}
-    - {fileID: 838511759219104544, guid: b58e5e62384a78949819480c45353bd4, type: 3}
   - enemyPos:
     - {x: 0, y: 7}
     - {x: 1, y: 7}
     - {x: 2, y: 4}
-    - {x: 2, y: 7}
     enemyRef:
     - {fileID: 838511759219104544, guid: b58e5e62384a78949819480c45353bd4, type: 3}
-    - {fileID: 838511759219104544, guid: b58e5e62384a78949819480c45353bd4, type: 3}
-    - {fileID: 838511759219104544, guid: b58e5e62384a78949819480c45353bd4, type: 3}
     - {fileID: 6584014451506038818, guid: ebd702c242bf25948ba45e9e8f87fc68, type: 3}
+    - {fileID: 838511759219104544, guid: b58e5e62384a78949819480c45353bd4, type: 3}
   hardSpreads:
   - enemyPos:
     - {x: 0, y: 7}

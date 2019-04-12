@@ -46,8 +46,10 @@ public class EnemyManager : MonoBehaviour
     void Spawn()
     {
         Spread newSpread;
+        
         if (bm.GetLevel() < 4)
         {
+            Debug.Log("Got easy spread");
             newSpread = enemySpreads.GetRandomSpread();
         } else
         {

@@ -32,7 +32,7 @@ public class BGMManager : MonoBehaviour
 
     public void checkLevel()
     {
-        if (board.level == 3)
+        if (board.level == 4)
         {
             playTrack(2);
         }

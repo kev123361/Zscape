@@ -26,7 +26,7 @@ public class Enemy : Unit
     {
         if (!GetComponent<Spinny>() && timeToShoot != 3.5f)
         {
-            timeToShoot = Random.Range(0.8f, 1.5f);
+            timeToShoot = Random.Range(timeToShoot + 1f, timeToShoot - 1f);
         }
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
@@ -106,7 +106,7 @@ public class Enemy : Unit
             difficultyMultiplier = .4f;
             isElite = true;
             Debug.Log(this.gameObject.ToString() + " and I AM ELITE");
-            //Make effect
+            healthScript.TurnSkullOn(true);
         }
         else
         {
