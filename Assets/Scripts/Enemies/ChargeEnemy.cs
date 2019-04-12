@@ -26,7 +26,7 @@ public class ChargeEnemy : Enemy
         rb = GetComponent<Rigidbody>();
         sourcePos = rb.position;
         charging = false;
-        timeToCharge = Random.Range(4.0f, 6.0f);
+        timeToCharge = Random.Range(timeToCharge - 2f, timeToCharge + 2f);
         audio = GetComponent<UnitAudio>();
         //bm = board.GetComponent<BoardManager>();
         myTile[0] = pos.x;

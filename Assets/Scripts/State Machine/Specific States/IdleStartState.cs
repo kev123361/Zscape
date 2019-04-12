@@ -49,6 +49,7 @@ public class IdleStartState : FlowState
         creditsButton.gameObject.SetActive(true);
         optionsButton.gameObject.SetActive(true);
         howtoplayButton.gameObject.SetActive(true);
+        quitButton.gameObject.SetActive(true);
     }
     
     private void HideButtons()
@@ -58,6 +59,7 @@ public class IdleStartState : FlowState
         creditsButton.gameObject.SetActive(false);
         optionsButton.gameObject.SetActive(false);
         howtoplayButton.gameObject.SetActive(false);
+        quitButton.gameObject.SetActive(false);
     }
 
     private void ResetStats()
