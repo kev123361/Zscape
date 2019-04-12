@@ -12,6 +12,8 @@ public class HealthNumber : MonoBehaviour
     public RectTransform whiteHealthRect;
     public RectTransform fadingWhiteHealthRect;
 
+    public SpriteRenderer skull;
+
     private Image sliderFill;
     private Image fadingHealthFill;
     // Marks where the white health should start and end. From 0 to 1.
@@ -152,6 +154,18 @@ public class HealthNumber : MonoBehaviour
                                                                  (decayingMagnitude * sinusoidalMagnitude * Mathf.Sin(randomDirection)),
                                                                  0);
             yield return new WaitForSeconds(1/60f);
+        }
+    }
+
+    public void TurnSkullOn(bool turnOn)
+    {
+        if (turnOn)
+        {
+            skull.enabled = true;
+            skull.gameObject.SetActive(true);
+        } else
+        {
+            skull.enabled = false;
         }
     }
 
