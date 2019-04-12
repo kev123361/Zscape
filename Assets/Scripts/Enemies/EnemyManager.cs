@@ -75,8 +75,11 @@ public class EnemyManager : MonoBehaviour
     {
         for(int i = 0; i < enemyList.Count; i++)
         {
-            enemyList[i].gameObject.SetActive(false);
-            Debug.Log(enemyList[i]);
+            if(enemyList[i] != null)
+            {
+                enemyList[i].gameObject.SetActive(false);
+                Debug.Log(enemyList[i]);
+            }    
         }
         enemyList.Clear();
         

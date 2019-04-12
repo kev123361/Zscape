@@ -16,11 +16,15 @@ public class Spinny : MonoBehaviour {
 
 	public GameObject beamPrefab;
 	private GameObject myBeam;
+    private Projectile myProjectile;
+    private Enemy myEnemy;
 
 	void Start() {
 		StartCoroutine(Attack());
         audio = GetComponent<UnitAudio>();
-	}
+        myProjectile = beamPrefab.GetComponent<Projectile>();
+        myEnemy = GetComponent<Enemy>();
+    }
 
 	private IEnumerator Attack() {
 		yield return new WaitForSeconds(timeToInitialFire);
@@ -28,6 +32,8 @@ public class Spinny : MonoBehaviour {
 		//Telegraph the attack
 		animator.SetBool("startAttack", true);
 		assignMaterial(telegraphMaterial);
+        
+        myProjectile.SetEnemyDamage(myEnemy.difficultyMultiplier, myEnemy.bm.level);
 		myBeam = Instantiate(beamPrefab, gameObject.transform.position, transform.rotation, gameObject.transform);
 
 		//Wait until we're in full attack mode
