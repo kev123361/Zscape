@@ -381,8 +381,8 @@ MonoBehaviour:
   bm: {fileID: 0}
   boardSize: 0
   pos: {x: 0, y: 0}
-  maxHealth: 200
-  health: 200
+  maxHealth: 100
+  health: 100
   bullet: {fileID: 0}
   bomb: {fileID: 0}
   timeToShoot: 0
@@ -402,7 +402,8 @@ AudioSource:
   m_GameObject: {fileID: 3524393577756336068}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: e1f3fff64d3c62445bc1e3e27f0fcb54,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -501,11 +502,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324990afd41d050419e7894472e0dee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   DeathFXObject: {fileID: 5920936266422258191, guid: 97bea840fe2894d4a855f88464a9cafc,
     type: 3}
   shootSFX: {fileID: 0}
   deathSFX: {fileID: 8300000, guid: b7e6ac97a0a82b24689b186395cff32d, type: 3}
-  bombSFX: {fileID: 0}
+  bombThrowSFX: {fileID: 0}
+  damageTakenSFX: {fileID: 8300000, guid: 921f827d6716c854f9c71af9fdc8234c, type: 3}
 --- !u!1 &3727472766036546717
 GameObject:
   m_ObjectHideFlags: 0

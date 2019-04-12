@@ -11,10 +11,13 @@ public class PlayState : FlowState
         ImageGameObj();
         boardManagerRef.StartBattle();
         playerRef.setHealth(boardManagerRef.getPersistentHealth());
+        pausePanel.gameObject.SetActive(true);
         //Create an event listener for death status
         Player.OnDeath += PlayerDeath;
         //Create an event listener for round win status
         EnemyManager.OnRoundWin += RoundComplete;
+        //Create event listener for quit to menu
+        PausePanel.OnQuit += QuitToMenu;
         return base.OnEnter();
     }
 
@@ -27,6 +30,7 @@ public class PlayState : FlowState
     {
         Debug.Log("Exit PlayState");
         Player.OnDeath -= PlayerDeath;
+        pausePanel.gameObject.SetActive(false);
         EnemyManager.OnRoundWin -= RoundComplete;
         return base.OnExit();
     }
@@ -40,6 +44,10 @@ public class PlayState : FlowState
     private void RoundComplete()
     {
         StartCoroutine(currentMachine.SwitchState(parentObject.upgradeState));
+    }
+
+    private void QuitToMenu() {
+        StartCoroutine(currentMachine.SwitchState(parentObject.endState));
     }
 
     private void ImageGameObj()

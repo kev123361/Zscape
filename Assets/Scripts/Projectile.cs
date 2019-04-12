@@ -30,6 +30,7 @@ public class Projectile : MonoBehaviour
     protected List<Tile> collidingTiles;
 
     public Rigidbody rb;
+    
 
     public Projectile(float speed, float acceleration)
     {
@@ -48,6 +49,7 @@ public class Projectile : MonoBehaviour
         axis = transform.right;
         freq = Random.Range(2, 6);
         magnitude = Random.Range(1, 4.5f);
+
     }
 
     // Update is called once per frame
@@ -81,6 +83,7 @@ public class Projectile : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+            
             other.gameObject.GetComponent<Enemy>().LoseHealth(damage, isCrit);
         } else if (isEnemyProjectile && other.gameObject.CompareTag("Player"))
         {
@@ -91,6 +94,7 @@ public class Projectile : MonoBehaviour
                     currentTile.UnwarnTile();
                 }
             }
+            
             other.GetComponent<Player>().LoseHealth(enemyDamage);
 
         } else if (!GetComponent<Explosion>() && isEnemyProjectile && isIndicatorOn && other.gameObject.CompareTag("Tile"))

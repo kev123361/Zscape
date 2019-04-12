@@ -30,4 +30,9 @@ public class SFXManager : MonoBehaviour
     {
         audio.PlayOneShot(UpgradeFX);
     }
+
+    public void PlayHitFX()
+    {
+        audio.PlayOneShot(ButtonFX);
+    }
 }

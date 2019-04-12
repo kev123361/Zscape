@@ -11,7 +11,13 @@ public class Explosion : MonoBehaviour
     void Start()
     {
         explosionCollider = GetComponent<BoxCollider>();
-        StartCoroutine(WarnInSquare());
+        if (gameObject.CompareTag("EnemyProjectile"))
+        {
+            StartCoroutine(WarnInSquare());
+        } else
+        {
+            bm.GetTile(explosionPos.x, explosionPos.y).UnwarnTile();
+        }
     }
 
     // Update is called once per frame

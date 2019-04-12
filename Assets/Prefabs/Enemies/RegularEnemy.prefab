@@ -1051,7 +1051,8 @@ AudioSource:
   m_GameObject: {fileID: 8806701363865831565}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: e1f3fff64d3c62445bc1e3e27f0fcb54,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1150,11 +1151,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324990afd41d050419e7894472e0dee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   DeathFXObject: {fileID: 5920936266422258191, guid: 97bea840fe2894d4a855f88464a9cafc,
     type: 3}
   shootSFX: {fileID: 0}
   deathSFX: {fileID: 8300000, guid: b7e6ac97a0a82b24689b186395cff32d, type: 3}
   bombThrowSFX: {fileID: 0}
+  damageTakenSFX: {fileID: 8300000, guid: c243d4bc250b47a40923a0eb1360f60a, type: 3}
 --- !u!1001 &4874782888258073990
 PrefabInstance:
   m_ObjectHideFlags: 0
