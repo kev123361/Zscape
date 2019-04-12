@@ -42,7 +42,6 @@ public class BoardManager : MonoBehaviour
     private void OnDisable()
     {
         OnBeginRound -= IncrementLevel;
-
     }
 
     public void StartBattle()
@@ -173,5 +172,21 @@ public class BoardManager : MonoBehaviour
         int time = (int)gameTime;
 
         return (time / 60).ToString() + ":" + (time % 60).ToString();
+    }
+
+    public void UnwarnAllTiles()
+    {
+        for (int i = 0; i < tileBoard.rows.Length; i++)
+        {
+            for (int j = 0; j < tileBoard.rows[i].column.Length; j++)
+            {
+                Tile curr = GetTile(i, j);
+                if (curr)
+                {
+                    curr.UnwarnTile();
+                }
+               
+            }
+        }
     }
 }
