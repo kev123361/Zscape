@@ -117,4 +117,20 @@ public class FlowState : State<GameFlowController>
             return parentObject.GameOverPanel;
         }
     }
+
+    public RectTransform pausePanel
+    {
+        get
+        {
+            return parentObject.pausePanel;
+        }
+    }
+
+    public Button quitButton
+    {
+        get
+        {
+            return parentObject.quitButton;
+        }
+    }
 }

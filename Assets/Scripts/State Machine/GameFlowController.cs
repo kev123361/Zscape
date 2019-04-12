@@ -36,6 +36,8 @@ public class GameFlowController : MonoBehaviour
     public RectTransform UpgradePanel;
     public Text titleCard;
     public RectTransform GameOverPanel;
+    public RectTransform pausePanel;
+    public Button quitButton;
     
     #endregion
 

@@ -13,12 +13,20 @@ public class Background : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        background = GetComponent<MeshRenderer>();
     }
 
     private void OnEnable()
     {
-        background = GetComponent<Renderer>();
+        BoardManager.OnBeginRound += ChangeBackground;
+
+      
+    }
+
+    private void OnDisable()
+    {
+        BoardManager.OnBeginRound -= ChangeBackground;
+
     }
 
     // Update is called once per frame
@@ -41,12 +49,12 @@ public class Background : MonoBehaviour
     public void SetRegularFlow()
     {
         background.material.shader = regularFlow;
-        background.material.SetColor("_TintColor", new Color(1, 1, 1));
+        background.material.color = new Color(1, 1, 1);
     }
 
     public void SetRedFlow()
     {
         background.material.shader = redFlow;
-        background.material.SetColor("_TintColor", new Color(.79f, .37f, .37f));
+        background.material.color = new Color(.79f, .37f, .37f);
     }
 }

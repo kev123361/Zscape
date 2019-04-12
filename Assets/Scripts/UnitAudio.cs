@@ -5,14 +5,20 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class UnitAudio : MonoBehaviour
 {
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     public GameObject DeathFXObject;
     public AudioClip shootSFX;
     public AudioClip deathSFX;
     public AudioClip bombThrowSFX;
+    public AudioClip damageTakenSFX;
     // Start is called before the first frame update
     void Start()
+    {
+        
+    }
+
+    private void OnEnable()
     {
         audioSource = GetComponent<AudioSource>();
     }
@@ -37,5 +43,10 @@ public class UnitAudio : MonoBehaviour
     public void PlayThrowSFX()
     {
         audioSource.PlayOneShot(bombThrowSFX);
+    }
+
+    public void DamageTakenSFX()
+    {
+        audioSource.PlayOneShot(damageTakenSFX);
     }
 }

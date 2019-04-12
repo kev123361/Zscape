@@ -7,7 +7,7 @@ public class Enemy : Unit
     private float timer = 0f;
     public float timeToShoot;
 
-    public UnitAudio audio;
+    
     public float difficultyMultiplier = .2f;
 
     public float bulletSpeed;
@@ -30,7 +30,7 @@ public class Enemy : Unit
         }
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
-        audio = GetComponent<UnitAudio>();
+        
         EliteSpawn();
         SetLevelStats();
         //Dumb way to get the health UI to update
@@ -103,7 +103,7 @@ public class Enemy : Unit
     {
         if (Random.Range(-10, 10) > 6)
         {
-            difficultyMultiplier = 1;
+            difficultyMultiplier = .4f;
             isElite = true;
             Debug.Log(this.gameObject.ToString() + " and I AM ELITE");
             //Make effect

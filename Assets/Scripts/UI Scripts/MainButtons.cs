@@ -28,4 +28,9 @@ public class MainButtons : MonoBehaviour
     {
         anim.SetTrigger("slideout");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

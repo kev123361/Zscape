@@ -9546,9 +9546,12 @@ MonoBehaviour:
   acceleration: 0
   existTime: 0.3
   damage: 25
+  enemyDamage: 0
+  isCrit: 0
   isEnemyProjectile: 0
   isIndicatorOn: 0
   isBeam: 1
+  isDiamond: 0
   rb: {fileID: 0}
 --- !u!54 &8804375012557928008
 Rigidbody:
@@ -9575,7 +9578,8 @@ AudioSource:
   m_GameObject: {fileID: 8804375012557928004}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: e1f3fff64d3c62445bc1e3e27f0fcb54,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 716f7ecd54d0e06418aad0d7d9d9d3bb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1

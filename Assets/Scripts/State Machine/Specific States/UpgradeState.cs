@@ -44,7 +44,7 @@ public class UpgradeState : FlowState
     {
         "Fire faster when stationary",
         "Deal and Receive 2x Damage",
-        "Restore 3 Health on Enemy Kills"
+        "+5 Health on Enemy Kills"
     };
 
     private int numOfUpgrades = 7;

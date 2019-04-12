@@ -11,6 +11,8 @@ public abstract class Unit : MonoBehaviour
     public float maxHealth;
     public float health;
 
+    public UnitAudio audio;
+
     public Projectile bullet;
     public Bomb bomb;
     
@@ -18,6 +20,7 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void OnEnable()
     {
+        audio = GetComponent<UnitAudio>();
         Canvas healthUI = gameObject.GetComponentInChildren<Canvas>();
         if (healthUI == null)
         {
@@ -63,16 +66,18 @@ public abstract class Unit : MonoBehaviour
         pos = new Vector2Int(tileCoords[0], tileCoords[1]);
     }
 
-    public void LoseHealth(int damage)
+    public virtual void LoseHealth(int damage)
     {
         health -= damage;
         ChangeHealthUI(damage);
+        audio.DamageTakenSFX();
     }
 
     public void LoseHealth(int damage, bool isCrit)
     {
         health -= damage;
         ChangeHealthUI(damage);
+        audio.DamageTakenSFX();
     }
 
     private void ChangeHealthUI(int damage)
