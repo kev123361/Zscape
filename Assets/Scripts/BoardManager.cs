@@ -184,6 +184,7 @@ public class BoardManager : MonoBehaviour
                 if (curr)
                 {
                     curr.UnwarnTile();
+                    curr.UnwarnBombTile();
                 }
                
             }

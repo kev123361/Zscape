@@ -34,6 +34,16 @@ public class Tile : MonoBehaviour
         space.isAttack = false;
     }
 
+    public void WarnBombTile()
+    {
+        space.isBombAttack = true;
+    }
+
+    public void UnwarnBombTile()
+    {
+        space.isBombAttack = false;
+    }
+
     public GameObject SpawnUnit(GameObject unit, BoardManager bm)
     {
         
