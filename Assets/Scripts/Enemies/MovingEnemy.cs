@@ -12,8 +12,8 @@ public class MovingEnemy : Enemy
     {
         myTile[0] = pos.x;
         myTile[1] = pos.y;
-        timeToShoot = Random.Range(0.5f, 1.0f);
         audio = GetComponent<UnitAudio>();
+        timeToShoot = Random.Range(timeToShoot - .5f, timeToShoot + .5f);
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
         difficultyMultiplier = .2f;
@@ -43,7 +43,7 @@ public class MovingEnemy : Enemy
             }
             
             timer = 0f;
-            timeToShoot = Random.Range(0.5f, 1.0f);
+            timeToShoot = Random.Range(timeToShoot - .5f, timeToShoot + .5f);
         }
     }
 

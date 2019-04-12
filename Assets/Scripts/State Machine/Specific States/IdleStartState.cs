@@ -26,6 +26,7 @@ public class IdleStartState : FlowState
     public override IEnumerator OnExit()
     {
         Debug.Log("Exit StartState");
+        ResetStats();
         startButton.onClick.RemoveAllListeners();
         return base.OnExit();
     }
@@ -47,6 +48,7 @@ public class IdleStartState : FlowState
         startButton.gameObject.SetActive(true);
         creditsButton.gameObject.SetActive(true);
         optionsButton.gameObject.SetActive(true);
+        howtoplayButton.gameObject.SetActive(true);
     }
     
     private void HideButtons()
@@ -55,5 +57,13 @@ public class IdleStartState : FlowState
         startButton.gameObject.SetActive(false);
         creditsButton.gameObject.SetActive(false);
         optionsButton.gameObject.SetActive(false);
+        howtoplayButton.gameObject.SetActive(false);
     }
+
+    private void ResetStats()
+    {
+        enemyManagerRef.ResetCounter();
+        boardManagerRef.ResetStats();
+    }
+
 }

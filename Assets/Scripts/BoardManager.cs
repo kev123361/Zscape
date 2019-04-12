@@ -22,6 +22,8 @@ public class BoardManager : MonoBehaviour
     public Player playerRef;
     private int health;
 
+    public float gameTime = 0f;
+
     //Event handlers that signify that the board has completed initializing
     public delegate void BeginRound();
     public static event BeginRound OnBeginRound;
@@ -89,7 +91,7 @@ public class BoardManager : MonoBehaviour
 
     void Update()
     {
-        
+        gameTime += Time.deltaTime;
     }
 
     // Check tileOccupancy to see if a Tile is open
@@ -158,5 +160,18 @@ public class BoardManager : MonoBehaviour
     public void IncrementLevel()
     {
         level += 1;
+    }
+
+    public void ResetStats()
+    {
+        ResetLevel();
+        gameTime = 0f;
+    }
+
+    public String GetEndTime()
+    {
+        int time = (int)gameTime;
+
+        return (time / 60).ToString() + ":" + (time % 60).ToString();
     }
 }

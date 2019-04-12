@@ -14,6 +14,7 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField]
     private int numEnemies = 9999;
+    public int enemiesDefeated = 0;
 
     private bool spawned;
 
@@ -71,6 +72,8 @@ public class EnemyManager : MonoBehaviour
     public void EnemyDied()
     {
         numEnemies -= 1;
+        enemiesDefeated += 1;
+
         Debug.Log(numEnemies);
         if (numEnemies <= 0)
         {
@@ -98,5 +101,15 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         if (OnRoundWin != null)
             OnRoundWin();
+    }
+
+    public void ResetCounter()
+    {
+        enemiesDefeated = 0;
+    }
+
+    public int GetEnemiesDefeated()
+    {
+        return enemiesDefeated;
     }
 }

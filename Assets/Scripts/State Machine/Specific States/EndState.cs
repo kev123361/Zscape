@@ -9,6 +9,7 @@ public class EndState : FlowState
     {
         Debug.Log("Enter EndState");
         ButtonSetup();
+        SetStats();
         ClearScreen();
 
         //Telemetrics
@@ -31,10 +32,19 @@ public class EndState : FlowState
 
     private void ButtonSetup()
     {
+        gameOverPanel.gameObject.SetActive(true);
         endButton.gameObject.SetActive(true);
         endButton.onClick.AddListener(() => RestartGameLoop());
         //ENTER FUNCTIONALITY TO DISPLAY LOGISTICS
         //boardManagerRef.GetLevel();
+    }
+
+    private void SetStats()
+    {
+        GameOverPanel endScreen = gameOverPanel.gameObject.GetComponent<GameOverPanel>();
+        endScreen.SetRoundText("Rounds Completed: " + (boardManagerRef.GetLevel() - 1).ToString());
+        endScreen.SetTimeText("Time: " + boardManagerRef.GetEndTime());
+        endScreen.SetEnemiesDefeatedText("Enemies Defeated: " + enemyManagerRef.GetEnemiesDefeated().ToString());
     }
 
     private void RestartGameLoop()
@@ -48,6 +58,5 @@ public class EndState : FlowState
         enemyManagerRef.ClearAllEnemies();
         enemyManagerRef.gameObject.SetActive(false);
         boardManagerRef.gameObject.SetActive(false);
-        boardManagerRef.ResetLevel();
     }
 }

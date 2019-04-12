@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4673103299452604101}
   - component: {fileID: 4673103300794740995}
   - component: {fileID: 4673103300794740994}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cone.001_shard.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,8 +120,8 @@ GameObject:
   - component: {fileID: 4673103299454503975}
   - component: {fileID: 4673103299775135047}
   - component: {fileID: 4673103299775135044}
-  m_Layer: 0
-  m_Name: ExplodingDiamond_Model
+  m_Layer: 14
+  m_Name: RegularEnemyExplodeModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 4673103299452604113}
   - component: {fileID: 4673103300023982166}
   - component: {fileID: 4673103300023982169}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cone.001_shard.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 4673103299452604115}
   - component: {fileID: 4673103300855883996}
   - component: {fileID: 4673103300855883999}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cone.001_shard.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 4673103299452604117}
   - component: {fileID: 4673103300231586233}
   - component: {fileID: 4673103300231586232}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 4673103299452604119}
   - component: {fileID: 4673103300016455485}
   - component: {fileID: 4673103300016455484}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cone.001_shard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 4673103299452604121}
   - component: {fileID: 4673103299541738334}
   - component: {fileID: 4673103299541738273}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cone.001_shard.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 4673103299452604123}
   - component: {fileID: 4673103299259603825}
   - component: {fileID: 4673103299259603824}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cone.001_shard.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -929,7 +929,7 @@ GameObject:
   - component: {fileID: 4673103299452604125}
   - component: {fileID: 4673103301173360960}
   - component: {fileID: 4673103301173360963}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cone.001_shard.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1038,7 +1038,7 @@ GameObject:
   - component: {fileID: 4673103299452604127}
   - component: {fileID: 4673103299826132720}
   - component: {fileID: 4673103299826132723}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cone.001_shard.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
