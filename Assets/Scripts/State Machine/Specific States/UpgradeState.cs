@@ -64,8 +64,6 @@ public class UpgradeState : FlowState
         StartButtonManager();
         ClearScreen();
 
-        boardManagerRef.IncrementLevel();
-
         return base.OnEnter();
     }
 
