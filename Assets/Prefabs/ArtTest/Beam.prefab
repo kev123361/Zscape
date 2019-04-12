@@ -145,7 +145,7 @@ MonoBehaviour:
   acceleration: 0
   existTime: 100
   damage: 10
-  enemyDamage: 15
+  enemyDamage: 30
   isCrit: 0
   isEnemyProjectile: 1
   isIndicatorOn: 1

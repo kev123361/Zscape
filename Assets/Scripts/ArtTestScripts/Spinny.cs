@@ -24,7 +24,7 @@ public class Spinny : MonoBehaviour {
         audio = GetComponent<UnitAudio>();
         myProjectile = beamPrefab.GetComponent<Projectile>();
         myEnemy = GetComponent<Enemy>();
-        myProjectile.SetEnemyDamage(myEnemy.difficultyMultiplier, myEnemy.bm.level);
+        //myProjectile.SetEnemyDamage(myEnemy.difficultyMultiplier, myEnemy.bm.level);
     }
 
 	private IEnumerator Attack() {
