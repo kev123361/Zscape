@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
     public float existTime;
     public int damage;
 
+    public int enemyDamage;
+
     public bool isCrit = false;
     private int playerDamage;
 
@@ -70,8 +72,8 @@ public class Projectile : MonoBehaviour
                     currentTile.UnwarnTile();
                 }
             }
+            other.GetComponent<Player>().LoseHealth(enemyDamage);
 
-            other.GetComponent<Player>().LoseHealth(damage);
         } else if (!GetComponent<Explosion>() && isEnemyProjectile && isIndicatorOn && other.gameObject.CompareTag("Tile"))
         {
             Tile otherTile = other.GetComponent<Tile>();
@@ -123,5 +125,10 @@ public class Projectile : MonoBehaviour
         {
             tile.UnwarnTile();
         }
+    }
+
+    public void SetEnemyDamage(float multiplier, int level)
+    {
+        enemyDamage += Mathf.RoundToInt(enemyDamage * (multiplier * level));
     }
 }

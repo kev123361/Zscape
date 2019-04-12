@@ -8,13 +8,15 @@ public class Enemy : Unit
     public float timeToShoot;
 
     public UnitAudio audio;
-    public float difficultyMultiplier = .1f;
+    public float difficultyMultiplier = .2f;
 
     public float bulletSpeed;
     public float bulletAccel;
     public float bulletDespawn;
 
     public GameObject deathModel;
+
+    protected bool isElite = false;
 
     public delegate void EnemyDeath();
     public static EnemyDeath OnEnemyDeath;
@@ -29,10 +31,21 @@ public class Enemy : Unit
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
         audio = GetComponent<UnitAudio>();
-        health += health * difficultyMultiplier * (bm.GetLevel() - 1);
-        maxHealth = health;
+        EliteSpawn();
+        SetLevelStats();
         //Dumb way to get the health UI to update
         LoseHealth(0);
+    }
+
+    protected virtual void SetLevelStats()
+    {
+        if (bm.level > 2)
+        {
+            health += health * (difficultyMultiplier * (bm.GetLevel()));
+        }
+        
+        maxHealth = health;
+        
     }
 
     
@@ -55,11 +68,13 @@ public class Enemy : Unit
     new public virtual void Shoot()
     {
         var newBullet = Instantiate(bullet, transform.position + (transform.forward * 2), transform.rotation);
+        newBullet.SetEnemyDamage(difficultyMultiplier, bm.GetLevel());
         newBullet.SetSpeed(bulletSpeed);
         newBullet.SetAcceleration(bulletAccel);
         newBullet.SetExistTime(bulletDespawn);
         newBullet.transform.parent = transform;
         newBullet.isIndicatorOn = true;
+        Debug.Log("Checking for GEAR");
     }
 
     // Before deleting gameObject, make call to enemy manager to decrement enemy count
@@ -78,5 +93,20 @@ public class Enemy : Unit
         Instantiate(deathModel, transform.position, transform.rotation);
         bm.GetTile(pos.x, pos.y).UnwarnTile();
         Destroy(gameObject);
+    }
+
+    public virtual void EliteSpawn()
+    {
+        if (Random.Range(-10, 10) > 6)
+        {
+            difficultyMultiplier = 1;
+            isElite = true;
+            Debug.Log(this.gameObject.ToString() + " and I AM ELITE");
+            //Make effect
+        }
+        else
+        {
+            Debug.Log(this.gameObject.ToString() + " and I AM NOT ELITE");
+        }
     }
 }

@@ -13,7 +13,7 @@ public class BoardManager : MonoBehaviour
     public int[,] tileOccupancy;
     
     public static bool gameStarted;
-    public int level = 0;
+    public int level = 1;
 
     enum tileSet {THREExEIGHT = 0};
     private Vector2Int[] boardRatios = {new Vector2Int(3, 8) };
@@ -155,7 +155,7 @@ public class BoardManager : MonoBehaviour
         level = 0;
     }
 
-    private void IncrementLevel()
+    public void IncrementLevel()
     {
         level += 1;
     }

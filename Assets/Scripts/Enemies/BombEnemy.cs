@@ -13,14 +13,11 @@ public class BombEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
-
         audio = GetComponent<UnitAudio>();
-
-
         timeToShoot = Random.Range(3.0f, 5.0f);
         //boardSize = bm.tiles.Length;
-        health += health * difficultyMultiplier * (bm.GetLevel() - 1);
-        maxHealth = health;
+        EliteSpawn();
+        SetLevelStats();
         //Dumb way to get the health UI to update
         LoseHealth(0);
     }
@@ -72,12 +69,21 @@ public class BombEnemy : Enemy
             newBomb.SetBoard(bm);
             newBomb.SetEnemyProjectile(true);
             newBomb.SetRigidBody(newBomb.GetComponent<Rigidbody>());
-            newBomb.damage = bombDamage;
+            newBomb.damage = GetBombDamage();
             newBomb.SetVelocity(new Vector3(2 * (target.x - pos.x), 4, 2 * (target.y - pos.y)));
-
+            
             bombsFired += 1;
 
             yield return new WaitForSeconds(.75f);
         }
+    }
+
+    private int GetBombDamage()
+    {
+        if (bm.level > 2)
+        {
+            return Mathf.RoundToInt(bombDamage + (bombDamage * difficultyMultiplier * bm.level));
+        }
+        return Mathf.RoundToInt(bombDamage + (bombDamage * difficultyMultiplier));
     }
 }

@@ -22,6 +22,7 @@ public class ChargeEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
+
         rb = GetComponent<Rigidbody>();
         sourcePos = rb.position;
         charging = false;
@@ -31,8 +32,8 @@ public class ChargeEnemy : Enemy
         myTile[0] = pos.x;
         myTile[1] = pos.y;
         //boardSize = bm.tiles.Length;
-        health += health * difficultyMultiplier * (bm.GetLevel() - 1);
-        maxHealth = health;
+        EliteSpawn();
+        SetLevelStats();
         //Dumb way to get the health UI to update
         LoseHealth(0);
     }
@@ -40,6 +41,7 @@ public class ChargeEnemy : Enemy
     new public virtual void Shoot()
     {
         var newBullet = Instantiate(bullet, transform.position, transform.rotation);
+        Debug.Log(difficultyMultiplier + ", " + bm.level);
         newBullet.SetSpeed(bulletSpeed);
         newBullet.SetAcceleration(bulletAccel);
         newBullet.SetExistTime(bulletDespawn);
@@ -106,7 +108,7 @@ public class ChargeEnemy : Enemy
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<Player>().LoseHealth(damage);
+            other.GetComponent<Player>().LoseHealth(GetDamage());
         } else if (other.gameObject.CompareTag("Tile") && charging)
         {
             other.gameObject.GetComponent<Tile>().WarnTile();
@@ -155,5 +157,10 @@ public class ChargeEnemy : Enemy
         if (myTile[0] > 2 || myTile[0] < 0) myTile[0] = 1;
         if (myTile[1] > 8) myTile[1] = 7;
         if (myTile[1] < 5) myTile[1] = 6;
+    }
+
+    private int GetDamage()
+    {
+        return damage += Mathf.RoundToInt(damage * (difficultyMultiplier * bm.level));
     }
 }

@@ -27,7 +27,7 @@ public class UpgradeState : FlowState
     };
     private string[] descriptions =
     {
-        "Restore 25 Health",
+        "Restore 50 Health",
         "+5 Bullet Damage",
         "+10 Bomb Damage",
         "+15% Bomb Fire Rate",
@@ -63,7 +63,9 @@ public class UpgradeState : FlowState
         Shuffle();
         StartButtonManager();
         ClearScreen();
-        
+
+        boardManagerRef.IncrementLevel();
+
         return base.OnEnter();
     }
 

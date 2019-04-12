@@ -4793,6 +4793,8 @@ MonoBehaviour:
   acceleration: 0
   existTime: 0
   damage: 0
+  enemyDamage: 0
+  isCrit: 0
   isEnemyProjectile: 1
   isIndicatorOn: 1
   isBeam: 0
