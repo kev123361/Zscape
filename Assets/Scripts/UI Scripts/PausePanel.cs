@@ -66,6 +66,7 @@ public class PausePanel : MonoBehaviour
 
     public void Quit()
     {
+        Time.timeScale = 1f;
         if (OnQuit != null)
         {
             OnQuit();
