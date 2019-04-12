@@ -7,7 +7,7 @@
         audio = GetComponent<UnitAudio>();
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
-        difficultyMultiplier = .1f;
+        difficultyMultiplier = .05f;
         SetLevelStats();
         //Dumb way to get the health UI to update
         LoseHealth(0);

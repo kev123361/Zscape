@@ -32,8 +32,8 @@ public class ChargeEnemy : Enemy
         myTile[0] = pos.x;
         myTile[1] = pos.y;
         //boardSize = bm.tiles.Length;
-        health += health * difficultyMultiplier * (bm.GetLevel() - 1);
-        maxHealth = health;
+        EliteSpawn();
+        SetLevelStats();
         //Dumb way to get the health UI to update
         LoseHealth(0);
     }

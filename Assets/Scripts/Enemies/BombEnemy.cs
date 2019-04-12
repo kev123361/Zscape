@@ -13,12 +13,10 @@ public class BombEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
-
         audio = GetComponent<UnitAudio>();
-
-
         timeToShoot = Random.Range(3.0f, 5.0f);
         //boardSize = bm.tiles.Length;
+        EliteSpawn();
         SetLevelStats();
         //Dumb way to get the health UI to update
         LoseHealth(0);

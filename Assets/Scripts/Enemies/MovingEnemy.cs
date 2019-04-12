@@ -17,6 +17,7 @@ public class MovingEnemy : Enemy
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
         difficultyMultiplier = .2f;
+        EliteSpawn();
         SetLevelStats();
     }
 

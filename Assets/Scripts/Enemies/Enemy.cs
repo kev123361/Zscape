@@ -16,6 +16,8 @@ public class Enemy : Unit
 
     public GameObject deathModel;
 
+    protected bool isElite = false;
+
     public delegate void EnemyDeath();
     public static EnemyDeath OnEnemyDeath;
     
@@ -29,6 +31,7 @@ public class Enemy : Unit
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
         audio = GetComponent<UnitAudio>();
+        EliteSpawn();
         SetLevelStats();
         //Dumb way to get the health UI to update
         LoseHealth(0);
@@ -90,5 +93,20 @@ public class Enemy : Unit
         Instantiate(deathModel, transform.position, transform.rotation);
         bm.GetTile(pos.x, pos.y).UnwarnTile();
         Destroy(gameObject);
+    }
+
+    public virtual void EliteSpawn()
+    {
+        if (Random.Range(-10, 10) > 6)
+        {
+            difficultyMultiplier = 1;
+            isElite = true;
+            Debug.Log(this.gameObject.ToString() + " and I AM ELITE");
+            //Make effect
+        }
+        else
+        {
+            Debug.Log(this.gameObject.ToString() + " and I AM NOT ELITE");
+        }
     }
 }
