@@ -26,6 +26,7 @@ public class GameFlowController : MonoBehaviour
     #region World Triggers
     public Button startUI;
     public Button optionsUI;
+    public Button howtoplayUI;
     public Button creditsUI;
     public Button upgradeUI1;
     public Button upgradeUI2;
@@ -34,6 +35,8 @@ public class GameFlowController : MonoBehaviour
     public Canvas UICanvas;
     public RectTransform UpgradePanel;
     public Text titleCard;
+    public RectTransform GameOverPanel;
+    
     #endregion
 
     #region Conditional List

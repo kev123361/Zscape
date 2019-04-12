@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6920649486650827137}
   - component: {fileID: 6920649486652733903}
   - component: {fileID: 6920649486652733902}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube_shard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 6920649486650827139}
   - component: {fileID: 6920649486652733901}
   - component: {fileID: 6920649486652733900}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 6920649486650827141}
   - component: {fileID: 6920649486652733899}
   - component: {fileID: 6920649486652733898}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube_shard.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 6920649486650827143}
   - component: {fileID: 6920649486652733897}
   - component: {fileID: 6920649486652733896}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube_shard.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 6920649486650827145}
   - component: {fileID: 6920649486652733911}
   - component: {fileID: 6920649486652733910}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube_shard.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 6920649486650827147}
   - component: {fileID: 6920649486652733909}
   - component: {fileID: 6920649486652733908}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube_shard.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +673,7 @@ GameObject:
   - component: {fileID: 6920649486650827149}
   - component: {fileID: 6920649486652733907}
   - component: {fileID: 6920649486652733906}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube_shard.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -783,7 +783,7 @@ GameObject:
   - component: {fileID: 6920649486650827151}
   - component: {fileID: 6920649486652733905}
   - component: {fileID: 6920649486652733904}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube_shard.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -891,7 +891,7 @@ GameObject:
   - component: {fileID: 6920649486652597105}
   - component: {fileID: 6920649486652733919}
   - component: {fileID: 6920649486652733918}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BlockExplodeModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1046,7 +1046,7 @@ GameObject:
   - component: {fileID: 6920649486650827155}
   - component: {fileID: 6920649486652733917}
   - component: {fileID: 6920649486652733916}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube_shard.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}

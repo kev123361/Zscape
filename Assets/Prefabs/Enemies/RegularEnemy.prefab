@@ -1021,7 +1021,7 @@ MonoBehaviour:
   health: 50
   bullet: {fileID: 1113165598809729691, guid: f30fff05a67d0264d9b944a8a087c353, type: 3}
   bomb: {fileID: 0}
-  timeToShoot: 1.3
+  timeToShoot: 2.6
   audio: {fileID: 0}
   difficultyMultiplier: 0.1
   bulletSpeed: 0
@@ -1154,7 +1154,7 @@ MonoBehaviour:
     type: 3}
   shootSFX: {fileID: 0}
   deathSFX: {fileID: 8300000, guid: b7e6ac97a0a82b24689b186395cff32d, type: 3}
-  bombSFX: {fileID: 0}
+  bombThrowSFX: {fileID: 0}
 --- !u!1001 &4874782888258073990
 PrefabInstance:
   m_ObjectHideFlags: 0

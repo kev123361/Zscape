@@ -38,6 +38,14 @@ public class FlowState : State<GameFlowController>
         }
     }
 
+    public Button howtoplayButton
+    {
+        get
+        {
+            return parentObject.howtoplayUI;
+        }
+    }
+
     public Button upgradeButton2
     {
         get
@@ -99,6 +107,14 @@ public class FlowState : State<GameFlowController>
         get
         {
             return parentObject.titleCard;
+        }
+    }
+
+    public RectTransform gameOverPanel
+    {
+        get
+        {
+            return parentObject.GameOverPanel;
         }
     }
 }

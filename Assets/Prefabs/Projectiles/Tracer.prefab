@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1320056453000266705}
   - component: {fileID: 3942656884595391709}
   - component: {fileID: 2447789445864882170}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tracer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,8 +108,12 @@ MonoBehaviour:
   speed: 0
   acceleration: 0
   existTime: 0
+  damage: 0
+  enemyDamage: 0
+  isCrit: 0
   isEnemyProjectile: 1
   isIndicatorOn: 1
+  isBeam: 0
   rb: {fileID: 0}
 --- !u!54 &2447789445864882170
 Rigidbody:
