@@ -24,7 +24,7 @@ public class Enemy : Unit
     // Start is called before the first frame update
     void Start()
     {
-        if (!GetComponent<Spinny>())
+        if (!GetComponent<Spinny>() && timeToShoot != 3.5f)
         {
             timeToShoot = Random.Range(0.8f, 1.5f);
         }
@@ -61,7 +61,11 @@ public class Enemy : Unit
         {
             Shoot();
             timer = 0f;
-            timeToShoot = Random.Range(0.8f, 1.5f);
+            if(timeToShoot != 3.5f)
+            {
+                timeToShoot = Random.Range(0.8f, 1.5f);
+            }
+            
         }
     }
 
