@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7424920740772116448}
   - component: {fileID: 7424920740772116455}
+  - component: {fileID: 3102590880188409867}
   - component: {fileID: 7424920740772116454}
   m_Layer: 0
   m_Name: Background
@@ -40,6 +41,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7424920740772116452}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &3102590880188409867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424920740772116452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2b70da47b0c6244b5b665b63019df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  regularFlow: {fileID: 4800000, guid: cd57825bd6c192d49af24de45878c3c9, type: 3}
+  redFlow: {fileID: 4800000, guid: 75d3cbba201002b4bbc8d46c14b970ee, type: 3}
+  bm: {fileID: 0}
+  background: {fileID: 0}
 --- !u!23 &7424920740772116454
 MeshRenderer:
   m_ObjectHideFlags: 0
