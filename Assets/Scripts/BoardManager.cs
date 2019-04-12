@@ -176,14 +176,15 @@ public class BoardManager : MonoBehaviour
 
     public void UnwarnAllTiles()
     {
-        for (int i = 0; i < tileBoard.rows.Length; i++)
+        for (int i = 0; i <= 8; i++)
         {
-            for (int j = 0; j < tileBoard.rows[i].column.Length; j++)
+            for (int j = 0; j <= 8; j++)
             {
                 Tile curr = GetTile(i, j);
                 if (curr)
                 {
                     curr.UnwarnTile();
+                    curr.UnwarnBombTile();
                 }
                
             }

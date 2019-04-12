@@ -5,6 +5,7 @@ using UnityEngine;
 public class Space : MonoBehaviour
 {
     public bool isAttack;
+    public bool isBombAttack;
     public bool isPlayer;
     public float lerpSpeed = 0.1f;
     [Header("Idle Shader Values")]
@@ -25,7 +26,13 @@ public class Space : MonoBehaviour
     public float attackWaveHeight = 1;
     public Color attackColor = new Color(1, 0.1254468f, 0.07843135f);
     public Color attackFresnelColor = new Color(0.8588235f, 0.4467003f, 0.2313725f);
-    
+    [Header("Bomb Attack Shader Values")]
+    public float bombAttackWaveSpeed = 0.4f;
+    public float bombAttackWaveAmount = 1;
+    public float bombAttackWaveHeight = 1;
+    public Color bombAttackColor = new Color(1, 0.1254468f, 0.07843135f);
+    public Color bombAttackFresnelColor = new Color(0.8588235f, 0.4467003f, 0.2313725f);
+
     // current shader values
     float waveSpeed;
     float waveAmount;
@@ -48,19 +55,33 @@ public class Space : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isAttack) {
+        if (isBombAttack)
+        {
+            waveSpeed = Mathf.Lerp(waveSpeed, bombAttackWaveSpeed, lerpSpeed);
+            waveAmount = Mathf.Lerp(waveAmount, bombAttackWaveAmount, lerpSpeed);
+            waveHeight = Mathf.Lerp(waveHeight, bombAttackWaveHeight, lerpSpeed);
+            color = Color.Lerp(color, bombAttackColor, lerpSpeed);
+            fresnelColor = Color.Lerp(fresnelColor, bombAttackFresnelColor, lerpSpeed);
+        }
+        else if (isAttack)
+        {
             waveSpeed = Mathf.Lerp(waveSpeed, attackWaveSpeed, lerpSpeed);
             waveAmount = Mathf.Lerp(waveAmount, attackWaveAmount, lerpSpeed);
             waveHeight = Mathf.Lerp(waveHeight, attackWaveHeight, lerpSpeed);
             color = Color.Lerp(color, attackColor, lerpSpeed);
             fresnelColor = Color.Lerp(fresnelColor, attackFresnelColor, lerpSpeed);
-        } else if (isPlayer) {
+        }
+        
+        else if (isPlayer)
+        {
             waveSpeed = Mathf.Lerp(waveSpeed, playerWaveSpeed, lerpSpeed);
             waveAmount = Mathf.Lerp(waveAmount, playerWaveAmount, lerpSpeed);
             waveHeight = Mathf.Lerp(waveHeight, playerWaveHeight, lerpSpeed);
             color = Color.Lerp(color, playerColor, lerpSpeed);
             fresnelColor = Color.Lerp(fresnelColor, playerFresnelColor, lerpSpeed);
-        } else {
+        }
+        else
+        {
             waveSpeed = Mathf.Lerp(waveSpeed, idleWaveSpeed, lerpSpeed);
             waveAmount = Mathf.Lerp(waveAmount, idleWaveAmount, lerpSpeed);
             waveHeight = Mathf.Lerp(waveHeight, idleWaveHeight, lerpSpeed);

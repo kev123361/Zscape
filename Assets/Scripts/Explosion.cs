@@ -58,6 +58,7 @@ public class Explosion : MonoBehaviour
                 {
                     Debug.Log(currTile);
                     currTile.UnwarnTile();
+                    currTile.UnwarnBombTile();
                 }
             }
         }

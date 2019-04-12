@@ -14,13 +14,14 @@ public class Bomb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bm.GetTile(explosionPos.x, explosionPos.y).WarnTile();
+        bm.GetTile(explosionPos.x, explosionPos.y).WarnBombTile();
     }
 
     // Update is called once per frame
     void Update()
     {
-        bm.GetTile(explosionPos.x, explosionPos.y).WarnTile();
+        bm.GetTile(explosionPos.x, explosionPos.y).WarnBombTile();
+        if (rb.position.y < -10) Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

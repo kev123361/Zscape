@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttack: 0
+  isBombAttack: 0
   isPlayer: 0
   lerpSpeed: 0.35
   idleWaveSpeed: 0.063
@@ -63,8 +64,13 @@ MonoBehaviour:
   attackWaveSpeed: 0.4
   attackWaveAmount: 1
   attackWaveHeight: 1
-  attackColor: {r: 1, g: 0.1254468, b: 0.07843135, a: 1}
-  attackFresnelColor: {r: 0.8588235, g: 0.4467003, b: 0.2313725, a: 1}
+  attackColor: {r: 1, g: 0, b: 0, a: 1}
+  attackFresnelColor: {r: 1, g: 0.45545834, b: 0, a: 1}
+  bombAttackWaveSpeed: 0.4
+  bombAttackWaveAmount: 1
+  bombAttackWaveHeight: 1
+  bombAttackColor: {r: 0, g: 0, b: 0, a: 1}
+  bombAttackFresnelColor: {r: 1, g: 0, b: 0, a: 1}
   r: {fileID: 4099988674998399172}
 --- !u!114 &8008351302158285587
 MonoBehaviour:
