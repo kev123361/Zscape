@@ -10,8 +10,10 @@ public class Player : Unit
     public float bombCD;
     private float initialBombCD;
     private float bombRateModifier = 0f;
+    
     public float shootCD;
     private float initialShootCD;
+    private float baseShootRateModifier;
     private float shootRateModifier = 0f;
     public int bulletDamage = 10;
     public int bombDamage = 25;
@@ -91,14 +93,16 @@ public class Player : Unit
 
     private void Update()
     {
-        
         CheckMovementInputs();
     }
 
     public void ResetFireRate()
     {
+        shootRateModifier = baseShootRateModifier;
         turretStacks = 0;
         shootCD = initialShootCD / (1 + (1 * shootRateModifier));
+        
+        //Debug.Log("turret shoot: " + turretShootCD + " shootCD: " + shootCD + " shootRateMod: " + shootRateModifier);
     }
 
     private void CheckMovementInputs()
@@ -179,9 +183,7 @@ public class Player : Unit
     public override void Move(int[] tileCoords)
     {
         base.Move(tileCoords);
-        shootRateModifier -= turretStacks * turretModifer;
-        turretStacks = 0;
-        shootCD = initialShootCD / (1 + (1 * shootRateModifier));
+        ResetFireRate();
     }
 
     public override bool LegalMove(int[] tileCoords)
@@ -277,6 +279,7 @@ public class Player : Unit
         shootCD = initialShootCD;
         bombCD = initialBombCD;
         bombRateModifier = 0f;
+        baseShootRateModifier = 0f;
         shootRateModifier = 0f;
         bulletDamage = 10;
         bombDamage = 25;
@@ -350,7 +353,8 @@ public class Player : Unit
 
     public void UpgradeBulletCD(float percentBonus)
     {
-        shootRateModifier += percentBonus;
+        baseShootRateModifier += percentBonus;
+        shootRateModifier = baseShootRateModifier;
         shootCD = initialShootCD / (1 + (1 * shootRateModifier));
     }
 
@@ -398,4 +402,6 @@ public class Player : Unit
     {
         glassCannonStacks += 1;
     }
+
+
 }

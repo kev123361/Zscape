@@ -67,11 +67,11 @@ public class ChargeEnemy : Enemy
                 //DISABLE IS ISSUES ARISE
                setMovement();
                Move(myTile);
-                sourcePos = rb.position;
+               sourcePos = rb.position;
 
            }
            timer = 0f;
-           timeToCharge = Random.Range(5.0f, 7.0f);
+           timeToCharge = Random.Range(3.0f, 5.0f);
         }
         else if (rb.position.z < -20)
         {

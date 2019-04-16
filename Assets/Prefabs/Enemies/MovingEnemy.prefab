@@ -132,7 +132,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   bullet: {fileID: 1113165598809729691, guid: f30fff05a67d0264d9b944a8a087c353, type: 3}
   bomb: {fileID: 0}
-  timeToShoot: 2.6
+  timeToShoot: 2
   difficultyMultiplier: 0.1
   bulletSpeed: 0
   bulletAccel: 10
