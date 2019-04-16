@@ -33,17 +33,17 @@ public class MovingEnemy : Enemy
         timer += Time.deltaTime;
         if (timer >= timeToShoot)
         {
-            if (Random.Range(-10, 10) >= -2)
+            if (Random.Range(-10, 10) >= 2)
             {
                 Shoot();
             } else
             {
-                setMovement();
+                setMovement(Random.Range(1, 5));
                 Move(myTile);
             }
             
             timer = 0f;
-            timeToShoot = Random.Range(timeToShoot - .5f, timeToShoot + .5f);
+            timeToShoot = Random.Range(timeToShoot - .25f, timeToShoot + .5f);
         }
     }
 
@@ -72,26 +72,38 @@ public class MovingEnemy : Enemy
     }
 
     // Move in the x axis only
-    private void setMovement()
+    private void setMovement(int caseVal)
     {
-        switch (Random.Range(1, 5))
+        switch (caseVal)
         {
             case 1: //move down
                 if (bm.checkUpGridAvailibility(myTile[0], myTile[1], pos.x + 1, myTile[1]))
                 {
                     myTile[0] = pos.x + 1;
-                }                
+                }
+                else
+                {
+                    setMovement(Random.Range(2, 5));
+                }
                 break;
             case 2: //move up
                 if (bm.checkUpGridAvailibility(myTile[0], myTile[1], pos.x - 1, myTile[1]))
                 {
                     myTile[0] = pos.x - 1;
                 }
+                else
+                {
+                    setMovement(Random.Range(1, 5));
+                }
                 break;
             case 3: //move side
                 if (bm.checkUpGridAvailibility(myTile[0], myTile[1], myTile[0], pos.y + 1))
                 {
                     myTile[1] = pos.y + 1;
+                }
+                else
+                {
+                    setMovement(Random.Range(1, 5));
                 }
                 break;
             case 4: //move up
