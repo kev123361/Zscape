@@ -42,7 +42,7 @@ public class Player : Unit
     public GameObject model;
     
 
-    public UnitAudio audio;
+    new public UnitAudio audio;
 
     //tileCoord[0] = row, tileCoord[1] = column
     public int[] playerCoordinates;
@@ -50,8 +50,8 @@ public class Player : Unit
     public delegate void DeathEvent();
     public static event DeathEvent OnDeath;
 
-    new protected int maxHealth = 150;
-    new protected int health;
+    //new protected int maxHealth = 150;
+    //new protected int health;
 
     
 
@@ -61,7 +61,7 @@ public class Player : Unit
         bm = board.GetComponent<BoardManager>();
         boardSize = bm.tiles.Length;
         playerCoordinates = new int[2];
-        health = maxHealth;
+        //health = maxHealth;
         bm.setPersistentHealth(health);
         
         audio = GetComponent<UnitAudio>();

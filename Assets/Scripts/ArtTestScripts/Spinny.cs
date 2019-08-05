@@ -9,7 +9,7 @@ public class Spinny : MonoBehaviour {
 	public Material defaultMaterial;
 	public Material telegraphMaterial;
 
-    private UnitAudio audio;
+    new private UnitAudio audio;
 
     public float timeToInitialFire;
     public float reloadTime;

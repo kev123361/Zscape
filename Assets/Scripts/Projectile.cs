@@ -102,7 +102,10 @@ public class Projectile : MonoBehaviour
             Tile otherTile = other.GetComponent<Tile>();
             otherTile.WarnTile();
             currentTile = otherTile;
-            collidingTiles.Add(otherTile);
+            if (!GetComponent<Bomb>())
+            {
+                collidingTiles.Add(otherTile);
+            }
         }
     }
 

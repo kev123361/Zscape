@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class MovingEnemy : Enemy
 {
-    private float timer = 0f;
+    //private float timer = 0f;
     private int[] myTile = new int[2];
 
     // Start is called before the first frame update
     void Start()
     {
+        health = 50;
+        maxHealth = 50;
         myTile[0] = pos.x;
         myTile[1] = pos.y;
-        audio = GetComponent<UnitAudio>();
+        uaudio = GetComponent<UnitAudio>();
         timeToShoot = Random.Range(timeToShoot - .5f, timeToShoot + .5f);
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
         difficultyMultiplier = .2f;
         EliteSpawn();
         SetLevelStats();
+        LoseHealth(0);
     }
 
     // Update is called once per frame
@@ -59,14 +62,14 @@ public class MovingEnemy : Enemy
     }
 
     // Before deleting gameObject, make call to enemy manager to decrement enemy count
-    private void Die()
+    public override void Die()
     {
         //GameObject.FindGameObjectWithTag("Enemy Manager").GetComponent<EnemyManager>().EnemyDied();
         if (OnEnemyDeath != null)
         {
             OnEnemyDeath();
         }
-        audio.PlayDeathSFX();
+        uaudio.PlayDeathSFX();
         bm.GetTile(pos.x, pos.y).UnwarnTile();
         Destroy(gameObject);
     }

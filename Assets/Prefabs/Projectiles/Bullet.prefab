@@ -112,9 +112,12 @@ MonoBehaviour:
   acceleration: 0
   existTime: 0
   damage: 0
+  enemyDamage: 0
+  isCrit: 0
   isEnemyProjectile: 0
   isIndicatorOn: 0
   isBeam: 0
+  isDiamond: 0
   rb: {fileID: 0}
 --- !u!54 &8281331339176233080
 Rigidbody:
@@ -3923,7 +3926,7 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 1
+    enabled: 0
     mode: 0
     ratio: 1
     lifetime:

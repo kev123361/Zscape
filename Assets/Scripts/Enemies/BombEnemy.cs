@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class BombEnemy : Enemy
 {
-    private float timer = 0f;
+    //private float timer = 0f;
     private Vector2Int target;
 
     public int bombDamage;
-    public GameObject deathModel;
+    //new public GameObject deathModel;
 
     // Start is called before the first frame update
     void Start()
     {
-        audio = GetComponent<UnitAudio>();
+        uaudio = GetComponent<UnitAudio>();
         timeToShoot = Random.Range(3.0f, 5.0f);
+        health = 50;
+        maxHealth = 50;
         //boardSize = bm.tiles.Length;
         EliteSpawn();
         SetLevelStats();
@@ -44,7 +46,7 @@ public class BombEnemy : Enemy
     }
 
     // Before deleting gameObject, make call to enemy manager to decrement enemy count
-    private void Die()
+    public override void Die()
     {
         //GameObject.FindGameObjectWithTag("Enemy Manager").GetComponent<EnemyManager>().EnemyDied();
         if (OnEnemyDeath != null)
@@ -62,7 +64,7 @@ public class BombEnemy : Enemy
         int bombsFired = 0;
         while (bombsFired < 3)
         {
-            audio.PlayThrowSFX();
+            uaudio.PlayThrowSFX();
             var newBomb = Instantiate(bomb, transform.position + (transform.up), transform.rotation);
             target.Set(Random.Range(0, 3), Random.Range(0, 4));
             newBomb.SetTarget(target);

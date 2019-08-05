@@ -3824,7 +3824,7 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 1
+    enabled: 0
     mode: 0
     ratio: 1
     lifetime:
@@ -4728,7 +4728,7 @@ GameObject:
   - component: {fileID: 8707467068502501462}
   - component: {fileID: 2596768154895457613}
   m_Layer: 12
-  m_Name: EnemyBullet
+  m_Name: BigEnemyBullet
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4810,9 +4810,12 @@ MonoBehaviour:
   acceleration: 0
   existTime: 0
   damage: 10
+  enemyDamage: 0
+  isCrit: 0
   isEnemyProjectile: 1
   isIndicatorOn: 0
   isBeam: 0
+  isDiamond: 0
   rb: {fileID: 0}
 --- !u!65 &8707467068502501462
 BoxCollider:

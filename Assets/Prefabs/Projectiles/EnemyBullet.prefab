@@ -3824,7 +3824,7 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 1
+    enabled: 0
     mode: 0
     ratio: 1
     lifetime:
@@ -4815,6 +4815,7 @@ MonoBehaviour:
   isEnemyProjectile: 1
   isIndicatorOn: 0
   isBeam: 0
+  isDiamond: 0
   rb: {fileID: 0}
 --- !u!65 &8707467068502501462
 BoxCollider:

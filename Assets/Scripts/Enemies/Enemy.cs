@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : Unit
 {
-    private float timer = 0f;
+    public float timer = 0f;
     public float timeToShoot;
 
     
@@ -24,6 +24,8 @@ public class Enemy : Unit
     // Start is called before the first frame update
     void Start()
     {
+        health = 70;
+        maxHealth = 70;
         if (!GetComponent<Spinny>() && timeToShoot != 3.5f)
         {
             timeToShoot = Random.Range(timeToShoot + 1f, timeToShoot - 1f);
@@ -37,11 +39,11 @@ public class Enemy : Unit
         LoseHealth(0);
     }
 
-    protected virtual void SetLevelStats()
+    public virtual void SetLevelStats()
     {
         if (bm.level > 2)
         {
-            health += health * (difficultyMultiplier * (bm.GetLevel()));
+            health += (int)(health * (difficultyMultiplier * (bm.GetLevel())));
         }
         
         maxHealth = health;

@@ -8,10 +8,10 @@ public abstract class Unit : MonoBehaviour
     public BoardManager bm;
     public int boardSize;
     public Vector2Int pos;
-    public float maxHealth;
-    public float health;
+    public int maxHealth;
+    public int health;
 
-    public UnitAudio audio;
+    public UnitAudio uaudio;
 
     public Projectile bullet;
     public Bomb bomb;
@@ -20,7 +20,7 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void OnEnable()
     {
-        audio = GetComponent<UnitAudio>();
+        uaudio = GetComponent<UnitAudio>();
         Canvas healthUI = gameObject.GetComponentInChildren<Canvas>();
         if (healthUI == null)
         {
@@ -61,23 +61,28 @@ public abstract class Unit : MonoBehaviour
     // Does not check to see if the move is legal, so check must be made beforehand
     public virtual void Move(int[] tileCoords)
     {
-        Vector3 newPos = bm.GetTile(tileCoords[0], tileCoords[1]).transform.position + new Vector3(0, 1f, 0);
-        gameObject.transform.position = newPos;
-        pos = new Vector2Int(tileCoords[0], tileCoords[1]);
+        Tile targetTile = bm.GetTile(tileCoords[0], tileCoords[1]);
+        
+        if (targetTile != null)
+        {
+            Vector3 newPos = targetTile.transform.position + new Vector3(0, 1f, 0);
+            gameObject.transform.position = newPos;
+            pos = new Vector2Int(tileCoords[0], tileCoords[1]);
+        }
     }
 
     public virtual void LoseHealth(int damage)
     {
         health -= damage;
         ChangeHealthUI(damage);
-        audio.DamageTakenSFX();
+        uaudio.DamageTakenSFX();
     }
 
     public void LoseHealth(int damage, bool isCrit)
     {
         health -= damage;
         ChangeHealthUI(damage);
-        audio.DamageTakenSFX();
+        uaudio.DamageTakenSFX();
     }
 
     private void ChangeHealthUI(int damage)

@@ -4,9 +4,11 @@
     // Start is called before the first frame update
     void Start()
     {
-        audio = GetComponent<UnitAudio>();
+        uaudio = GetComponent<UnitAudio>();
         //bm = board.GetComponent<BoardManager>();
         //boardSize = bm.tiles.Length;
+        health = 100;
+        maxHealth = 100;
         difficultyMultiplier = .05f;
         SetLevelStats();
         //Dumb way to get the health UI to update
@@ -31,7 +33,7 @@
         newBullet.isIndicatorOn = true;
     }
     // Before deleting gameObject, make call to enemy manager to decrement enemy count
-    private void Die()
+    public override void Die()
     {
         //GameObject.FindGameObjectWithTag("Enemy Manager").GetComponent<EnemyManager>().EnemyDied();
         if (OnEnemyDeath != null)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChargeEnemy : Enemy
 {
-    public float timer = 0f;
+    //public float timer = 0f;
     private Rigidbody rb;
     private Vector3 sourcePos;
     private bool charging;
@@ -22,12 +22,13 @@ public class ChargeEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
-
+        health = 50;
+        maxHealth = 50;
         rb = GetComponent<Rigidbody>();
         sourcePos = rb.position;
         charging = false;
         timeToCharge = Random.Range(timeToCharge - 2f, timeToCharge + 2f);
-        audio = GetComponent<UnitAudio>();
+        uaudio = GetComponent<UnitAudio>();
         //bm = board.GetComponent<BoardManager>();
         myTile[0] = pos.x;
         myTile[1] = pos.y;
